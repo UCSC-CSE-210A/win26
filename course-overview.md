@@ -24,7 +24,7 @@ Hi, I'm [Owen Arden](https://owenarden.github.io/home/)!
   - Canvas (for reading responses and grades): <{{ site.canvas-url }}> 
   - Ed Discussion (for announcements, live chat during lectures, Q&A, communicating with Owen, TAs, and your fellow students, etc.): <{{ site.ed-url }}> 
   - New experiment: #general channel on Ed <{{ site.chat-url }}>
-  - Webpage (here): <{{ site.url }}{{ site.base-url }}>
+  - Webpage (here): <{{ site.url }}{{ site.baseurl }}>
   - Textbook: [Software Foundations](https://softwarefoundations.cis.upenn.edu/), [Volume 1](https://softwarefoundations.cis.upenn.edu/lf-current/index.html) and [Volume 2](https://softwarefoundations.cis.upenn.edu/plf-current/index.html) (available free online)
   
 ## Grading
