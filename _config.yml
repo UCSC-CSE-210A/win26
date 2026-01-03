@@ -31,7 +31,7 @@ repository: "UCSC-CSE-210A/win26"
 canvas-url: "https://canvas.ucsc.edu/courses/82496"
 ed-url: "https://edstem.org/us/courses/77254/discussion"
 chat-url: "https://edstem.org/us/courses/77254/discussion/chat/channels/18283"
-meeting-time: "Mondays, Wednesdays, and Fridays, 2:40-3:45pm"
+meeting-time: "Tuesdays and Thursdays, 11:40AM - 1:15PM"
 
 # Build settings
 remote_theme: "mmistakes/minimal-mistakes"
