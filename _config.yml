@@ -28,9 +28,8 @@ url: "https://ucsc-cse-210a.github.io" # the base hostname & protocol for your s
 # github_username:  jekyll
 markdown: kramdown
 repository: "UCSC-CSE-210A/win26"
-canvas-url: "https://canvas.ucsc.edu/courses/82496"
-ed-url: "https://edstem.org/us/courses/77254/discussion"
-chat-url: "https://edstem.org/us/courses/77254/discussion/chat/channels/18283"
+canvas-url: "https://canvas.ucsc.edu/courses/88813"
+ed-url: "https://edstem.org/us/courses/90659/discussion"
 meeting-time: "Tuesdays and Thursdays, 11:40AM - 1:15PM"
 meeting-location: "<a href='https://classrooms.ucsc.edu/ss2071/'>Social Sciences 2, 071</a>"
 # Build settings
