@@ -4,8 +4,8 @@ import holidays
 import datetime
 import pytz
 
-INSTR_BEGINS = datetime.date(2025, 3, 31)
-INSTR_ENDS = datetime.date(2025, 6, 6)
+INSTR_BEGINS = datetime.date(2026, 1, 5)
+INSTR_ENDS = datetime.date(2026, 3, 13)
 
 ucsc_holidays = [ "Labor Day"
 , "Veterans Day"
@@ -25,8 +25,8 @@ HOLIDAYS = [date for date, name in
               if len(list(filter(lambda h: h in name,ucsc_holidays))) > 0 and date >= INSTR_BEGINS and date <= INSTR_ENDS and date.weekday() < 5]
 
 # Update this with the days class DOES NOT meet
-# DAYS_OFF = {1,3,5,6,7} # TuTh meetings
-DAYS_OFF = {2,4,6,7} # MWF meetings
+DAYS_OFF = {1,3,5,6,7} # TuTh meetings
+#DAYS_OFF = {2,4,6,7} # MWF meetings
 
 tz = pytz.timezone('US/Pacific')
 days = networkdays.Networkdays(INSTR_BEGINS, INSTR_ENDS, HOLIDAYS, DAYS_OFF).networkdays()
