@@ -32,7 +32,7 @@ canvas-url: "https://canvas.ucsc.edu/courses/82496"
 ed-url: "https://edstem.org/us/courses/77254/discussion"
 chat-url: "https://edstem.org/us/courses/77254/discussion/chat/channels/18283"
 meeting-time: "Tuesdays and Thursdays, 11:40AM - 1:15PM"
-meeting-location: "<a href='https://its.ucsc.edu/classrooms/media-info/stv175.html'>Stevenson 175</a>"
+meeting-location: "<a href='https://its.ucsc.edu/classrooms/media-info/stv175.html'>Social Sciences 2, 071</a>"
 # Build settings
 remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin: "mint" # "air", "aqua", "contrast", "default", "dark", "dirt", "neon", "mint", "plum", "sunrise"
