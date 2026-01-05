@@ -54,8 +54,13 @@ students.  Discussions with students on general proof strategies and Rocq
 techniques are *encouraged*, but should not result in identical proofs.  Looking
 at another students' code, whether part of this course or not, is not permitted.
 Online resources should be restricted to generic Rocq resources, and should not
-be at all related to Software Foundations material or exercises.  If this
-happens by accident, or you feel an online resource 
+be at all related to Software Foundations material or exercises.  
+
+If you see a student's solution by accident, or you feel an online resource
+ended up being too close to the answer you eventually submitted, that's ok! 
+Just make a private post on the discussion forum that explains what happened
+and include a step-by-step explanation of the code in question to demonstrate 
+you understand what is going on.
 
 
 ## A note on accessibility
