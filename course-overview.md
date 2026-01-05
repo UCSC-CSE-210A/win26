@@ -36,8 +36,8 @@ unforeseen circumstances that prevent you from coming to class, so **you do not
 need to have absences "excused"** (i.e., please don't email me to ask -- as long as you don't go over 25% you will fine).
 
 ### Late Policy
-- You have a total of 72 late hours that you can use throughout the quarter as you need them.
-- A late hour means anything between 1 second and 59 minutes and 59 seconds past a deadline.
+- **This course moves fast and has a high workload. It can be very hard to catch up if you get behind.** 
+- Late assignments receive a 3% deduction in points
 - You should save your late hours for when unexpected circumstances arise that prevent you from turning in your homework on time.
 - **It is very unlikely that additional extensions will be approved, so use them wisely.**
 
