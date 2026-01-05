@@ -30,7 +30,7 @@ Hi, I'm [Owen Arden](https://owenarden.github.io/home/)!
 Grading is primarily (90%) based on completion of ~9 homework assignments.
 **Class attendance and participation in discussion (10%) is highly encouraged.** 
 Attendance is *necessary* but not *sufficient*: 
-some lectures may have in-class components like proving things as a group, etc.
+some lectures may have in-class components like proving things as a group, etc, so please bring a laptop or device that can access your Rocq environment during class.
 
 Full participation credit does not require perfect attendance.  Participation in
 80% of lectures (16 of 20) will result in full credit, 75% (15 of 20) receives
