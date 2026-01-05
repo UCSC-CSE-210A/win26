@@ -51,9 +51,11 @@ may want to enroll in a different course.
 
 All assignments in this course must be the sole, original work of individual
 students.  Discussions with students on general proof strategies and Rocq
-techniques are *encouraged*, but should not result in identical proofs.
-Looking at another students' code, whether part of this course or not, is not 
-permitted. 
+techniques are *encouraged*, but should not result in identical proofs.  Looking
+at another students' code, whether part of this course or not, is not permitted.
+Online resources should be restricted to generic Rocq resources, and should not
+be at all related to Software Foundations material or exercises.  If this
+happens by accident, or you feel an online resource 
 
 
 ## A note on accessibility
