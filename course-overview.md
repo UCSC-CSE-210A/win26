@@ -28,15 +28,18 @@ Hi, I'm [Owen Arden](https://owenarden.github.io/home/)!
   
 ## Grading
 Grading is primarily (90%) based on completion of ~9 homework assignments.
-**Class attendance and participation in discussion (10%) is highly encouraged.** Some lectures may have in-class components like proving things as a group, etc.
+**Class attendance and participation in discussion (10%) is highly encouraged.** 
+Attendance is *necessary* but not *sufficient*: 
+some lectures may have in-class components like proving things as a group, etc.
 
-Full participation credit does not require perfect attendance. Participation in
+Full participation credit does not require perfect attendance.  Participation in
 80% of lectures (16 of 20) will result in full credit, 75% (15 of 20) receives
-half credit, and 0% for fewer than 15. Attendance only is not sufficient: participation may include in-class activities.
-The extra slack is for unforeseen circumstances that prevent you from
-coming to class, so **you do not need to have absences "excused"** (i.e., please
-don't email me to ask -- as long as you don't go over 25% you will fine). 
-If you anticipate missing more than this, you may want to enroll in a different course.
+half credit, and 0% for fewer than 15. Participating in discussion and other
+in-class activities may be considered.  The extra slack is for unforeseen
+circumstances that prevent you from coming to class, so **you do not need to
+have absences "excused"** (i.e., please don't email me to ask -- as long as you
+don't go over 25% you will fine).  If you anticipate missing more than this, you
+may want to enroll in a different course.
 
 ### Late Policy
 - **This course moves fast and has a high workload. It can be very hard to catch up if you get behind.** 
