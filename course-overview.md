@@ -66,6 +66,7 @@ working independently.
 
 Any form of AI-generated code is not permitted.  Co-pilot should be disabled in
 VSCode, and you should not use AI chatbots to help write your solutions.
+The VSCode devcontainer 
 
 
 ## A note on accessibility
