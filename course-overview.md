@@ -47,6 +47,8 @@ may want to enroll in a different course.
 - For students with above 75% participation at the end of the quarter, I will remove late deductions the two "latest" assignments. (This is like having late days, but fits better in Canvas's grading policy system).
 - **It is very unlikely that additional extensions will be approved, so consider the impact of late submissions carefully.**
 
+## Academic Integrity / AI use
+
 ## A note on accessibility
 
 If you have a disability and you require accommodations to achieve equal access in this course, please submit your Accommodation Authorization Letter from the [Disability Resource Center (DRC)](https://drc.ucsc.edu/index.html) to me via the Accommodate system, preferably within the first two weeks of the quarter.  I am eager to discuss ways we can ensure your full participation in the course.
