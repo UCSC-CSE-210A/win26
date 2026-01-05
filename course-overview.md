@@ -32,7 +32,8 @@ Grading is primarily (90%) based on completion of ~9 homework assignments.
 
 Full participation credit does not require perfect attendance. Participation in
 80% of lectures (16 of 20) will result in full credit, 75% (15 of 20) receives
-half credit. The extra slack is for unforeseen circumstances that prevent you from
+half credit, and 0% for fewer. 
+The extra slack is for unforeseen circumstances that prevent you from
 coming to class, so **you do not need to have absences "excused"** (i.e., please
 don't email me to ask -- as long as you don't go over 25% you will fine). 
 
