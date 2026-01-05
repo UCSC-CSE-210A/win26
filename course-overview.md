@@ -27,8 +27,8 @@ Hi, I'm [Owen Arden](https://owenarden.github.io/home/)!
   - Textbook: [Software Foundations](https://softwarefoundations.cis.upenn.edu/), [Volume 1](https://softwarefoundations.cis.upenn.edu/lf-current/index.html) and [Volume 2](https://softwarefoundations.cis.upenn.edu/plf-current/index.html) (available free online, but use assignment repo version for all submissions)
   
 ## Grading
-Grading is primarily (85%) based on completion of ~9 homework assignments.
-**Class attendance and participation in discussion (15%) is highly encouraged.** Some lectures may have in-class components like proving things as a group, etc.
+Grading is primarily (90%) based on completion of ~9 homework assignments.
+**Class attendance and participation in discussion (10%) is highly encouraged.** Some lectures may have in-class components like proving things as a group, etc.
 
 Full participation credit does not require perfect attendance. Participation in
 ~75% of lectures will result in full credit. The extra slack is for
