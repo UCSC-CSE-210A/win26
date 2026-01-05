@@ -49,6 +49,13 @@ may want to enroll in a different course.
 
 ## Academic Integrity / AI use
 
+All assignments in this course must be the sole, original work of individual
+students.  Discussions with students on general proof strategies and Rocq
+techniques are *encouraged*, but should not result in identical proofs.
+Looking at another students' code, whether part of this course or not, is not 
+permitted. 
+
+
 ## A note on accessibility
 
 If you have a disability and you require accommodations to achieve equal access in this course, please submit your Accommodation Authorization Letter from the [Disability Resource Center (DRC)](https://drc.ucsc.edu/index.html) to me via the Accommodate system, preferably within the first two weeks of the quarter.  I am eager to discuss ways we can ensure your full participation in the course.
