@@ -45,7 +45,7 @@ may want to enroll in a different course.
 - **This course moves fast and has a high workload. It can be very hard to catch up if you get behind.** 
 - Late assignments receive a 3% deduction in points for each 0-24 hour period past the deadline, up to 7 days.
 - For students with above 75% participation at the end of the quarter, I will remove late deductions the two "latest" assignments. (This is like having late days, but fits better in Canvas's grading policy system).
-- **It is very unlikely that additional extensions will be approved, so use them wisely.**
+- **It is very unlikely that additional extensions will be approved, so consider the impact of late submissions carefully.**
 
 ## A note on accessibility
 
