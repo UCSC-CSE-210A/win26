@@ -36,12 +36,12 @@ half credit, and 0% for fewer than 15.
 The extra slack is for unforeseen circumstances that prevent you from
 coming to class, so **you do not need to have absences "excused"** (i.e., please
 don't email me to ask -- as long as you don't go over 25% you will fine). 
-If you anticipate missing more than this, you may want to enroll in another class.
+If you anticipate missing more than this, you may want to enroll in a different course.
 
 ### Late Policy
 - **This course moves fast and has a high workload. It can be very hard to catch up if you get behind.** 
 - Late assignments receive a 3% deduction in points for each 0-24 hour period past the deadline, up to 7 days.
-- 
+- Students with above 
 - **It is very unlikely that additional extensions will be approved, so use them wisely.**
 
 ## A note on accessibility
