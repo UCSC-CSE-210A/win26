@@ -64,8 +64,8 @@ understand what is going on.  Note that in order to explain thoroughly, this may
 require you to understand what is going on in more detail than you would have
 working independently.
 
-Any form of AI-generated code is not permitted.  Co-pilot should be disabled in VSCode, 
-and you should not use AI chatbots to help write your solutions.
+Any form of AI-generated code is not permitted.  Co-pilot should be disabled in
+VSCode, and you should not use AI chatbots to help write your solutions.
 
 
 ## A note on accessibility
