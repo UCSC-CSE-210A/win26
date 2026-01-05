@@ -40,8 +40,8 @@ If you anticipate missing more than this, you may want to enroll in another clas
 
 ### Late Policy
 - **This course moves fast and has a high workload. It can be very hard to catch up if you get behind.** 
-- Late assignments receive a 3% deduction in points
-- You should save your late hours for when unexpected circumstances arise that prevent you from turning in your homework on time.
+- Late assignments receive a 3% deduction in points for each 0-24 hour period past the deadline, up to 7 days.
+- 
 - **It is very unlikely that additional extensions will be approved, so use them wisely.**
 
 ## A note on accessibility
