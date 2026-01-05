@@ -24,7 +24,7 @@ Hi, I'm [Owen Arden](https://owenarden.github.io/home/)!
   - Canvas (for reading responses and grades): <{{ site.canvas-url }}> 
   - Ed Discussion (for announcements, live chat during lectures, Q&A, communicating with Owen, TAs, and your fellow students, etc.): <{{ site.ed-url }}> 
   - Webpage (here): <https://ucsc-cse-210a.github.io{{ site.baseurl }}>
-  - Textbook: [Software Foundations](https://softwarefoundations.cis.upenn.edu/), [Volume 1](https://softwarefoundations.cis.upenn.edu/lf-current/index.html) and [Volume 2](https://softwarefoundations.cis.upenn.edu/plf-current/index.html) (available free online)
+  - Textbook: [Software Foundations](https://softwarefoundations.cis.upenn.edu/), [Volume 1](https://softwarefoundations.cis.upenn.edu/lf-current/index.html) and [Volume 2](https://softwarefoundations.cis.upenn.edu/plf-current/index.html) (available free online, but use assignment repo version for all submissions)
   
 ## Grading
 Grading is primarily (85%) based on completion of ~9 homework assignments.
