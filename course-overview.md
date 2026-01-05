@@ -58,10 +58,11 @@ be at all related to Software Foundations material or exercises.
 
 If you see a student's solution by accident, or you feel an online resource
 ended up being too close to the answer you eventually submitted, that's ok! 
-Just make a private post on the discussion forum that explains what happened
-and include a step-by-step explanation of the code in question to demonstrate 
-you understand what is going on.
-
+Just make a private post on the discussion forum that explains what happened and
+include a step-by-step explanation of the code in question to demonstrate you
+understand what is going on.  Note that in order to explain thoroughly, this may
+require you to understand what is going on in more detail than you would have
+working independently.
 
 ## A note on accessibility
 
