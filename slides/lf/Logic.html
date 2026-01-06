@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="common/css/sf.css" rel="stylesheet" type="text/css" />
-<title>Logic: Logic in Coq</title>
+<title>Logic: Logic in Rocq</title>
 <link href="common/jquery-ui/jquery-ui.css" rel="stylesheet">
 <script src="common/jquery-ui/external/jquery/jquery.js"></script>
 <script src="common/jquery-ui/jquery-ui.js"></script>
@@ -31,7 +31,7 @@
 
 <div id="main">
 
-<h1 class="libtitle">Logic<span class="subtitle">Logic in Coq</span></h1>
+<h1 class="libtitle">Logic<span class="subtitle">Logic in Rocq</span></h1>
 
 
 
@@ -70,11 +70,11 @@ So far, we have seen...
     propositions and proofs. 
 <div class="paragraph"> </div>
 
-<a id="lab179"></a><h3 class="section"> </h3>
+<a id="lab182"></a><h1 class="section">The <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> Type</h1>
 
 <div class="paragraph"> </div>
 
- Like everything in Coq, well-formed propositions have a <i>type</i>: 
+ Like everything in Rocq, well-formed propositions have a <i>type</i>: 
 </div>
 <div class="code">
 
@@ -82,9 +82,9 @@ So far, we have seen...
 </div>
 
 <div class="doc">
-<a id="lab180"></a><h3 class="section"> </h3>
+<a id="lab183"></a><h3 class="section"> </h3>
  Note that <i>all</i> syntactically well-formed propositions have type
-    <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> in Coq, regardless of whether they are true or not.
+    <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> in Rocq, regardless of whether they are true or not.
 
 <div class="paragraph"> </div>
 
@@ -99,7 +99,7 @@ So far, we have seen...
 </div>
 
 <div class="doc">
-<a id="lab181"></a><h3 class="section"> </h3>
+<a id="lab184"></a><h3 class="section"> </h3>
  So far, we've seen one primary place where propositions can appear:
     in <span class="inlinecode"><span class="id" title="keyword">Theorem</span></span> (and <span class="inlinecode"><span class="id" title="keyword">Lemma</span></span> and <span class="inlinecode"><span class="id" title="keyword">Example</span></span>) declarations. 
 </div>
@@ -111,8 +111,8 @@ So far, we have seen...
 </div>
 
 <div class="doc">
-<a id="lab182"></a><h3 class="section"> </h3>
- Propositions are first-class entities in Coq, though. For 
+<a id="lab185"></a><h3 class="section"> </h3>
+ Propositions are first-class entities in Rocq, though. For
     example, we can name them: 
 </div>
 <div class="code">
@@ -125,7 +125,7 @@ So far, we have seen...
 </div>
 
 <div class="doc">
-<a id="lab183"></a><h3 class="section"> </h3>
+<a id="lab186"></a><h3 class="section"> </h3>
  We can also write <i>parameterized</i> propositions -- that is,
     functions that take arguments of some type and return a
     proposition. 
@@ -138,8 +138,8 @@ So far, we have seen...
 </div>
 
 <div class="doc">
-<a id="lab184"></a><h3 class="section"> </h3>
- In Coq, functions that return propositions are said to define
+<a id="lab187"></a><h3 class="section"> </h3>
+ In Rocq, functions that return propositions are said to define
     <i>properties</i> of their arguments.
 
 <div class="paragraph"> </div>
@@ -158,14 +158,14 @@ So far, we have seen...
 </div>
 
 <div class="doc">
-<a id="lab185"></a><h3 class="section"> </h3>
+<a id="lab188"></a><h3 class="section"> </h3>
  The familiar equality operator <span class="inlinecode">=</span> is a (binary) function that returns
     a <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>.
 
 <div class="paragraph"> </div>
 
     The expression <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span> is syntactic sugar for <span class="inlinecode"><span class="id" title="var">eq</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode"><span class="id" title="var">m</span></span> (defined in
-    Coq's standard library using the <span class="inlinecode"><span class="id" title="keyword">Notation</span></span> mechanism).
+    Rocq's standard library using the <span class="inlinecode"><span class="id" title="keyword">Notation</span></span> mechanism).
 
 <div class="paragraph"> </div>
 
@@ -183,23 +183,23 @@ So far, we have seen...
 What is the type of the following expression?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">pred</span> (<span class="id" title="var">S</span> <span class="id" title="var">O</span>) = <span class="id" title="var">O</span>
-</span>   (1) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
+</span>   (A) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (2) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
+   (B) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (3) <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span>:<span class="id" title="var">nat</span>,</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
+   (C) <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span>:<span class="id" title="var">nat</span>,</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (4) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
+   (D) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
 
 <div class="paragraph"> </div>
 
-   (5) Not typeable
+   (E) Not typeable
 
 <div class="paragraph"> </div>
 
@@ -220,23 +220,23 @@ What is the type of the following expression?
 What is the type of the following expression?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">n</span>:<span class="id" title="var">nat</span>, <span class="id" title="var">pred</span> (<span class="id" title="var">S</span> <span class="id" title="var">n</span>) = <span class="id" title="var">n</span>
-</span>   (1) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
+</span>   (A) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (2) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
+   (B) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (3) <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span>:<span class="id" title="var">nat</span>,</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
+   (C) <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span>:<span class="id" title="var">nat</span>,</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (4) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
+   (D) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
 
 <div class="paragraph"> </div>
 
-   (5) Not typeable
+   (E) Not typeable
 
 <div class="paragraph"> </div>
 
@@ -257,19 +257,19 @@ What is the type of the following expression?
 What is the type of the following expression?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">n</span>:<span class="id" title="var">nat</span>, <span class="id" title="var">S</span> (<span class="id" title="var">pred</span> <span class="id" title="var">n</span>) = <span class="id" title="var">n</span>
-</span>   (1) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
+</span>   (A) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (2) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
+   (B) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (3) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
+   (C) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
 
 <div class="paragraph"> </div>
 
-   (4) Not typeable
+   (D) Not typeable
 
 <div class="paragraph"> </div>
 
@@ -290,19 +290,22 @@ What is the type of the following expression?
 What is the type of the following expression?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">n</span>:<span class="id" title="var">nat</span>, <span class="id" title="var">S</span> (<span class="id" title="var">pred</span> <span class="id" title="var">n</span>)
-</span>   (1) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
+</span>   (A) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (2) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
+   (B) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (3) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
+   (C) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
 
 <div class="paragraph"> </div>
 
-   (4) Not typeable
+   (D) Not typeable
+
+<div class="paragraph"> </div>
+
 
 </div>
 <div class="code">
@@ -322,19 +325,22 @@ What is the type of the following expression?
 What is the type of the following expression?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">fun</span> <span class="id" title="var">n</span>:<span class="id" title="var">nat</span> ⇒ <span class="id" title="var">S</span> (<span class="id" title="var">pred</span> <span class="id" title="var">n</span>)
-</span>   (1) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
+</span>   (A) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (2) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
+   (B) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (3) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
+   (C) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
 
 <div class="paragraph"> </div>
 
-   (4) Not typeable
+   (D) Not typeable
+
+<div class="paragraph"> </div>
+
 
 </div>
 <div class="code">
@@ -350,19 +356,19 @@ What is the type of the following expression?
 What is the type of the following expression?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">fun</span> <span class="id" title="var">n</span>:<span class="id" title="var">nat</span> ⇒ <span class="id" title="var">S</span> (<span class="id" title="var">pred</span> <span class="id" title="var">n</span>) = <span class="id" title="var">n</span>
-</span>   (1) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
+</span>   (A) <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (2) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
+   (B) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span>
 
 <div class="paragraph"> </div>
 
-   (3) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
+   (C) <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="var">nat</span></span>
 
 <div class="paragraph"> </div>
 
-   (4) Not typeable
+   (D) Not typeable
 
 <div class="paragraph"> </div>
 
@@ -382,27 +388,30 @@ Which of the following is <i>not</i> a proposition?
 
 <div class="paragraph"> </div>
 
-    (1) <span class="inlinecode">3</span> <span class="inlinecode">+</span> <span class="inlinecode">2</span> <span class="inlinecode">=</span> <span class="inlinecode">4</span>
+    (A) <span class="inlinecode">3</span> <span class="inlinecode">+</span> <span class="inlinecode">2</span> <span class="inlinecode">=</span> <span class="inlinecode">4</span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode">3</span> <span class="inlinecode">+</span> <span class="inlinecode">2</span> <span class="inlinecode">=</span> <span class="inlinecode">5</span>
+    (B) <span class="inlinecode">3</span> <span class="inlinecode">+</span> <span class="inlinecode">2</span> <span class="inlinecode">=</span> <span class="inlinecode">5</span>
 
 <div class="paragraph"> </div>
 
-    (3) <span class="inlinecode">3</span> <span class="inlinecode">+</span> <span class="inlinecode">2</span> <span class="inlinecode">=?</span> <span class="inlinecode">5</span>
+    (C) <span class="inlinecode">3</span> <span class="inlinecode">+</span> <span class="inlinecode">2</span> <span class="inlinecode">=?</span> <span class="inlinecode">5</span>
 
 <div class="paragraph"> </div>
 
-    (4) <span class="inlinecode">((3+2)</span> <span class="inlinecode">=?</span> <span class="inlinecode">4)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">false</span></span>
+    (D) <span class="inlinecode">((3+2)</span> <span class="inlinecode">=?</span> <span class="inlinecode">4)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">false</span></span>
 
 <div class="paragraph"> </div>
 
-    (5) <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span>,</span> <span class="inlinecode">(((3+2)</span> <span class="inlinecode">=?</span> <span class="inlinecode"><span class="id" title="var">n</span>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">true</span>)</span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode">5</span>
+    (E) <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span>,</span> <span class="inlinecode">(((3+2)</span> <span class="inlinecode">=?</span> <span class="inlinecode"><span class="id" title="var">n</span>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">true</span>)</span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode">5</span>
 
 <div class="paragraph"> </div>
 
-    (6) All of these are propositions
+    (F) All of these are propositions
+
+<div class="paragraph"> </div>
+
 
 </div>
 </div> <!-- /quiz -->
@@ -417,11 +426,11 @@ Which of the following is <i>not</i> a proposition?
 </div>
 
 <div class="doc">
-<a id="lab186"></a><h1 class="section">Logical Connectives</h1>
+<a id="lab189"></a><h1 class="section">Logical Connectives</h1>
 
 <div class="paragraph"> </div>
 
-<a id="lab187"></a><h2 class="section">Conjunction</h2>
+<a id="lab190"></a><h2 class="section">Conjunction</h2>
 
 <div class="paragraph"> </div>
 
@@ -435,8 +444,8 @@ Which of the following is <i>not</i> a proposition?
 </div>
 
 <div class="doc">
-To prove a conjunction, use the <span class="inlinecode"><span class="id" title="tactic">split</span></span> tactic.  This will generate
-    two subgoals, one for each part of the statement: 
+To prove a conjunction, start with the <span class="inlinecode"><span class="id" title="tactic">split</span></span> tactic.  This will
+    generate two subgoals, one for each part of the statement: 
 </div>
 <div class="code">
 
@@ -448,10 +457,13 @@ To prove a conjunction, use the <span class="inlinecode"><span class="id" title=
 </div>
 
 <div class="doc">
-<a id="lab188"></a><h3 class="section"> </h3>
- For any propositions <span class="inlinecode"><span class="id" title="var">A</span></span> and <span class="inlinecode"><span class="id" title="var">B</span></span>, if we assume that <span class="inlinecode"><span class="id" title="var">A</span></span> is true and
-    that <span class="inlinecode"><span class="id" title="var">B</span></span> is true, we can conclude that <span class="inlinecode"><span class="id" title="var">A</span></span> <span class="inlinecode">∧</span> <span class="inlinecode"><span class="id" title="var">B</span></span> is also true.  The Coq
-    library provides a function <span class="inlinecode"><span class="id" title="var">conj</span></span> that does this. 
+<a id="lab191"></a><h3 class="section"> </h3>
+
+<div class="paragraph"> </div>
+
+ For any propositions <span class="inlinecode"><span class="id" title="var">A</span></span> and <span class="inlinecode"><span class="id" title="var">B</span></span>, if we assume that <span class="inlinecode"><span class="id" title="var">A</span></span> and <span class="inlinecode"><span class="id" title="var">B</span></span>
+    are each true individually, we can conclude that <span class="inlinecode"><span class="id" title="var">A</span></span> <span class="inlinecode">∧</span> <span class="inlinecode"><span class="id" title="var">B</span></span> is also
+    true.  The Rocq library provides a function <span class="inlinecode"><span class="id" title="var">conj</span></span> that does this. 
 </div>
 <div class="code">
 
@@ -462,7 +474,7 @@ To prove a conjunction, use the <span class="inlinecode"><span class="id" title=
 we can <span class="inlinecode"><span class="id" title="tactic">apply</span></span> <span class="inlinecode"><span class="id" title="var">conj</span></span> to achieve the same effect as <span class="inlinecode"><span class="id" title="tactic">split</span></span>. 
 <div class="paragraph"> </div>
 
-<a id="lab189"></a><h3 class="section"> </h3>
+<a id="lab192"></a><h3 class="section"> </h3>
 
 </div>
 <div class="code">
@@ -474,10 +486,10 @@ we can <span class="inlinecode"><span class="id" title="tactic">apply</span></sp
 </div>
 
 <div class="doc">
-<a id="lab190"></a><h3 class="section"> </h3>
+<a id="lab193"></a><h3 class="section"> </h3>
  So much for proving conjunctive statements.  To go in the other
     direction -- i.e., to <i>use</i> a conjunctive hypothesis to help prove
-    something else -- we employ the <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> tactic. 
+    something else -- we can use our good old <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> tactic. 
 </div>
 <div class="code">
 
@@ -488,9 +500,12 @@ we can <span class="inlinecode"><span class="id" title="tactic">apply</span></sp
 </div>
 
 <div class="doc">
-<a id="lab191"></a><h3 class="section"> </h3>
- As usual, we can also destruct <span class="inlinecode"><span class="id" title="var">H</span></span> right when we introduce it,
-    instead of introducing and then destructing it: 
+<a id="lab194"></a><h3 class="section"> </h3>
+
+<div class="paragraph"> </div>
+
+ As usual, we can also destruct <span class="inlinecode"><span class="id" title="var">H</span></span> right at the point where we
+    introduce it, instead of introducing and then destructing it: 
 </div>
 <div class="code">
 
@@ -504,39 +519,9 @@ we can <span class="inlinecode"><span class="id" title="tactic">apply</span></sp
 </div>
 
 <div class="doc">
-<a id="lab192"></a><h3 class="section"> </h3>
- You may wonder why we bothered packing the two hypotheses <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode">0</span> and
-    <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">=</span> <span class="inlinecode">0</span> into a single conjunction, since we could also have stated the
-    theorem with two separate premises: 
-</div>
-<div class="code">
-
-<span class="id" title="keyword">Lemma</span> <span class="id" title="var">and_example2''</span> :<br/>
-&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">n</span> <span class="id" title="var">m</span> : <span class="id" title="var">nat</span>, <span class="id" title="var">n</span> = 0 → <span class="id" title="var">m</span> = 0 → <span class="id" title="var">n</span> + <span class="id" title="var">m</span> = 0.<br/>
-<span class="id" title="keyword">Proof</span>.<br/>
-&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">n</span> <span class="id" title="var">m</span> <span class="id" title="var">Hn</span> <span class="id" title="var">Hm</span>.<br/>
-&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <span class="id" title="var">Hn</span>. <span class="id" title="tactic">rewrite</span> <span class="id" title="var">Hm</span>.<br/>
-&nbsp;&nbsp;<span class="id" title="tactic">reflexivity</span>.<br/>
-<span class="id" title="keyword">Qed</span>.<br/>
-</div>
-
-<div class="doc">
-For the present example, both ways work.  But ... <a id="lab193"></a><h3 class="section"> </h3>
- But in other situations we may wind up with a
-    conjunctive hypothesis in the middle of a proof... 
-</div>
-<div class="code">
-
-<span class="id" title="keyword">Lemma</span> <span class="id" title="var">and_example3</span> :<br/>
-&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">n</span> <span class="id" title="var">m</span> : <span class="id" title="var">nat</span>, <span class="id" title="var">n</span> + <span class="id" title="var">m</span> = 0 → <span class="id" title="var">n</span> × <span class="id" title="var">m</span> = 0.<br/>
-<span class="id" title="keyword">Proof</span>.<br/>
-&nbsp;&nbsp;<span class="comment">(*&nbsp;WORK&nbsp;IN&nbsp;CLASS&nbsp;*)</span> <span class="id" title="var">Admitted</span>.<br/>
-</div>
-
-<div class="doc">
-<a id="lab194"></a><h3 class="section"> </h3>
- Finally, the infix notation <span class="inlinecode">∧</span> is actually just syntactic sugar for
-    <span class="inlinecode"><span class="id" title="var">and</span></span> <span class="inlinecode"><span class="id" title="var">A</span></span> <span class="inlinecode"><span class="id" title="var">B</span></span>.  That is, <span class="inlinecode"><span class="id" title="var">and</span></span> is a Coq operator that takes two
+<a id="lab195"></a><h3 class="section"> </h3>
+ The infix notation <span class="inlinecode">∧</span> is actually just syntactic sugar for
+    <span class="inlinecode"><span class="id" title="var">and</span></span> <span class="inlinecode"><span class="id" title="var">A</span></span> <span class="inlinecode"><span class="id" title="var">B</span></span>.  That is, <span class="inlinecode"><span class="id" title="var">and</span></span> is a Rocq operator that takes two
     propositions as arguments and yields a proposition. 
 </div>
 <div class="code">
@@ -545,17 +530,17 @@ For the present example, both ways work.  But ... <a id="lab193"></a><h3 class="
 </div>
 
 <div class="doc">
-<a id="lab195"></a><h2 class="section">Disjunction</h2>
+<a id="lab196"></a><h2 class="section">Disjunction</h2>
 
 <div class="paragraph"> </div>
 
  Another important connective is the <i>disjunction</i>, or <i>logical or</i>,
     of two propositions: <span class="inlinecode"><span class="id" title="var">A</span></span> <span class="inlinecode">∨</span> <span class="inlinecode"><span class="id" title="var">B</span></span> is true when either <span class="inlinecode"><span class="id" title="var">A</span></span> or <span class="inlinecode"><span class="id" title="var">B</span></span> is.
-    (This infix notation stands for <span class="inlinecode"><span class="id" title="var">or</span></span> <span class="inlinecode"><span class="id" title="var">A</span></span> <span class="inlinecode"><span class="id" title="var">B</span></span>, where
-    <span class="inlinecode"><span class="id" title="var">or</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>.) 
+    This infix notation stands for <span class="inlinecode"><span class="id" title="var">or</span></span> <span class="inlinecode"><span class="id" title="var">A</span></span> <span class="inlinecode"><span class="id" title="var">B</span></span>, where
+    <span class="inlinecode"><span class="id" title="var">or</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>. 
 <div class="paragraph"> </div>
 
-<a id="lab196"></a><h3 class="section"> </h3>
+<a id="lab197"></a><h3 class="section"> </h3>
  To use a disjunctive hypothesis in a proof, we proceed by case
     analysis -- which, as with other data types like <span class="inlinecode"><span class="id" title="var">nat</span></span>, can be done
     explicitly with <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> or implicitly with an <span class="inlinecode"><span class="id" title="tactic">intros</span></span>
@@ -566,8 +551,8 @@ For the present example, both ways work.  But ... <a id="lab193"></a><h3 class="
 <span class="id" title="keyword">Lemma</span> <span class="id" title="var">factor_is_O</span>:<br/>
 &nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">n</span> <span class="id" title="var">m</span> : <span class="id" title="var">nat</span>, <span class="id" title="var">n</span> = 0 ∨ <span class="id" title="var">m</span> = 0 → <span class="id" title="var">n</span> × <span class="id" title="var">m</span> = 0.<br/>
 <span class="id" title="keyword">Proof</span>.<br/>
-&nbsp;&nbsp;<span class="comment">(*&nbsp;This&nbsp;pattern&nbsp;implicitly&nbsp;does&nbsp;case&nbsp;analysis&nbsp;on<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode">0</span> <span class="inlinecode">∨</span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">=</span> <span class="inlinecode">0</span>&nbsp;*)</span><br/>
+&nbsp;&nbsp;<span class="comment">(*&nbsp;This&nbsp;intro&nbsp;pattern&nbsp;implicitly&nbsp;does&nbsp;case&nbsp;analysis&nbsp;on<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode">0</span> <span class="inlinecode">∨</span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">=</span> <span class="inlinecode">0</span>...&nbsp;*)</span><br/>
 &nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">n</span> <span class="id" title="var">m</span> [<span class="id" title="var">Hn</span> | <span class="id" title="var">Hm</span>].<br/>
 &nbsp;&nbsp;- <span class="comment">(*&nbsp;Here,&nbsp;<span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode">0</span>&nbsp;*)</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <span class="id" title="var">Hn</span>. <span class="id" title="tactic">reflexivity</span>.<br/>
@@ -578,12 +563,15 @@ For the present example, both ways work.  But ... <a id="lab193"></a><h3 class="
 </div>
 
 <div class="doc">
-<a id="lab197"></a><h3 class="section"> </h3>
- Conversely, to show that a disjunction holds, it suffices to show that
-    one of its sides holds. This can be done via the tactics <span class="inlinecode"><span class="id" title="tactic">left</span></span> and
-    <span class="inlinecode"><span class="id" title="tactic">right</span></span>.  As their names imply, the first one requires proving the left
-    side of the disjunction, while the second requires proving the right
-    side.  Here is a trivial use... 
+<a id="lab198"></a><h3 class="section"> </h3>
+
+<div class="paragraph"> </div>
+
+ Conversely, to show that a disjunction holds, it suffices to show
+    that one of its sides holds. This can be done via the tactics
+    <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>.  As their names imply, the first one requires
+    proving the left side of the disjunction, while the second
+    requires proving the right side.  Here is a trivial use... 
 </div>
 <div class="code">
 
@@ -596,7 +584,7 @@ For the present example, both ways work.  But ... <a id="lab193"></a><h3 class="
 </div>
 
 <div class="doc">
-<a id="lab198"></a><h3 class="section"> </h3>
+<a id="lab199"></a><h3 class="section"> </h3>
  ... and here is a slightly more interesting example requiring both
     <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>: 
 </div>
@@ -609,15 +597,18 @@ For the present example, both ways work.  But ... <a id="lab193"></a><h3 class="
 </div>
 
 <div class="doc">
-<a id="lab201"></a><h2 class="section">Falsehood and Negation</h2>
- Up to this point, we have mostly been concerned with proving "positive"
-    statements -- addition is commutative, appending lists is associative,
-    etc.  Of course, we are sometimes also interested in negative results,
-    demonstrating that some given proposition is <i>not</i> true. Such
+<a id="lab202"></a><h2 class="section">Falsehood and Negation</h2>
+
+<div class="paragraph"> </div>
+
+ Up to this point, we have mostly been concerned with proving
+    "positive" statements -- addition is commutative, appending lists
+    is associative, etc.  We are sometimes also interested in negative
+    results, demonstrating that some proposition is <i>not</i> true. Such
     statements are expressed with the logical negation operator <span class="inlinecode">¬</span>. 
 <div class="paragraph"> </div>
 
-<a id="lab202"></a><h3 class="section"> </h3>
+<a id="lab203"></a><h3 class="section"> </h3>
  To see how negation works, recall the <i>principle of explosion</i>
     from the <a href="Tactics.html"><span class="inlineref">Tactics</span></a> chapter, which asserts that, if we assume a
     contradiction, then any other proposition can be derived.
@@ -628,8 +619,8 @@ For the present example, both ways work.  But ... <a id="lab193"></a><h3 class="
     <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">Q</span>,</span> <span class="inlinecode"><span class="id" title="var">P</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">Q</span></span>. 
 <div class="paragraph"> </div>
 
-<a id="lab203"></a><h3 class="section"> </h3>
- Coq actually makes a slightly different (but equivalent) choice,
+<a id="lab204"></a><h3 class="section"> </h3>
+ Rocq actually makes an equivalent but slightly different choice,
     defining <span class="inlinecode">¬</span> <span class="inlinecode"><span class="id" title="var">P</span></span> as <span class="inlinecode"><span class="id" title="var">P</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">False</span></span>, where <span class="inlinecode"><span class="id" title="var">False</span></span> is a specific
     un-provable proposition defined in the standard library. 
 </div>
@@ -641,7 +632,7 @@ For the present example, both ways work.  But ... <a id="lab193"></a><h3 class="
 </div>
 
 <div class="doc">
-<a id="lab204"></a><h3 class="section"> </h3>
+<a id="lab205"></a><h3 class="section"> </h3>
  Since <span class="inlinecode"><span class="id" title="var">False</span></span> is a contradictory proposition, the principle of
     explosion also applies to it. If we can get <span class="inlinecode"><span class="id" title="var">False</span></span> into the context,
     we can use <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> on it to complete any goal: 
@@ -651,16 +642,17 @@ For the present example, both ways work.  But ... <a id="lab193"></a><h3 class="
 <span class="id" title="keyword">Theorem</span> <span class="id" title="var">ex_falso_quodlibet</span> : <span class="id" title="keyword">∀</span> (<span class="id" title="var">P</span>:<span class="id" title="keyword">Prop</span>),<br/>
 &nbsp;&nbsp;<span class="id" title="var">False</span> → <span class="id" title="var">P</span>.<br/>
 <span class="id" title="keyword">Proof</span>.<br/>
-&nbsp;&nbsp;<span class="comment">(*&nbsp;WORK&nbsp;IN&nbsp;CLASS&nbsp;*)</span> <span class="id" title="var">Admitted</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">P</span> <span class="id" title="var">contra</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">destruct</span> <span class="id" title="var">contra</span>. <span class="id" title="keyword">Qed</span>.<br/>
 </div>
 
 <div class="doc">
-<a id="lab205"></a><h3 class="section"> </h3>
+<a id="lab206"></a><h3 class="section"> </h3>
  Inequality is a very common form of negated statement, so there is a
-    special notation for it:
-
+    special notation for it: 
 </div>
 <div class="code">
+
 <span class="id" title="keyword">Notation</span> &quot;x &lt;&gt; y" := (~(<span class="id" title="var">x</span> = <span class="id" title="var">y</span>)) : <span class="id" title="var">type_scope</span>.<br/>
 </div>
 
@@ -678,11 +670,11 @@ For example:
 </div>
 
 <div class="doc">
-<a id="lab206"></a><h3 class="section"> </h3>
- It takes a little practice to get used to working with negation in Coq.
-    Even though <i>you</i> can see perfectly well why a statement involving
-    negation is true, it can be a little tricky at first to see how to make
-    Coq understand it!
+<a id="lab207"></a><h3 class="section"> </h3>
+ It takes a little practice to get used to working with negation in Rocq.
+    Even though <i>you</i> may see perfectly well why a claim involving
+    negation holds, it can be a little tricky at first to see how to make
+    Rocq understand it!
 
 <div class="paragraph"> </div>
 
@@ -697,7 +689,7 @@ For example:
 </div>
 
 <div class="doc">
-<a id="lab207"></a><h3 class="section"> </h3>
+<a id="lab208"></a><h3 class="section"> </h3>
 
 </div>
 <div class="code">
@@ -712,12 +704,19 @@ For example:
 </div>
 
 <div class="doc">
-<a id="lab208"></a><h3 class="section"> </h3>
- Since inequality involves a negation, it also requires a
-    little practice. Here is a useful trick: if you are trying to
-    prove a nonsensical goal, apply <span class="inlinecode"><span class="id" title="var">ex_falso_quodlibet</span></span> to change the
-    goal to <span class="inlinecode"><span class="id" title="var">False</span></span>. This makes it easier to use assumptions of the
-    form <span class="inlinecode">¬<span class="id" title="var">P</span></span>, and in particular of the form <span class="inlinecode"><span class="id" title="var">x</span>≠<span class="id" title="var">y</span></span>. 
+<a id="lab209"></a><h3 class="section"> </h3>
+
+<div class="paragraph"> </div>
+
+ Since inequality involves a negation, getting comfortable
+    with it also often requires a little practice.
+
+<div class="paragraph"> </div>
+
+    A useful trick: if you are trying to prove a nonsensical goal,
+    apply <span class="inlinecode"><span class="id" title="var">ex_falso_quodlibet</span></span> to change the goal to <span class="inlinecode"><span class="id" title="var">False</span></span>. This
+    makes it easier to use assumptions of the form <span class="inlinecode">¬<span class="id" title="var">P</span></span>, and in
+    particular of the form <span class="inlinecode"><span class="id" title="var">x</span>≠<span class="id" title="var">y</span></span>. 
 </div>
 <div class="code">
 
@@ -746,27 +745,27 @@ To prove the following proposition, which tactics will we need
     besides <span class="inlinecode"><span class="id" title="tactic">intros</span></span> and <span class="inlinecode"><span class="id" title="tactic">apply</span></span>?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">X</span>, <span class="id" title="keyword">∀</span> <span class="id" title="var">a</span> <span class="id" title="var">b</span> : <span class="id" title="var">X</span>, (<span class="id" title="var">a</span>=<span class="id" title="var">b</span>) ∧ (<span class="id" title="var">a</span>≠<span class="id" title="var">b</span>) → <span class="id" title="var">False</span>.
-</span>    (1) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>, <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>
+</span>    (A) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>, <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> and <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
+    (B) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> and <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
 
 <div class="paragraph"> </div>
 
-    (3) only <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>
+    (C) only <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>
 
 <div class="paragraph"> </div>
 
-    (4) <span class="inlinecode"><span class="id" title="tactic">left</span></span> and/or <span class="inlinecode"><span class="id" title="tactic">right</span></span>
+    (D) <span class="inlinecode"><span class="id" title="tactic">left</span></span> and/or <span class="inlinecode"><span class="id" title="tactic">right</span></span>
 
 <div class="paragraph"> </div>
 
-    (5) only <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
+    (E) only <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
 
 <div class="paragraph"> </div>
 
-    (6) none of the above
+    (F) none of the above
 
 <div class="paragraph"> </div>
 
@@ -791,27 +790,27 @@ To prove the following proposition, which tactics will we
     need besides <span class="inlinecode"><span class="id" title="tactic">intros</span></span> and <span class="inlinecode"><span class="id" title="tactic">apply</span></span>?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">P</span> <span class="id" title="var">Q</span> : <span class="id" title="keyword">Prop</span>,  <span class="id" title="var">P</span> ∨ <span class="id" title="var">Q</span> → ~~(<span class="id" title="var">P</span> ∨ <span class="id" title="var">Q</span>).
-</span>    (1) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>, <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>
+</span>    (A) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>, <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> and <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
+    (B) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> and <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
 
 <div class="paragraph"> </div>
 
-    (3) only <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>
+    (C) only <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>
 
 <div class="paragraph"> </div>
 
-    (4) <span class="inlinecode"><span class="id" title="tactic">left</span></span> and/or <span class="inlinecode"><span class="id" title="tactic">right</span></span>
+    (D) <span class="inlinecode"><span class="id" title="tactic">left</span></span> and/or <span class="inlinecode"><span class="id" title="tactic">right</span></span>
 
 <div class="paragraph"> </div>
 
-    (5) only <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
+    (E) only <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
 
 <div class="paragraph"> </div>
 
-    (6) none of the above
+    (F) none of the above
 
 <div class="paragraph"> </div>
 
@@ -836,27 +835,27 @@ To prove the following proposition, which tactics will we
     need besides <span class="inlinecode"><span class="id" title="tactic">intros</span></span> and <span class="inlinecode"><span class="id" title="tactic">apply</span></span>?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">P</span> <span class="id" title="var">Q</span>: <span class="id" title="keyword">Prop</span>, <span class="id" title="var">P</span> → (<span class="id" title="var">P</span> ∨ ~~<span class="id" title="var">Q</span>).
-</span>    (1) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>, <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>
+</span>    (A) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>, <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> and <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
+    (B) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> and <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
 
 <div class="paragraph"> </div>
 
-    (3) only <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>
+    (C) only <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>
 
 <div class="paragraph"> </div>
 
-    (4) <span class="inlinecode"><span class="id" title="tactic">left</span></span> and/or <span class="inlinecode"><span class="id" title="tactic">right</span></span>
+    (D) <span class="inlinecode"><span class="id" title="tactic">left</span></span> and/or <span class="inlinecode"><span class="id" title="tactic">right</span></span>
 
 <div class="paragraph"> </div>
 
-    (5) only <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
+    (E) only <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
 
 <div class="paragraph"> </div>
 
-    (6) none of the above
+    (F) none of the above
 
 <div class="paragraph"> </div>
 
@@ -881,27 +880,27 @@ To prove the following proposition, which tactics will we need
     besides <span class="inlinecode"><span class="id" title="tactic">intros</span></span> and <span class="inlinecode"><span class="id" title="tactic">apply</span></span>?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">P</span> <span class="id" title="var">Q</span>: <span class="id" title="keyword">Prop</span>,  <span class="id" title="var">P</span> ∨ <span class="id" title="var">Q</span> → ~~<span class="id" title="var">P</span> ∨ ~~<span class="id" title="var">Q</span>.
-</span>    (1) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>, <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>
+</span>    (A) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>, <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> and <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
+    (B) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> and <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
 
 <div class="paragraph"> </div>
 
-    (3) only <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>
+    (C) only <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>
 
 <div class="paragraph"> </div>
 
-    (4) <span class="inlinecode"><span class="id" title="tactic">left</span></span> and/or <span class="inlinecode"><span class="id" title="tactic">right</span></span>
+    (D) <span class="inlinecode"><span class="id" title="tactic">left</span></span> and/or <span class="inlinecode"><span class="id" title="tactic">right</span></span>
 
 <div class="paragraph"> </div>
 
-    (5) only <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
+    (E) only <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
 
 <div class="paragraph"> </div>
 
-    (6) none of the above
+    (F) none of the above
 
 <div class="paragraph"> </div>
 
@@ -930,27 +929,27 @@ To prove the following proposition, which tactics will we need
     besides <span class="inlinecode"><span class="id" title="tactic">intros</span></span> and <span class="inlinecode"><span class="id" title="tactic">apply</span></span>?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">A</span> : <span class="id" title="keyword">Prop</span>, 1=0 → (<span class="id" title="var">A</span> ∨ ¬<span class="id" title="var">A</span>).
-</span>    (1) <span class="inlinecode"><span class="id" title="tactic">discriminate</span></span>, <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>, <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>
+</span>    (A) <span class="inlinecode"><span class="id" title="tactic">discriminate</span></span>, <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>, <span class="inlinecode"><span class="id" title="tactic">left</span></span> and <span class="inlinecode"><span class="id" title="tactic">right</span></span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode"><span class="id" title="tactic">discriminate</span></span> and <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
+    (B) <span class="inlinecode"><span class="id" title="tactic">discriminate</span></span> and <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
 
 <div class="paragraph"> </div>
 
-    (3) only <span class="inlinecode"><span class="id" title="tactic">discriminate</span></span>
+    (C) only <span class="inlinecode"><span class="id" title="tactic">discriminate</span></span>
 
 <div class="paragraph"> </div>
 
-    (4) <span class="inlinecode"><span class="id" title="tactic">left</span></span> and/or <span class="inlinecode"><span class="id" title="tactic">right</span></span>
+    (D) <span class="inlinecode"><span class="id" title="tactic">left</span></span> and/or <span class="inlinecode"><span class="id" title="tactic">right</span></span>
 
 <div class="paragraph"> </div>
 
-    (5) only <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
+    (E) only <span class="inlinecode"><span class="id" title="tactic">unfold</span></span>
 
 <div class="paragraph"> </div>
 
-    (6) none of the above
+    (F) none of the above
 
 <div class="paragraph"> </div>
 
@@ -967,11 +966,11 @@ To prove the following proposition, which tactics will we need
 </div>
 
 <div class="doc">
-<a id="lab209"></a><h2 class="section">Truth</h2>
+<a id="lab210"></a><h2 class="section">Truth</h2>
 
 <div class="paragraph"> </div>
 
- Besides <span class="inlinecode"><span class="id" title="var">False</span></span>, Coq's standard library also defines <span class="inlinecode"><span class="id" title="var">True</span></span>, a
+ Besides <span class="inlinecode"><span class="id" title="var">False</span></span>, Rocq's standard library also defines <span class="inlinecode"><span class="id" title="var">True</span></span>, a
     proposition that is trivially true. To prove it, we use the
     constant <span class="inlinecode"><span class="id" title="var">I</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">True</span></span>, which is also defined in the standard
     library: 
@@ -984,29 +983,38 @@ To prove the following proposition, which tactics will we need
 
 <div class="doc">
 Unlike <span class="inlinecode"><span class="id" title="var">False</span></span>, which is used extensively, <span class="inlinecode"><span class="id" title="var">True</span></span> is used
-    relatively rarely, since it is trivial (and therefore
-    uninteresting) to prove as a goal, and conversely it provides no
-    interesting information when used as a hypothesis. 
+    relatively rarely: it is trivial (and therefore uninteresting) to
+    prove as a goal, and it provides no useful information when it
+    appears as a hypothesis. 
 <div class="paragraph"> </div>
 
-<a id="lab210"></a><h2 class="section">Logical Equivalence</h2>
+<a id="lab211"></a><h2 class="section">Logical Equivalence</h2>
 
-<div class="paragraph"> </div>
-
- The handy "if and only if" connective, which asserts that two
-    propositions have the same truth value, is simply the conjunction
-    of two implications. 
 </div>
 <div class="code">
-<hr class='doublespaceincode'/>
-<span class="id" title="keyword">Definition</span> <span class="id" title="var">iff</span> (<span class="id" title="var">P</span> <span class="id" title="var">Q</span> : <span class="id" title="keyword">Prop</span>) := (<span class="id" title="var">P</span> → <span class="id" title="var">Q</span>) ∧ (<span class="id" title="var">Q</span> → <span class="id" title="var">P</span>).<br/><hr class='doublespaceincode'/>
-<span class="id" title="keyword">Notation</span> &quot;P &lt;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span> Q" := (<span class="id" title="var">iff</span> <span class="id" title="var">P</span> <span class="id" title="var">Q</span>)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="tactic">at</span> <span class="id" title="keyword">level</span> 95, <span class="id" title="keyword">no</span> <span class="id" title="keyword">associativity</span>)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="id" title="var">type_scope</span>.<br/><hr class='doublespaceincode'/>
+<span class="id" title="keyword">Print</span> "&lt;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>".<br/>
 </div>
 
 <div class="doc">
-<a id="lab211"></a><h3 class="section"> </h3>
+The handy "if and only if" connective, which asserts that two
+    propositions have the same truth value, is simply the conjunction
+    of two implications.
+<br/>
+<span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Print</span> "&lt;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>".
+</span>
+</div>
+<div class="code">
+<span class="comment">(*&nbsp;===&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Notation&nbsp;"A&nbsp;&lt;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>&nbsp;B"&nbsp;:=&nbsp;(iff&nbsp;A&nbsp;B)<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iff&nbsp;=&nbsp;fun&nbsp;A&nbsp;B&nbsp;:&nbsp;Prop&nbsp;=&gt;&nbsp;(A&nbsp;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>&nbsp;B)&nbsp;/\&nbsp;(B&nbsp;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>&nbsp;A)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Prop&nbsp;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>&nbsp;Prop&nbsp;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>&nbsp;Prop<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Argumments&nbsp;iff&nbsp;(A&nbsp;B)*)</span><br/>
+</div>
+
+<div class="doc">
+<a id="lab212"></a><h3 class="section"> </h3>
 
 </div>
 <div class="code">
@@ -1017,11 +1025,15 @@ Unlike <span class="inlinecode"><span class="id" title="var">False</span></span>
 <span class="id" title="keyword">Lemma</span> <span class="id" title="var">not_true_iff_false</span> : <span class="id" title="keyword">∀</span> <span class="id" title="var">b</span>,<br/>
 &nbsp;&nbsp;<span class="id" title="var">b</span> ≠ <span class="id" title="var">true</span> ↔ <span class="id" title="var">b</span> = <span class="id" title="var">false</span>.<br/>
 <span class="id" title="keyword">Proof</span>.<br/>
-&nbsp;&nbsp;<span class="comment">(*&nbsp;WORK&nbsp;IN&nbsp;CLASS&nbsp;*)</span> <span class="id" title="var">Admitted</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">b</span>. <span class="id" title="tactic">split</span>.<br/>
+&nbsp;&nbsp;- <span class="comment">(*&nbsp;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>&nbsp;*)</span> <span class="id" title="tactic">apply</span> <span class="id" title="var">not_true_is_false</span>.<br/>
+&nbsp;&nbsp;- <span class="comment">(*&nbsp;&lt;-&nbsp;*)</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">H</span>. <span class="id" title="tactic">rewrite</span> <span class="id" title="var">H</span>. <span class="id" title="tactic">intros</span> <span class="id" title="var">H'</span>. <span class="id" title="tactic">discriminate</span> <span class="id" title="var">H'</span>.<br/>
+<span class="id" title="keyword">Qed</span>.<br/>
 </div>
 
 <div class="doc">
-<a id="lab212"></a><h3 class="section"> </h3>
+<a id="lab213"></a><h3 class="section"> </h3>
  The <span class="inlinecode"><span class="id" title="tactic">apply</span></span> tactic can also be used with <span class="inlinecode">↔</span>. 
 </div>
 <div class="code">
@@ -1039,19 +1051,18 @@ Unlike <span class="inlinecode"><span class="id" title="var">False</span></span>
 </div>
 
 <div class="doc">
-<a id="lab214"></a><h2 class="section">Setoids and Logical Equivalence</h2>
+<a id="lab215"></a><h2 class="section">Setoids and Logical Equivalence</h2>
 
 <div class="paragraph"> </div>
 
- Some of Coq's tactics treat <span class="inlinecode"><span class="id" title="var">iff</span></span> statements specially, avoiding some
+ Some of Rocq's tactics treat <span class="inlinecode"><span class="id" title="var">iff</span></span> statements specially, avoiding some
     low-level proof-state manipulation.  In particular, <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span> and
     <span class="inlinecode"><span class="id" title="tactic">reflexivity</span></span> can be used with <span class="inlinecode"><span class="id" title="var">iff</span></span> statements, not just equalities.
-    To enable this behavior, we have to import the Coq library that
+    To enable this behavior, we have to import the Rocq library that
     supports it: 
 </div>
 <div class="code">
-
-<span class="id" title="keyword">From</span> <span class="id" title="var">Coq</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <span class="id" title="var">Setoids.Setoid</span>.<br/>
+<span class="id" title="keyword">From</span> <span class="id" title="var">Stdlib</span> <span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <span class="id" title="var">Setoids.Setoid</span>.<br/>
 </div>
 
 <div class="doc">
@@ -1059,7 +1070,7 @@ A "setoid" is a set equipped with an equivalence relation,
     such as <span class="inlinecode">=</span> or <span class="inlinecode">↔</span>. 
 <div class="paragraph"> </div>
 
-<a id="lab215"></a><h3 class="section"> </h3>
+<a id="lab216"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
@@ -1068,7 +1079,8 @@ A "setoid" is a set equipped with an equivalence relation,
 
 <div class="paragraph"> </div>
 
-    First, let's prove a couple of basic iff equivalences. 
+    First, let's prove a couple of basic iff equivalences. (For these
+    proofs we are not using setoids yet.) 
 </div>
 <div class="code">
 
@@ -1103,7 +1115,8 @@ A "setoid" is a set equipped with an equivalence relation,
 
 <div class="doc">
 We can now use these facts with <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span> and <span class="inlinecode"><span class="id" title="tactic">reflexivity</span></span> to
-    prove a ternary version of the <span class="inlinecode"><span class="id" title="var">mult_eq_0</span></span> fact above: 
+    prove a ternary version of the <span class="inlinecode"><span class="id" title="var">mult_eq_0</span></span> fact above <i>without</i>
+    splitting the top-level iff: 
 </div>
 <div class="code">
 
@@ -1117,13 +1130,13 @@ We can now use these facts with <span class="inlinecode"><span class="id" title=
 </div>
 
 <div class="doc">
-<a id="lab216"></a><h2 class="section">Existential Quantification</h2>
+<a id="lab217"></a><h2 class="section">Existential Quantification</h2>
 
 <div class="paragraph"> </div>
 
  To prove a statement of the form <span class="inlinecode"><span class="id" title="tactic">∃</span></span> <span class="inlinecode"><span class="id" title="var">x</span>,</span> <span class="inlinecode"><span class="id" title="var">P</span></span>, we must show that <span class="inlinecode"><span class="id" title="var">P</span></span>
     holds for some specific choice for <span class="inlinecode"><span class="id" title="var">x</span></span>, known as the <i>witness</i> of the
-    existential.  This is done in two steps: First, we explicitly tell Coq
+    existential.  This is done in two steps: First, we explicitly tell Rocq
     which witness <span class="inlinecode"><span class="id" title="var">t</span></span> we have in mind by invoking the tactic <span class="inlinecode"><span class="id" title="tactic">∃</span></span> <span class="inlinecode"><span class="id" title="var">t</span></span>.
     Then we prove that <span class="inlinecode"><span class="id" title="var">P</span></span> holds after all occurrences of <span class="inlinecode"><span class="id" title="var">x</span></span> are replaced
     by <span class="inlinecode"><span class="id" title="var">t</span></span>. 
@@ -1139,7 +1152,7 @@ We can now use these facts with <span class="inlinecode"><span class="id" title=
 </div>
 
 <div class="doc">
-<a id="lab217"></a><h3 class="section"> </h3>
+<a id="lab218"></a><h3 class="section"> </h3>
  Conversely, if we have an existential hypothesis <span class="inlinecode"><span class="id" title="tactic">∃</span></span> <span class="inlinecode"><span class="id" title="var">x</span>,</span> <span class="inlinecode"><span class="id" title="var">P</span></span> in
     the context, we can destruct it to obtain a witness <span class="inlinecode"><span class="id" title="var">x</span></span> and a
     hypothesis stating that <span class="inlinecode"><span class="id" title="var">P</span></span> holds of <span class="inlinecode"><span class="id" title="var">x</span></span>. 
@@ -1154,11 +1167,11 @@ We can now use these facts with <span class="inlinecode"><span class="id" title=
 </div>
 
 <div class="doc">
-<a id="lab218"></a><h2 class="section">Recap -- Logical connectives of Coq:</h2>
-
+<a id="lab219"></a><h2 class="section">Recap -- Logical connectives in Rocq</h2>
 
 <div class="paragraph"> </div>
 
+ Basic connectives:
 <ul class="doclist">
 <li> <span class="inlinecode"><span class="id" title="var">and</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> (conjunction):
 <ul class="doclist">
@@ -1213,11 +1226,6 @@ We can now use these facts with <span class="inlinecode"><span class="id" title=
 
 <div class="paragraph"> </div>
 
-<a id="lab219"></a><h2 class="section">More logical connectives in Coq:</h2>
-
-
-<div class="paragraph"> </div>
-
     Derived connectives:
 <ul class="doclist">
 <li> <span class="inlinecode"><span class="id" title="var">not</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> (negation):
@@ -1240,7 +1248,7 @@ We can now use these facts with <span class="inlinecode"><span class="id" title=
 
 <div class="paragraph"> </div>
 
-    Connectives we've been using since the beginning:
+    Fundamental connectives we've been using since the beginning:
 <ul class="doclist">
 <li> equality (<span class="inlinecode"><span class="id" title="var">e<sub>1</sub></span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">e<sub>2</sub></span></span>)
 
@@ -1267,15 +1275,14 @@ We can now use these facts with <span class="inlinecode"><span class="id" title=
 </ul>
 <ul class="doclist">
 <li> Otherwise, <span class="inlinecode"><span class="id" title="var">l</span></span> has the form <span class="inlinecode"><span class="id" title="var">x'</span></span> <span class="inlinecode">::</span> <span class="inlinecode"><span class="id" title="var">l'</span></span>.  In this case, <span class="inlinecode"><span class="id" title="var">x</span></span>
-         occurs in <span class="inlinecode"><span class="id" title="var">l</span></span> if it is equal to <span class="inlinecode"><span class="id" title="var">x'</span></span> or if it occurs in
-         <span class="inlinecode"><span class="id" title="var">l'</span></span>. 
+         occurs in <span class="inlinecode"><span class="id" title="var">l</span></span> if it is equal to <span class="inlinecode"><span class="id" title="var">x'</span></span> or it occurs in <span class="inlinecode"><span class="id" title="var">l'</span></span>. 
 </li>
 </ul>
 
 <div class="paragraph"> </div>
 
  We can translate this directly into a straightforward recursive
-    function taking an element and a list and returning a proposition (!): 
+    function taking an element and a list and returning... a proposition! 
 </div>
 <div class="code">
 
@@ -1336,10 +1343,10 @@ We can now use these facts with <span class="inlinecode"><span class="id" title=
 
 <div class="paragraph"> </div>
 
- Coq also treats <i>proofs</i> as first-class objects! 
+ Rocq also treats <i>proofs</i> as first-class objects! 
 <div class="paragraph"> </div>
 
- We have seen that we can use <span class="inlinecode"><span class="id" title="keyword">Check</span></span> to ask Coq to check whether
+ We have seen that we can use <span class="inlinecode"><span class="id" title="keyword">Check</span></span> to ask Rocq to check whether
     an expression has a given type: 
 </div>
 <div class="code">
@@ -1349,7 +1356,7 @@ We can now use these facts with <span class="inlinecode"><span class="id" title=
 </div>
 
 <div class="doc">
-We can also use it to check the theorem a particular identifier
+We can also use it to check what theorem a particular identifier
     refers to: 
 </div>
 <div class="code">
@@ -1359,10 +1366,10 @@ We can also use it to check the theorem a particular identifier
 </div>
 
 <div class="doc">
-Coq checks the <i>statements</i> of the <span class="inlinecode"><span class="id" title="var">add_comm</span></span> and
+Rocq checks the <i>statements</i> of the <span class="inlinecode"><span class="id" title="var">add_comm</span></span> and
     <span class="inlinecode"><span class="id" title="var">plus_id_example</span></span> theorems in the same way that it checks the
     <i>type</i> of any term (e.g., plus). If we leave off the colon and
-    type, Coq will print these types for us.
+    type, Rocq will print these types for us.
 
 <div class="paragraph"> </div>
 
@@ -1389,14 +1396,14 @@ Coq checks the <i>statements</i> of the <span class="inlinecode"><span class="id
 <ul class="doclist">
 <li> If we have a term of type <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode"><span class="id" title="var">m</span>,</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">m</span></span> and we
          provide it two numbers <span class="inlinecode"><span class="id" title="var">n</span></span> and <span class="inlinecode"><span class="id" title="var">m</span></span> and a third "argument" of type
-         <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span>, we can derive <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">m</span></span>. 
+         <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span>, we get back a proof object of type <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">m</span></span>. 
 </li>
 </ul>
 
 <div class="paragraph"> </div>
 
 <a id="lab226"></a><h3 class="section"> </h3>
- Coq actually allows us to <i>apply</i> a theorem as if it were a
+ Rocq actually allows us to <i>apply</i> a theorem as if it were a
     function.
 
 <div class="paragraph"> </div>
@@ -1430,7 +1437,7 @@ It appears at first sight that we ought to be able to prove this by
 <a id="lab227"></a><h3 class="section"> </h3>
  We can fix this by applying <span class="inlinecode"><span class="id" title="var">add_comm</span></span> to the arguments we want
     it be to instantiated with.  Then the <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span> is forced to happen
-    where we want it. 
+    exactly where we want it. 
 </div>
 <div class="code">
 
@@ -1446,24 +1453,9 @@ It appears at first sight that we ought to be able to prove this by
 
 <div class="doc">
 <a id="lab228"></a><h3 class="section"> </h3>
- If we really wanted, we could in fact do it for both rewrites. 
-</div>
-<div class="code">
-
-<span class="id" title="keyword">Lemma</span> <span class="id" title="var">add_comm3_take4</span> :<br/>
-&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span> <span class="id" title="var">z</span>, <span class="id" title="var">x</span> + (<span class="id" title="var">y</span> + <span class="id" title="var">z</span>) = (<span class="id" title="var">z</span> + <span class="id" title="var">y</span>) + <span class="id" title="var">x</span>.<br/>
-<span class="id" title="keyword">Proof</span>.<br/>
-&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span> <span class="id" title="var">z</span>.<br/>
-&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> (<span class="id" title="var">add_comm</span> <span class="id" title="var">x</span> (<span class="id" title="var">y</span> + <span class="id" title="var">z</span>)).<br/>
-&nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> (<span class="id" title="var">add_comm</span> <span class="id" title="var">y</span> <span class="id" title="var">z</span>).<br/>
-&nbsp;&nbsp;<span class="id" title="tactic">reflexivity</span>.<br/>
-<span class="id" title="keyword">Qed</span>.<br/>
-</div>
-
-<div class="doc">
-<a id="lab229"></a><h3 class="section"> </h3>
- Here's another example of using a trivial theorem about lists like
-    a function. 
+ Here's another example of using a theorem about lists like
+    a function.  Suppose we have proved the following simple fact
+    about lists... 
 </div>
 <div class="code">
 
@@ -1481,7 +1473,11 @@ It appears at first sight that we ought to be able to prove this by
 </div>
 
 <div class="doc">
-Intuitively, we should be able to use this theorem to prove the special
+Note that one quantified variable (<span class="inlinecode"><span class="id" title="var">x</span></span>) does not appear in
+    the conclusion (<span class="inlinecode"><span class="id" title="var">l</span></span> <span class="inlinecode">≠</span> <span class="inlinecode">[]</span>). 
+<div class="paragraph"> </div>
+
+ Intuitively, we should be able to use this theorem to prove the special
     case where <span class="inlinecode"><span class="id" title="var">x</span></span> is <span class="inlinecode">42</span>. However, simply invoking the tactic <span class="inlinecode"><span class="id" title="tactic">apply</span></span>
     <span class="inlinecode"><span class="id" title="var">in_not_nil</span></span> will fail because it cannot infer the value of <span class="inlinecode"><span class="id" title="var">x</span></span>. 
 </div>
@@ -1496,11 +1492,11 @@ Intuitively, we should be able to use this theorem to prove the special
 </div>
 
 <div class="doc">
-<a id="lab230"></a><h3 class="section"> </h3>
+<a id="lab229"></a><h3 class="section"> </h3>
  There are several ways to work around this: 
 <div class="paragraph"> </div>
 
- Use <span class="inlinecode"><span class="id" title="tactic">apply</span></span> <span class="inlinecode">...</span> <span class="inlinecode"><span class="id" title="keyword">with</span></span> <span class="inlinecode">...</span> 
+ We can use <span class="inlinecode"><span class="id" title="tactic">apply</span></span> <span class="inlinecode">...</span> <span class="inlinecode"><span class="id" title="keyword">with</span></span> <span class="inlinecode">...</span>: 
 </div>
 <div class="code">
 <span class="id" title="keyword">Lemma</span> <span class="id" title="var">in_not_nil_42_take2</span> :<br/>
@@ -1513,8 +1509,8 @@ Intuitively, we should be able to use this theorem to prove the special
 </div>
 
 <div class="doc">
-<a id="lab231"></a><h3 class="section"> </h3>
- Use <span class="inlinecode"><span class="id" title="tactic">apply</span></span> <span class="inlinecode">...</span> <span class="inlinecode"><span class="id" title="keyword">in</span></span> <span class="inlinecode">...</span> 
+<a id="lab230"></a><h3 class="section"> </h3>
+ Or we can use <span class="inlinecode"><span class="id" title="tactic">apply</span></span> <span class="inlinecode">...</span> <span class="inlinecode"><span class="id" title="keyword">in</span></span> <span class="inlinecode">...</span>: 
 </div>
 <div class="code">
 <span class="id" title="keyword">Lemma</span> <span class="id" title="var">in_not_nil_42_take3</span> :<br/>
@@ -1527,8 +1523,9 @@ Intuitively, we should be able to use this theorem to prove the special
 </div>
 
 <div class="doc">
-<a id="lab232"></a><h3 class="section"> </h3>
- Explicitly apply the lemma to the value for <span class="inlinecode"><span class="id" title="var">x</span></span>. 
+<a id="lab231"></a><h3 class="section"> </h3>
+ Or -- this is the new one -- we can explicitly
+    apply the lemma to the value <span class="inlinecode">42</span> for <span class="inlinecode"><span class="id" title="var">x</span></span>: 
 </div>
 <div class="code">
 <span class="id" title="keyword">Lemma</span> <span class="id" title="var">in_not_nil_42_take4</span> :<br/>
@@ -1541,9 +1538,9 @@ Intuitively, we should be able to use this theorem to prove the special
 </div>
 
 <div class="doc">
-<a id="lab233"></a><h3 class="section"> </h3>
- Explicitly apply the lemma to a hypothesis (causing the values of the
-    other parameters to be inferred). 
+<a id="lab232"></a><h3 class="section"> </h3>
+ We can also explicitly apply the lemma to a hypothesis,
+    causing the values of the other parameters to be inferred: 
 </div>
 <div class="code">
 <span class="id" title="keyword">Lemma</span> <span class="id" title="var">in_not_nil_42_take5</span> :<br/>
@@ -1564,25 +1561,25 @@ Suppose we have
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">H<sub>2</sub></span> : <span class="id" title="var">b</span> = 42<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">trans_eq</span> : <span class="id" title="keyword">∀</span> (<span class="id" title="var">X</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">n</span> <span class="id" title="var">m</span> <span class="id" title="var">o</span> : <span class="id" title="var">X</span>),<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">n</span> = <span class="id" title="var">m</span> → <span class="id" title="var">m</span> = <span class="id" title="var">o</span> → <span class="id" title="var">n</span> = <span class="id" title="var">o</span>
-</span>    What is the type of this proof object?
+</span>    What is the type of this "proof object"?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">trans_eq</span> <span class="id" title="var">nat</span> <span class="id" title="var">a</span> <span class="id" title="var">b</span> 42 <span class="id" title="var">H<sub>1</sub></span> <span class="id" title="var">H<sub>2</sub></span>
 </span>
 <div class="paragraph"> </div>
 
-    (1) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span>
+    (A) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
+    (B) <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
 
 <div class="paragraph"> </div>
 
-    (3) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span>
+    (C) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span>
 
 <div class="paragraph"> </div>
 
-    (4) Does not typecheck
+    (D) Does not typecheck
 
 <div class="paragraph"> </div>
 
@@ -1612,19 +1609,19 @@ Suppose, again, that we have
 </span>
 <div class="paragraph"> </div>
 
-    (1) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span>
+    (A) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
+    (B) <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
 
 <div class="paragraph"> </div>
 
-    (3) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span>
+    (C) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span>
 
 <div class="paragraph"> </div>
 
-    (4) Does not typecheck
+    (D) Does not typecheck
 
 <div class="paragraph"> </div>
 
@@ -1654,19 +1651,19 @@ Suppose, again, that we have
 </span>
 <div class="paragraph"> </div>
 
-    (1) <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
+    (A) <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">→</span> <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
+    (B) <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">→</span> <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
 
 <div class="paragraph"> </div>
 
-    (3) <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
+    (C) <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
 
 <div class="paragraph"> </div>
 
-    (4) Does not typecheck
+    (D) Does not typecheck
 
 <div class="paragraph"> </div>
 
@@ -1696,19 +1693,19 @@ Suppose, again, that we have
 </span>
 <div class="paragraph"> </div>
 
-    (1) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span>
+    (A) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">→</span> <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span>
+    (B) <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">→</span> <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span>
 
 <div class="paragraph"> </div>
 
-    (3) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span> <span class="inlinecode">→</span> <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span>
+    (C) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span> <span class="inlinecode">→</span> <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">b</span></span>
 
 <div class="paragraph"> </div>
 
-    (4) Does not typecheck
+    (D) Does not typecheck
 
 <div class="paragraph"> </div>
 
@@ -1738,19 +1735,19 @@ Suppose, again, that we have
 </span>
 <div class="paragraph"> </div>
 
-    (1) <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
+    (A) <span class="inlinecode"><span class="id" title="var">b</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
 
 <div class="paragraph"> </div>
 
-    (2) <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
+    (B) <span class="inlinecode">42</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">a</span></span>
 
 <div class="paragraph"> </div>
 
-    (3) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span>
+    (C) <span class="inlinecode"><span class="id" title="var">a</span></span> <span class="inlinecode">=</span> <span class="inlinecode">42</span>
 
 <div class="paragraph"> </div>
 
-    (4) Does not typecheck
+    (D) Does not typecheck
 
 <div class="paragraph"> </div>
 
@@ -1764,11 +1761,11 @@ Suppose, again, that we have
 </div></div> <!-- /quiz -->
 
 <div class="doc">
-<a id="lab234"></a><h1 class="section">Working with Decidable Properties</h1>
+<a id="lab233"></a><h1 class="section">Working with Decidable Properties</h1>
 
 <div class="paragraph"> </div>
 
- We've seen two different ways of expressing logical claims in Coq:
+ We've seen two different ways of expressing logical claims in Rocq:
     with <i>booleans</i> (of type <span class="inlinecode"><span class="id" title="var">bool</span></span>), and with <i>propositions</i> (of type
     <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>).
 
@@ -1785,7 +1782,7 @@ Suppose, again, that we have
 
 <div class="paragraph"> </div>
 
- Since every function terminates on all inputs in Coq, a function
+ Since every function terminates on all inputs in Rocq, a function
     of type <span class="inlinecode"><span class="id" title="var">nat</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">bool</span></span> is a <i>decision procedure</i> -- i.e., it yields
     <span class="inlinecode"><span class="id" title="var">true</span></span> or <span class="inlinecode"><span class="id" title="var">false</span></span> on all inputs.
 
@@ -1799,7 +1796,7 @@ Suppose, again, that we have
 
 <div class="paragraph"> </div>
 
-<a id="lab235"></a><h3 class="section"> </h3>
+<a id="lab234"></a><h3 class="section"> </h3>
  It follows that there are some properties of numbers that we <i>cannot</i>
     express as functions of type <span class="inlinecode"><span class="id" title="var">nat</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">bool</span></span>.
 
@@ -1816,7 +1813,7 @@ Suppose, again, that we have
 <div class="paragraph"> </div>
 
     On the other hand, <span class="inlinecode"><span class="id" title="var">nat</span>→<span class="id" title="keyword">Prop</span></span> is the type of <i>all</i> properties of
-    numbers that can be expressed in Coq's logic, including both decidable
+    numbers that can be expressed in Rocq's logic, including both decidable
     and undecidable ones.
 
 <div class="paragraph"> </div>
@@ -1824,14 +1821,14 @@ Suppose, again, that we have
 <ul class="doclist">
 <li> For example, "is the code of a halting Turing machine" is a
         perfectly legitimate mathematical property, and we can absolutely
-        represent it as a Coq expression of type <span class="inlinecode"><span class="id" title="var">nat</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>.
+        represent it as a Rocq expression of type <span class="inlinecode"><span class="id" title="var">nat</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>.
 
 </li>
 </ul>
 
 <div class="paragraph"> </div>
 
-<a id="lab236"></a><h3 class="section"> </h3>
+<a id="lab235"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
@@ -1864,16 +1861,21 @@ Suppose, again, that we have
 </div>
 
 <div class="doc">
-Of course, it would be pretty strange if these two
+Of course, it would be deeply strange if these two
     characterizations of evenness did not describe the same set of
-    natural numbers!  Fortunately, we can prove that they do... 
+    natural numbers!
+
+<div class="paragraph"> </div>
+
+    Fortunately, they do! 
 </div>
 
 <div class="doc">
-<a id="lab237"></a><h3 class="section"> </h3>
-
+<a id="lab236"></a><h3 class="section"> </h3>
+ Now the main theorem: 
 </div>
 <div class="code">
+
 <span class="id" title="keyword">Theorem</span> <span class="id" title="var">even_bool_prop</span> : <span class="id" title="keyword">∀</span> <span class="id" title="var">n</span>,<br/>
 &nbsp;&nbsp;<span class="id" title="var">even</span> <span class="id" title="var">n</span> = <span class="id" title="var">true</span> ↔ <span class="id" title="var">Even</span> <span class="id" title="var">n</span>.<br/>
 <div class="togglescript" id="proofcontrol27" onclick="toggleDisplay('proof27');toggleDisplay('proofcontrol27')"><span class="show"></span></div>
@@ -1893,7 +1895,7 @@ In view of this theorem, we can say that the boolean computation
     <span class="inlinecode"><span class="id" title="tactic">∃</span></span> <span class="inlinecode"><span class="id" title="var">k</span>,</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">double</span></span> <span class="inlinecode"><span class="id" title="var">k</span></span>. 
 <div class="paragraph"> </div>
 
-<a id="lab238"></a><h3 class="section"> </h3>
+<a id="lab237"></a><h3 class="section"> </h3>
  Similarly, to state that two numbers <span class="inlinecode"><span class="id" title="var">n</span></span> and <span class="inlinecode"><span class="id" title="var">m</span></span> are equal, we can
     say either
 <ul class="doclist">
@@ -1921,14 +1923,22 @@ In view of this theorem, we can say that the boolean computation
 </div>
 
 <div class="doc">
-<a id="lab239"></a><h3 class="section"> </h3>
- Even when the boolean and propositional formulations of a claim are
-    interchangeable from a purely logical perspective, it can be more
-    convenient to use one over the other. 
+<a id="lab238"></a><h3 class="section"> </h3>
+
 <div class="paragraph"> </div>
 
- For example, there is no effective way to <i>test</i> whether or not a
-    <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> is true in a function definition; thus the
+ So what should we do in situations where some claim could be
+    formalized as either a proposition or a boolean computation? Which
+    should we choose?
+
+<div class="paragraph"> </div>
+
+    In general, <i>both</i> can be useful. 
+<div class="paragraph"> </div>
+
+ For example, booleans are more useful for defining functions.
+    There is no effective way to <i>test</i> whether or not a <span class="inlinecode"><span class="id" title="keyword">Prop</span></span> is
+    true, so we cannot use <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>s in conditional expressions. The
     following definition is rejected: 
 </div>
 <div class="code">
@@ -1951,9 +1961,9 @@ Rather, we have to state this definition using a boolean equality
 </div>
 
 <div class="doc">
-<a id="lab240"></a><h3 class="section"> </h3>
+<a id="lab239"></a><h3 class="section"> </h3>
  More generally, stating facts using booleans can often enable
-    effective proof automation through computation with Coq terms, a
+    effective proof automation through computation with Rocq terms, a
     technique known as <i>proof by reflection</i>.
 
 <div class="paragraph"> </div>
@@ -1976,7 +1986,7 @@ The most direct way to prove this is to give the value of <span class="inlinecod
 
 <div class="doc">
 The proof of the corresponding boolean statement is simpler, because we
-    don't have to invent the witness <span class="inlinecode">500</span>: Coq's computation mechanism
+    don't have to invent the witness <span class="inlinecode">500</span>: Rocq's computation mechanism
     does it for us! 
 </div>
 <div class="code">
@@ -1986,7 +1996,7 @@ The proof of the corresponding boolean statement is simpler, because we
 </div>
 
 <div class="doc">
-<a id="lab241"></a><h3 class="section"> </h3>
+<a id="lab240"></a><h3 class="section"> </h3>
  Now, the useful observation is that, since the two notions are
     equivalent, we can use the boolean formulation to prove the other one
     without mentioning the value 500 explicitly: 
@@ -2001,18 +2011,18 @@ The proof of the corresponding boolean statement is simpler, because we
 Although we haven't gained much in terms of proof-script
     line count in this case, larger proofs can often be made considerably
     simpler by the use of reflection.  As an extreme example, a famous
-    Coq proof of the even more famous <i>4-color theorem</i> uses
+    Rocq proof of the even more famous <i>4-color theorem</i> uses
     reflection to reduce the analysis of hundreds of different cases
     to a boolean computation. 
 <div class="paragraph"> </div>
 
-<a id="lab242"></a><h3 class="section"> </h3>
+<a id="lab241"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
- Another advantage of booleans is that the negation of a "boolean fact"
-    is straightforward to state and prove: simply flip the expected boolean
-    result. 
+ Another advantage of booleans is that the <i>negation</i> of a claim
+    about booleans is straightforward to state and (when true) prove:
+    simply flip the expected boolean result. 
 </div>
 <div class="code">
 
@@ -2023,7 +2033,7 @@ Although we haven't gained much in terms of proof-script
 </div>
 
 <div class="doc">
-<a id="lab243"></a><h3 class="section"> </h3>
+<a id="lab242"></a><h3 class="section"> </h3>
  In contrast, propositional negation can be difficult to work with
     directly.
 
@@ -2045,7 +2055,7 @@ Proving this directly -- by assuming that there is some <span class="inlinecode"
 <div class="paragraph"> </div>
 
     But if we convert it to a claim about the boolean <span class="inlinecode"><span class="id" title="var">even</span></span> function, we
-    can let Coq do the work for us. 
+    can let Rocq do the work for us. 
 </div>
 <div class="code">
 
@@ -2054,19 +2064,19 @@ Proving this directly -- by assuming that there is some <span class="inlinecode"
 </div>
 
 <div class="doc">
-<a id="lab244"></a><h3 class="section"> </h3>
+<a id="lab243"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
- Conversely, there are complementary situations where it can be easier
-    to work with propositions rather than booleans.
+ Conversely, there are situations where it can be easier to work
+    with propositions rather than booleans.
 
 <div class="paragraph"> </div>
 
-    In particular, knowing that <span class="inlinecode">(<span class="id" title="var">n</span></span> <span class="inlinecode">=?</span> <span class="inlinecode"><span class="id" title="var">m</span>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">true</span></span> is generally of little
-    direct help in the middle of a proof involving <span class="inlinecode"><span class="id" title="var">n</span></span> and <span class="inlinecode"><span class="id" title="var">m</span></span>, but if we
-    convert the statement to the equivalent form <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span>, we can rewrite
-    with it. 
+    In particular, knowing that <span class="inlinecode">(<span class="id" title="var">n</span></span> <span class="inlinecode">=?</span> <span class="inlinecode"><span class="id" title="var">m</span>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">true</span></span> is generally of
+    little direct help in the middle of a proof involving <span class="inlinecode"><span class="id" title="var">n</span></span> and <span class="inlinecode"><span class="id" title="var">m</span></span>.
+    But if we convert the statement to the equivalent form <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span>,
+    then we can easily <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span> with it. 
 </div>
 <div class="code">
 
@@ -2082,11 +2092,11 @@ Being able to cross back and forth between the boolean and
 </div>
 
 <div class="doc">
-<a id="lab245"></a><h1 class="section">The Logic of Coq</h1>
+<a id="lab244"></a><h1 class="section">The Logic of Rocq</h1>
 
 <div class="paragraph"> </div>
 
- Coq's logical core, the <i>Calculus of Inductive Constructions</i>,
+ Rocq's logical core, the <i>Calculus of Inductive Constructions</i>,
     is a "metalanguage for mathematics" in the same sense as familiar
     foundations for paper-and-pencil math, like Zermelo-Fraenkel Set
     Theory (ZFC).
@@ -2097,17 +2107,17 @@ Being able to cross back and forth between the boolean and
     useful to understand. 
 <div class="paragraph"> </div>
 
-<a id="lab246"></a><h2 class="section">Functional Extensionality</h2>
+<a id="lab245"></a><h2 class="section">Functional Extensionality</h2>
 
 <div class="paragraph"> </div>
 
- Coq's logic is quite minimalistic.  This means that one occasionally
+ Rocq's logic is quite minimalistic.  This means that one occasionally
     encounters cases where translating standard mathematical reasoning into
-    Coq is cumbersome -- or even impossible -- unless we enrich its core
+    Rocq is cumbersome -- or even impossible -- unless we enrich its core
     logic with additional axioms. 
 <div class="paragraph"> </div>
 
- A first instance has to do with equality of functions.  In certain cases Coq can successfully prove equality propositions stating
+ A first instance has to do with equality of functions.  In certain cases Rocq can successfully prove equality propositions stating
     that two <i>functions</i> are equal to each other: 
 </div>
 <div class="code">
@@ -2121,11 +2131,11 @@ Being able to cross back and forth between the boolean and
 </div>
 
 <div class="doc">
-This works when Coq can simplify the functions to the same expression,
+This works when Rocq can simplify the functions to the same expression,
     but this doesn't always happen. 
 <div class="paragraph"> </div>
 
-<a id="lab247"></a><h3 class="section"> </h3>
+<a id="lab246"></a><h3 class="section"> </h3>
  These two functions are equal just by simplification, but in general
     functions can be equal for more interesting reasons.
 
@@ -2138,7 +2148,7 @@ This works when Coq can simplify the functions to the same expression,
 </span>    This is known as the principle of <i>functional extensionality</i>. 
 <div class="paragraph"> </div>
 
- However, functional extensionality is not part of Coq's built-in logic.
+ However, functional extensionality is not part of Rocq's built-in logic.
     This means that some intuitively obvious propositions are not
     provable. 
 </div>
@@ -2153,8 +2163,8 @@ This works when Coq can simplify the functions to the same expression,
 </div>
 
 <div class="doc">
-<a id="lab248"></a><h3 class="section"> </h3>
- However, if we like, we can add functional extensionality to Coq
+<a id="lab247"></a><h3 class="section"> </h3>
+ However, if we like, we can add functional extensionality to Rocq
     using the <span class="inlinecode"><span class="id" title="keyword">Axiom</span></span> command. 
 </div>
 <div class="code">
@@ -2171,7 +2181,7 @@ Defining something as an <span class="inlinecode"><span class="id" title="keywor
     fill in later! 
 <div class="paragraph"> </div>
 
-<a id="lab249"></a><h3 class="section"> </h3>
+<a id="lab248"></a><h3 class="section"> </h3>
  We can now invoke functional extensionality in proofs: 
 </div>
 <div class="code">
@@ -2185,9 +2195,9 @@ Defining something as an <span class="inlinecode"><span class="id" title="keywor
 </div>
 
 <div class="doc">
-<a id="lab250"></a><h3 class="section"> </h3>
+<a id="lab249"></a><h3 class="section"> </h3>
  Naturally, we need to be quite careful when adding new axioms into
-    Coq's logic, as this can render it <i>inconsistent</i> -- that is, it may
+    Rocq's logic, as this can render it <i>inconsistent</i> -- that is, it may
     become possible to prove every proposition, including <span class="inlinecode"><span class="id" title="var">False</span></span>, <span class="inlinecode">2+2=5</span>,
     etc.!
 
@@ -2203,11 +2213,11 @@ Defining something as an <span class="inlinecode"><span class="id" title="keywor
     particular, <i>is</i> consistent. 
 <div class="paragraph"> </div>
 
-<a id="lab251"></a><h3 class="section"> </h3>
+<a id="lab250"></a><h3 class="section"> </h3>
  To check whether a particular proof relies on any additional
     axioms, use the <span class="inlinecode"><span class="id" title="keyword">Print</span></span> <span class="inlinecode"><span class="id" title="keyword">Assumptions</span></span> command:
 <br/>
-<span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Print</span> <span class="id" title="keyword">Assumptions</span> <span class="id" title="var">function_equality_ex<sub>2</sub></span>
+<span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Print</span> <span class="id" title="keyword">Assumptions</span> <span class="id" title="var">function_equality_ex<sub>2</sub></span>.
 </span>
 </div>
 <div class="code">
@@ -2215,46 +2225,16 @@ Defining something as an <span class="inlinecode"><span class="id" title="keywor
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Axioms:<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;functional_extensionality&nbsp;:<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;(X&nbsp;Y&nbsp;:&nbsp;Type)&nbsp;(f&nbsp;g&nbsp;:&nbsp;X&nbsp;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>&nbsp;Y),<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;x&nbsp;:&nbsp;X,&nbsp;f&nbsp;x&nbsp;=&nbsp;g&nbsp;x)&nbsp;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>&nbsp;f&nbsp;=&nbsp;g&nbsp;*)</span><br/><hr class='doublespaceincode'/>
- <!-- /quiz -->
-</div><div class="quiz">
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;x&nbsp;:&nbsp;X,&nbsp;f&nbsp;x&nbsp;=&nbsp;g&nbsp;x)&nbsp;<span class="nowrap"><span style='font-size:85%;'><span style='vertical-align:5%;'><span style='letter-spacing:-.2em;'>-</span></span>&gt;</span></span>&nbsp;f&nbsp;=&nbsp;g&nbsp;*)</span><br/>
+</div>
 
 <div class="doc">
-Is the following statement provable by just <span class="inlinecode"><span class="id" title="tactic">reflexivity</span></span>, without
-    <span class="inlinecode"><span class="id" title="var">functional_extensionality</span></span>?
-
-<div class="paragraph"> </div>
-
-      <span class="inlinecode">(<span class="id" title="keyword">fun</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span> <span class="inlinecode">⇒</span> <span class="inlinecode">1</span> <span class="inlinecode">::</span> <span class="inlinecode"><span class="id" title="var">xs</span>)</span> <span class="inlinecode">=</span> <span class="inlinecode">(<span class="id" title="keyword">fun</span></span> <span class="inlinecode"><span class="id" title="var">xs</span></span> <span class="inlinecode">⇒</span> <span class="inlinecode">[1]</span> <span class="inlinecode">++</span> <span class="inlinecode"><span class="id" title="var">xs</span>)</span>
-
-<div class="paragraph"> </div>
-
-    (1) Yes
-
-<div class="paragraph"> </div>
-
-    (2) No
-
-<div class="paragraph"> </div>
-
- 
-</div>
-<div class="code">
-<div class="togglescript" id="proofcontrol30" onclick="toggleDisplay('proof30');toggleDisplay('proofcontrol30')"><span class="show"></span></div>
-<div class="proofscript" id="proof30" onclick="toggleDisplay('proof30');toggleDisplay('proofcontrol30')">
-<span class="id" title="keyword">Example</span> <span class="id" title="var">cons_1_eq_ex</span> : (<span class="id" title="keyword">fun</span> <span class="id" title="var">xs</span> ⇒ 1 :: <span class="id" title="var">xs</span>) = (<span class="id" title="keyword">fun</span> <span class="id" title="var">xs</span> ⇒ [1] ++ <span class="id" title="var">xs</span>).<br/>
-<span class="id" title="keyword">Proof</span>. <span class="id" title="tactic">reflexivity</span>. <span class="id" title="keyword">Qed</span>.<br/>
-</div>
-</div></div> <!-- /quiz -->
-
-<div class="doc">
-<a id="lab252"></a><h2 class="section">Classical vs. Constructive Logic</h2>
+<a id="lab251"></a><h2 class="section">Classical vs. Constructive Logic</h2>
 
 <div class="paragraph"> </div>
 
  The following reasoning principle is <i>not</i> derivable in
-    Coq (though, again, it can consistently be added as an axiom): 
+    Rocq (though, again, it can consistently be added as an axiom): 
 </div>
 <div class="code">
 
@@ -2263,14 +2243,13 @@ Is the following statement provable by just <span class="inlinecode"><span class
 </div>
 
 <div class="doc">
-Logics like Coq's, which do not assume the excluded middle, are
+Logics like Rocq's, which do not assume the excluded middle, are
     referred to as <i>constructive logics</i>.
 
 <div class="paragraph"> </div>
 
-    More conventional logical systems such as ZFC, in which the
-    excluded middle does hold for arbitrary propositions, are referred
-    to as <i>classical</i>. 
+    Logical systems such as ZFC, in which the excluded middle does
+    hold for arbitrary propositions, are referred to as <i>classical</i>. 
 </div>
 </div>
 

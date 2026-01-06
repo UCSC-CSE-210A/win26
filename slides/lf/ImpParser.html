@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="common/css/sf.css" rel="stylesheet" type="text/css" />
-<title>ImpParser: Lexing and Parsing in Coq</title>
+<title>ImpParser: Lexing and Parsing in Rocq</title>
 <link href="common/jquery-ui/jquery-ui.css" rel="stylesheet">
 <script src="common/jquery-ui/external/jquery/jquery.js"></script>
 <script src="common/jquery-ui/jquery-ui.js"></script>
@@ -31,7 +31,7 @@
 
 <div id="main">
 
-<h1 class="libtitle">ImpParser<span class="subtitle">Lexing and Parsing in Coq</span></h1>
+<h1 class="libtitle">ImpParser<span class="subtitle">Lexing and Parsing in Rocq</span></h1>
 
 
 <div class="doc">
@@ -43,17 +43,17 @@
     might write gets translated into abstract syntax trees defined by
     the datatypes <span class="inlinecode"><span class="id" title="var">aexp</span></span>, <span class="inlinecode"><span class="id" title="var">bexp</span></span>, and <span class="inlinecode"><span class="id" title="var">com</span></span>.  In this chapter, we
     illustrate how the rest of the story can be filled in by building
-    a simple lexical analyzer and parser using Coq's functional
+    a simple lexical analyzer and parser using Rocq's functional
     programming facilities. 
 </div>
 
 <div class="doc">
-<a id="lab445"></a><h1 class="section">Internals</h1>
+<a id="lab446"></a><h1 class="section">Internals</h1>
 
 </div>
 
 <div class="doc">
-<a id="lab446"></a><h2 class="section">Lexical Analysis</h2>
+<a id="lab447"></a><h2 class="section">Lexical Analysis</h2>
 
 </div>
 <div class="code">
@@ -131,11 +131,11 @@
 </div>
 
 <div class="doc">
-<a id="lab447"></a><h2 class="section">Parsing</h2>
+<a id="lab448"></a><h2 class="section">Parsing</h2>
 
 <div class="paragraph"> </div>
 
-<a id="lab448"></a><h3 class="section">Options With Errors</h3>
+<a id="lab449"></a><h3 class="section">Options With Errors</h3>
 
 <div class="paragraph"> </div>
 
@@ -174,7 +174,7 @@ Some syntactic sugar to make writing nested match-expressions on
 </div>
 
 <div class="doc">
-<a id="lab449"></a><h3 class="section">Generic Combinators for Building Parsers</h3>
+<a id="lab450"></a><h3 class="section">Generic Combinators for Building Parsers</h3>
 
 </div>
 <div class="code">
@@ -229,7 +229,7 @@ A parser that expects a particular token:
 </div>
 
 <div class="doc">
-<a id="lab450"></a><h3 class="section">A Recursive-Descent Parser for Imp</h3>
+<a id="lab451"></a><h3 class="section">A Recursive-Descent Parser for Imp</h3>
 
 <div class="paragraph"> </div>
 
@@ -468,7 +468,7 @@ Parsing commands:
 </div>
 
 <div class="doc">
-<a id="lab451"></a><h1 class="section">Examples</h1>
+<a id="lab452"></a><h1 class="section">Examples</h1>
 
 </div>
 <div class="code">

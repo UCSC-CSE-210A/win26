@@ -36,7 +36,7 @@
 
 
 <div class="doc">
-<a id="lab79"></a><h1 class="section">Pairs of Numbers</h1>
+<a id="lab80"></a><h1 class="section">Pairs of Numbers</h1>
 
 <div class="paragraph"> </div>
 
@@ -51,7 +51,7 @@
 </div>
 
 <div class="doc">
-<a id="lab80"></a><h3 class="section"> </h3>
+<a id="lab81"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
@@ -73,7 +73,7 @@
 </div>
 
 <div class="doc">
-<a id="lab81"></a><h3 class="section"> </h3>
+<a id="lab82"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
@@ -106,7 +106,7 @@ The new notation can be used both in expressions and in pattern
 </div>
 
 <div class="doc">
-<a id="lab82"></a><h3 class="section"> </h3>
+<a id="lab83"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
@@ -123,7 +123,7 @@ The new notation can be used both in expressions and in pattern
 </div>
 
 <div class="doc">
-<a id="lab83"></a><h3 class="section"> </h3>
+<a id="lab84"></a><h3 class="section"> </h3>
  But just <span class="inlinecode"><span class="id" title="tactic">reflexivity</span></span> is not enough if we state the lemma in a more
     natural way: 
 </div>
@@ -137,7 +137,7 @@ The new notation can be used both in expressions and in pattern
 </div>
 
 <div class="doc">
-<a id="lab84"></a><h3 class="section"> </h3>
+<a id="lab85"></a><h3 class="section"> </h3>
  Solution: use <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>. 
 </div>
 <div class="code">
@@ -149,7 +149,7 @@ The new notation can be used both in expressions and in pattern
 </div>
 
 <div class="doc">
-<a id="lab85"></a><h1 class="section">Lists of Numbers</h1>
+<a id="lab86"></a><h1 class="section">Lists of Numbers</h1>
 
 <div class="paragraph"> </div>
 
@@ -164,7 +164,7 @@ The new notation can be used both in expressions and in pattern
 </div>
 
 <div class="doc">
-<a id="lab86"></a><h3 class="section"> </h3>
+<a id="lab87"></a><h3 class="section"> </h3>
  Some notation for lists to make our lives easier: 
 </div>
 <div class="code">
@@ -189,7 +189,7 @@ Now these all mean exactly the same thing:
 Some useful list-manipulation functions... 
 <div class="paragraph"> </div>
 
-<a id="lab87"></a><h3 class="section">Repeat</h3>
+<a id="lab88"></a><h3 class="section">Repeat</h3>
 
 </div>
 <div class="code">
@@ -202,7 +202,7 @@ Some useful list-manipulation functions...
 </div>
 
 <div class="doc">
-<a id="lab88"></a><h3 class="section">Length</h3>
+<a id="lab89"></a><h3 class="section">Length</h3>
 
 </div>
 <div class="code">
@@ -215,7 +215,7 @@ Some useful list-manipulation functions...
 </div>
 
 <div class="doc">
-<a id="lab89"></a><h3 class="section">Append</h3>
+<a id="lab90"></a><h3 class="section">Append</h3>
 
 </div>
 <div class="code">
@@ -236,7 +236,7 @@ Some useful list-manipulation functions...
 </div>
 
 <div class="doc">
-<a id="lab90"></a><h3 class="section">Head and Tail</h3>
+<a id="lab91"></a><h3 class="section">Head and Tail</h3>
 
 </div>
 <div class="code">
@@ -274,7 +274,7 @@ What does the following function do?
 </div></div> <!-- /quiz -->
 
 <div class="doc">
-<a id="lab91"></a><h1 class="section">Reasoning About Lists</h1>
+<a id="lab92"></a><h1 class="section">Reasoning About Lists</h1>
 
 <div class="paragraph"> </div>
 
@@ -289,7 +289,7 @@ What does the following function do?
 </div>
 
 <div class="doc">
-<a id="lab92"></a><h3 class="section"> </h3>
+<a id="lab93"></a><h3 class="section"> </h3>
  ...and some need case analysis. 
 </div>
 <div class="code">
@@ -310,11 +310,11 @@ Usually, though, interesting theorems about lists require
 </div>
 
 <div class="doc">
-<a id="lab93"></a><h2 class="section">Induction on Lists</h2>
+<a id="lab94"></a><h2 class="section">Induction on Lists</h2>
 
 <div class="paragraph"> </div>
 
- Coq generates an induction principle for every <span class="inlinecode"><span class="id" title="keyword">Inductive</span></span>
+ Rocq generates an induction principle for every <span class="inlinecode"><span class="id" title="keyword">Inductive</span></span>
     definition, including lists.  We can use the <span class="inlinecode"><span class="id" title="tactic">induction</span></span> tactic on
     lists to prove things like the associativity of list-append... 
 </div>
@@ -331,7 +331,7 @@ Usually, though, interesting theorems about lists require
 </div>
 
 <div class="doc">
-<a id="lab94"></a><h3 class="section"> </h3>
+<a id="lab95"></a><h3 class="section"> </h3>
  For comparison, here is an informal proof of the same theorem. 
 <div class="paragraph"> </div>
 
@@ -369,11 +369,11 @@ Usually, though, interesting theorems about lists require
 
 <div class="paragraph"> </div>
 
-<a id="lab95"></a><h3 class="section">Generalizing Statements</h3>
+<a id="lab96"></a><h3 class="section">Generalizing Statements</h3>
 
 <div class="paragraph"> </div>
 
- Sometimes statements need to be generalized to proof them by
+ Sometimes statements need to be generalized to prove them by
     induction:  
 </div>
 <div class="code">
@@ -386,7 +386,7 @@ Usually, though, interesting theorems about lists require
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">n</span>. <span class="id" title="tactic">simpl</span>. <span class="id" title="tactic">reflexivity</span>.<br/>
 &nbsp;&nbsp;- <span class="comment">(*&nbsp;c&nbsp;=&nbsp;S&nbsp;c'&nbsp;*)</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">n</span>. <span class="id" title="tactic">simpl</span>.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">(*&nbsp;&nbsp;Now&nbsp;we&nbsp;seem&nbsp;to&nbsp;be&nbsp;stuck.&nbsp;&nbsp;The&nbsp;IH&nbsp;cannot&nbsp;be&nbsp;used&nbsp;to&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">(*&nbsp;&nbsp;Now&nbsp;we&nbsp;seem&nbsp;to&nbsp;be&nbsp;stuck.&nbsp;&nbsp;The&nbsp;IH&nbsp;cannot&nbsp;be&nbsp;used&nbsp;to<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewrite&nbsp;<span class="inlinecode"><span class="id" title="tactic">repeat</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">(<span class="id" title="var">c'</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">S</span></span> <span class="inlinecode"><span class="id" title="var">c'</span>)</span>:&nbsp;it&nbsp;only&nbsp;works<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;<span class="inlinecode"><span class="id" title="tactic">repeat</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">(<span class="id" title="var">c'</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">c'</span>)</span>.&nbsp;If&nbsp;the&nbsp;IH&nbsp;were&nbsp;more&nbsp;liberal&nbsp;here<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(e.g.,&nbsp;if&nbsp;it&nbsp;worked&nbsp;for&nbsp;an&nbsp;arbitrary&nbsp;second&nbsp;summand),<br/>
@@ -413,7 +413,7 @@ A generalization of the statement that gives a stronger
 </div>
 
 <div class="doc">
-<a id="lab96"></a><h3 class="section">Reversing a List</h3>
+<a id="lab97"></a><h3 class="section">Reversing a List</h3>
 
 <div class="paragraph"> </div>
 
@@ -433,7 +433,7 @@ A generalization of the statement that gives a stronger
 </div>
 
 <div class="doc">
-<a id="lab97"></a><h3 class="section"> </h3>
+<a id="lab98"></a><h3 class="section"> </h3>
  Let's try to prove <span class="inlinecode"><span class="id" title="var">length</span></span> <span class="inlinecode">(<span class="id" title="var">rev</span></span> <span class="inlinecode"><span class="id" title="var">l</span>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">length</span></span> <span class="inlinecode"><span class="id" title="var">l</span></span>. 
 </div>
 <div class="code">
@@ -484,7 +484,7 @@ A slightly strenghtened statement:
 </div>
 
 <div class="doc">
-<a id="lab98"></a><h3 class="section"> </h3>
+<a id="lab99"></a><h3 class="section"> </h3>
  Now we can complete the original proof. 
 </div>
 <div class="code">
@@ -504,8 +504,8 @@ A slightly strenghtened statement:
 </div>
 
 <div class="doc">
-<a id="lab99"></a><h3 class="section"> </h3>
- We can also prove a more general form of app_length_S that
+<a id="lab100"></a><h3 class="section"> </h3>
+ We can also prove a more general form of <span class="inlinecode"><span class="id" title="var">app_length_S</span></span> that
     gives the length of any two appended lists. 
 </div>
 <div class="code">
@@ -519,9 +519,9 @@ A slightly strenghtened statement:
 
 <div class="doc">
 To prove the following theorem, which tactics will we need besides
-    <span class="inlinecode"><span class="id" title="tactic">intros</span></span>, <span class="inlinecode"><span class="id" title="tactic">simpl</span></span>, <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span>, and <span class="inlinecode"><span class="id" title="tactic">reflexivity</span></span>?  (1) none,
-    (2) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, (3) <span class="inlinecode"><span class="id" title="tactic">induction</span></span> <span class="inlinecode"><span class="id" title="var">on</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span>, (4) <span class="inlinecode"><span class="id" title="tactic">induction</span></span> <span class="inlinecode"><span class="id" title="var">on</span></span> <span class="inlinecode"><span class="id" title="var">l</span></span>, or
-    (5) can't be done with the tactics we've seen.
+    <span class="inlinecode"><span class="id" title="tactic">intros</span></span>, <span class="inlinecode"><span class="id" title="tactic">simpl</span></span>, <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span>, and <span class="inlinecode"><span class="id" title="tactic">reflexivity</span></span>?  (A) none,
+    (B) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, (C) <span class="inlinecode"><span class="id" title="tactic">induction</span></span> <span class="inlinecode"><span class="id" title="var">on</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span>, (D) <span class="inlinecode"><span class="id" title="tactic">induction</span></span> <span class="inlinecode"><span class="id" title="var">on</span></span> <span class="inlinecode"><span class="id" title="var">l</span></span>, or
+    (E) can't be done with the tactics we've seen.
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Theorem</span> <span class="id" title="var">foo1</span> : <span class="id" title="keyword">∀</span> <span class="id" title="var">n</span>:<span class="id" title="var">nat</span>, <span class="id" title="keyword">∀</span> <span class="id" title="var">l</span>:<span class="id" title="var">natlist</span>,<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">repeat</span> <span class="id" title="var">n</span> 0 = <span class="id" title="var">l</span> → <span class="id" title="var">length</span> <span class="id" title="var">l</span> = 0.
@@ -537,15 +537,15 @@ What about the next one?
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Theorem</span> <span class="id" title="var">foo2</span> :  <span class="id" title="keyword">∀</span> <span class="id" title="var">n</span> <span class="id" title="var">m</span> : <span class="id" title="var">nat</span>,<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">length</span> (<span class="id" title="tactic">repeat</span> <span class="id" title="var">n</span> <span class="id" title="var">m</span>) = <span class="id" title="var">m</span>.
 </span>    Which tactics do we need besides <span class="inlinecode"><span class="id" title="tactic">intros</span></span>, <span class="inlinecode"><span class="id" title="tactic">simpl</span></span>, <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span>, and
-    <span class="inlinecode"><span class="id" title="tactic">reflexivity</span></span>?  (1) none, (2) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, (3) <span class="inlinecode"><span class="id" title="tactic">induction</span></span> <span class="inlinecode"><span class="id" title="var">on</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span>,
-    (4) <span class="inlinecode"><span class="id" title="tactic">induction</span></span> <span class="inlinecode"><span class="id" title="var">on</span></span> <span class="inlinecode"><span class="id" title="var">m</span></span>, or (5) can't be done with the tactics we've
+    <span class="inlinecode"><span class="id" title="tactic">reflexivity</span></span>?  (A) none, (B) <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>, (C) <span class="inlinecode"><span class="id" title="tactic">induction</span></span> <span class="inlinecode"><span class="id" title="var">on</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span>,
+    (D) <span class="inlinecode"><span class="id" title="tactic">induction</span></span> <span class="inlinecode"><span class="id" title="var">on</span></span> <span class="inlinecode"><span class="id" title="var">m</span></span>, or (E) can't be done with the tactics we've
     seen.
 
 </div>
 </div> <!-- /quiz -->
 
 <div class="doc">
-<a id="lab100"></a><h1 class="section">Options</h1>
+<a id="lab101"></a><h1 class="section">Options</h1>
 
 <div class="paragraph"> </div>
 
@@ -565,11 +565,11 @@ What about the next one?
 </div>
 
 <div class="doc">
-<a id="lab101"></a><h3 class="section"> </h3>
+<a id="lab102"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
- The solution: <span class="inlinecode"><span class="id" title="var">natoption</span></span>. 
+ The solution: return a <span class="inlinecode"><span class="id" title="var">natoption</span></span>. 
 </div>
 <div class="code">
 
@@ -602,7 +602,7 @@ What about the next one?
 </div>
 
 <div class="doc">
-<a id="lab102"></a><h3 class="section"> </h3>
+<a id="lab103"></a><h3 class="section"> </h3>
 
 </div>
 <div class="code">
@@ -611,12 +611,12 @@ What about the next one?
 </div>
 
 <div class="doc">
-<a id="lab103"></a><h1 class="section">Partial Maps</h1>
+<a id="lab104"></a><h1 class="section">Partial Maps</h1>
 
 <div class="paragraph"> </div>
 
  As a final illustration of how data structures can be defined in
-    Coq, here is a simple <i>partial map</i> data type, analogous to the
+    Rocq, here is a simple <i>partial map</i> data type, analogous to the
     map or dictionary data structures found in most programming
     languages. 
 <div class="paragraph"> </div>
@@ -637,7 +637,7 @@ Internally, an <span class="inlinecode"><span class="id" title="var">id</span></
     if we want to. 
 <div class="paragraph"> </div>
 
-<a id="lab104"></a><h3 class="section"> </h3>
+<a id="lab105"></a><h3 class="section"> </h3>
  We'll also need an equality test for <span class="inlinecode"><span class="id" title="var">id</span></span>s: 
 </div>
 <div class="code">
@@ -649,7 +649,7 @@ Internally, an <span class="inlinecode"><span class="id" title="var">id</span></
 </div>
 
 <div class="doc">
-<a id="lab106"></a><h3 class="section"> </h3>
+<a id="lab107"></a><h3 class="section"> </h3>
  Now we define the type of partial maps: 
 </div>
 <div class="code">
@@ -660,7 +660,7 @@ Internally, an <span class="inlinecode"><span class="id" title="var">id</span></
 </div>
 
 <div class="doc">
-<a id="lab107"></a><h3 class="section"> </h3>
+<a id="lab108"></a><h3 class="section"> </h3>
  The <span class="inlinecode"><span class="id" title="var">update</span></span> function overrides the entry for a given key in a
     partial map by shadowing it with a new one (or simply adds a new
     entry if the given key is not already present). 
@@ -674,7 +674,7 @@ Internally, an <span class="inlinecode"><span class="id" title="var">id</span></
 </div>
 
 <div class="doc">
-<a id="lab108"></a><h3 class="section"> </h3>
+<a id="lab109"></a><h3 class="section"> </h3>
  We can define functions on <span class="inlinecode"><span class="id" title="var">partial_map</span></span>s by pattern matching. 
 </div>
 <div class="code">
@@ -701,15 +701,15 @@ Is the following claim true or false?
 </div>
 
 <div class="doc">
-(1) True
+(A) True
 
 <div class="paragraph"> </div>
 
-    (2) False
+    (B) False
 
 <div class="paragraph"> </div>
 
-    (3) Not sure
+    (C) Not sure
 
 </div>
 </div> <!-- /quiz -->
@@ -728,15 +728,15 @@ Is the following claim true or false?
 </div>
 
 <div class="doc">
-(1) True
+(A) True
 
 <div class="paragraph"> </div>
 
-    (2) False
+    (B) False
 
 <div class="paragraph"> </div>
 
-    (3) Not sure
+    (C) Not sure
 
 </div>
 </div> <!-- /quiz -->

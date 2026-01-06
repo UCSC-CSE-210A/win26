@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="common/css/sf.css" rel="stylesheet" type="text/css" />
-<title>Basics: Functional Programming in Coq</title>
+<title>Basics: Functional Programming in Rocq</title>
 <link href="common/jquery-ui/jquery-ui.css" rel="stylesheet">
 <script src="common/jquery-ui/external/jquery/jquery.js"></script>
 <script src="common/jquery-ui/jquery-ui.js"></script>
@@ -31,25 +31,25 @@
 
 <div id="main">
 
-<h1 class="libtitle">Basics<span class="subtitle">Functional Programming in Coq</span></h1>
+<h1 class="libtitle">Basics<span class="subtitle">Functional Programming in Rocq</span></h1>
 
 
 
 <div class="doc">
-<a id="lab20"></a><h1 class="section">Data and Functions</h1>
+<a id="lab22"></a><h1 class="section">Data and Functions</h1>
 
 <div class="paragraph"> </div>
 
-<a id="lab21"></a><h2 class="section">Enumerated Types</h2>
+<a id="lab23"></a><h2 class="section">Enumerated Types</h2>
 
 <div class="paragraph"> </div>
 
- In Coq, we can build practically everything from first
+ In Rocq, we can build practically everything from first
     principles... 
 </div>
 
 <div class="doc">
-<a id="lab22"></a><h2 class="section">Days of the Week</h2>
+<a id="lab24"></a><h2 class="section">Days of the Week</h2>
 
 <div class="paragraph"> </div>
 
@@ -68,7 +68,7 @@
 </div>
 
 <div class="doc">
-<a id="lab23"></a><h3 class="section"> </h3>
+<a id="lab25"></a><h3 class="section"> </h3>
  A function on days: 
 </div>
 <div class="code">
@@ -86,7 +86,7 @@
 </div>
 
 <div class="doc">
-<a id="lab24"></a><h3 class="section"> </h3>
+<a id="lab26"></a><h3 class="section"> </h3>
  Simplification: 
 </div>
 <div class="code">
@@ -99,7 +99,7 @@
 
 <div class="doc">
 Second, we can record what we <i>expect</i> the result to be in the
-    form of a Coq example: 
+    form of a Rocq "example": 
 </div>
 <div class="code">
 
@@ -117,7 +117,7 @@ We can then present a <i>proof script</i> giving evidence for
 </div>
 
 <div class="doc">
-Third, we can ask Coq to <i>extract</i>, from our <span class="inlinecode"><span class="id" title="keyword">Definition</span></span>, a
+Third, we can ask Rocq to <i>extract</i>, from our <span class="inlinecode"><span class="id" title="keyword">Definition</span></span>, a
     program in a more conventional programming language (OCaml,
     Scheme, or Haskell) with a high-performance compiler.  This
     facility is very useful, since it gives us a path from
@@ -127,18 +127,18 @@ Third, we can ask Coq to <i>extract</i>, from our <span class="inlinecode"><span
 <div class="paragraph"> </div>
 
     (Of course, we are trusting the correctness of the
-    OCaml/Haskell/Scheme compiler, and of Coq's extraction facility
+    OCaml/Haskell/Scheme compiler, and of Rocq's extraction facility
     itself, but this is still a big step forward from the way most
     software is developed today!)
 
 <div class="paragraph"> </div>
 
-    Indeed, this is one of the main uses for which Coq was developed.
+    Indeed, this is one of the main uses for which Rocq was developed.
     We'll come back to this topic in later chapters. 
 </div>
 
 <div class="doc">
-<a id="lab25"></a><h2 class="section">Booleans</h2>
+<a id="lab27"></a><h2 class="section">Booleans</h2>
 
 <div class="paragraph"> </div>
 
@@ -152,9 +152,9 @@ Third, we can ask Coq to <i>extract</i>, from our <span class="inlinecode"><span
 </div>
 
 <div class="doc">
-Booleans are also available in Coq's standard library, but
+Booleans are also available in Rocq's standard library, but
     in this course we'll define everything from scratch, just to see
-    how it's done. <a id="lab26"></a><h3 class="section"> </h3>
+    how it's done. <a id="lab28"></a><h3 class="section"> </h3>
 
 </div>
 <div class="code">
@@ -167,7 +167,7 @@ Booleans are also available in Coq's standard library, but
 </div>
 
 <div class="doc">
-<a id="lab27"></a><h3 class="section"> </h3>
+<a id="lab29"></a><h3 class="section"> </h3>
 
 </div>
 <div class="code">
@@ -185,7 +185,7 @@ Booleans are also available in Coq's standard library, but
 
 <div class="doc">
 Note the syntax for defining multi-argument
-    functions (<span class="inlinecode"><span class="id" title="var">andb</span></span> and <span class="inlinecode"><span class="id" title="var">orb</span></span>).  <a id="lab28"></a><h3 class="section"> </h3>
+    functions (<span class="inlinecode"><span class="id" title="var">andb</span></span> and <span class="inlinecode"><span class="id" title="var">orb</span></span>).  <a id="lab30"></a><h3 class="section"> </h3>
 
 </div>
 <div class="code">
@@ -212,11 +212,11 @@ We can define new symbolic notations for existing definitions.
 </div>
 
 <div class="doc">
-<a id="lab29"></a><h3 class="section"> </h3>
+<a id="lab31"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
- We can also write these function using "if" expressions.  
+ We can also write these functions using "if" expressions.  
 </div>
 <div class="code">
 
@@ -249,8 +249,8 @@ This works for all datatypes with two constructors:
 </div>
 
 <div class="doc">
-<a id="lab30"></a><h3 class="section"> </h3>
-<a id="lab31"></a><h4 class="section">Exercise: 1 star, standard (nandb)</h4>
+<a id="lab32"></a><h3 class="section"> </h3>
+<a id="lab33"></a><h4 class="section">Exercise: 1 star, standard (nandb)</h4>
 
 </div>
 <div class="code">
@@ -281,12 +281,12 @@ This works for all datatypes with two constructors:
 </div>
 
 <div class="doc">
-<a id="lab32"></a><h2 class="section">Types</h2>
+<a id="lab34"></a><h2 class="section">Types</h2>
 
 <div class="paragraph"> </div>
 
- Every expression in Coq has a type describing what sort of
-    thing it computes. The <span class="inlinecode"><span class="id" title="keyword">Check</span></span> command asks Coq to print the type
+ Every expression in Rocq has a type describing what sort of
+    thing it computes. The <span class="inlinecode"><span class="id" title="keyword">Check</span></span> command asks Rocq to print the type
     of an expression. 
 </div>
 <div class="code">
@@ -297,8 +297,8 @@ This works for all datatypes with two constructors:
 
 <div class="doc">
 If the thing after <span class="inlinecode"><span class="id" title="keyword">Check</span></span> is followed by a colon and a type
-    declaration, Coq will verify that the type of the expression
-    matches the given type and halt with an error if not. 
+    declaration, Rocq will verify that the type of the expression
+    matches the given type and signal an error if not. 
 </div>
 <div class="code">
 
@@ -320,7 +320,7 @@ Functions like <span class="inlinecode"><span class="id" title="var">negb</span>
 </div>
 
 <div class="doc">
-<a id="lab33"></a><h2 class="section">New Types from Old</h2>
+<a id="lab35"></a><h2 class="section">New Types from Old</h2>
 
 <div class="paragraph"> </div>
 
@@ -348,7 +348,7 @@ Let's look at this in a little more detail.
 <div class="paragraph"> </div>
 
 <ul class="doclist">
-<li> It defines a set of new <i>constructors</i>. E.g., <span class="inlinecode"><span class="id" title="tactic">red</span></span>,
+<li> It introduces a set of new <i>constructors</i>. E.g., <span class="inlinecode"><span class="id" title="tactic">red</span></span>,
       <span class="inlinecode"><span class="id" title="var">primary</span></span>, <span class="inlinecode"><span class="id" title="var">true</span></span>, <span class="inlinecode"><span class="id" title="var">false</span></span>, <span class="inlinecode"><span class="id" title="var">monday</span></span>, etc. are constructors.
 
 <div class="paragraph"> </div>
@@ -399,7 +399,7 @@ Let's look at this in a little more detail.
 
 <div class="paragraph"> </div>
 
-<a id="lab34"></a><h3 class="section"> </h3>
+<a id="lab36"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
@@ -439,7 +439,7 @@ The pattern "<span class="inlinecode"><span class="id" title="var">primary</span
 </div>
 
 <div class="doc">
-<a id="lab35"></a><h2 class="section">Modules</h2>
+<a id="lab37"></a><h2 class="section">Modules</h2>
 
 <div class="paragraph"> </div>
 
@@ -456,7 +456,7 @@ The pattern "<span class="inlinecode"><span class="id" title="var">primary</span
 </div>
 
 <div class="doc">
-<a id="lab36"></a><h2 class="section">Tuples</h2>
+<a id="lab38"></a><h2 class="section">Tuples</h2>
 
 </div>
 <div class="code">
@@ -479,8 +479,8 @@ A nybble is half a byte -- four bits.
 </div>
 
 <div class="doc">
-<a id="lab37"></a><h3 class="section"> </h3>
- We deconstruct a nybble by pattern-matching. 
+<a id="lab39"></a><h3 class="section"> </h3>
+ We can deconstruct a nybble by pattern-matching. 
 </div>
 <div class="code">
 
@@ -488,7 +488,15 @@ A nybble is half a byte -- four bits.
 &nbsp;&nbsp;<span class="id" title="keyword">match</span> <span class="id" title="var">nb</span> <span class="id" title="keyword">with</span><br/>
 &nbsp;&nbsp;| (<span class="id" title="var">bits</span> <span class="id" title="var">B<sub>0</sub></span> <span class="id" title="var">B<sub>0</sub></span> <span class="id" title="var">B<sub>0</sub></span> <span class="id" title="var">B<sub>0</sub></span>) ⇒ <span class="id" title="var">true</span><br/>
 &nbsp;&nbsp;| (<span class="id" title="var">bits</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>) ⇒ <span class="id" title="var">false</span><br/>
-&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/><hr class='doublespaceincode'/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+</div>
+
+<div class="doc">
+(The underscore (_) here is a <i>wildcard pattern</i>, which avoids
+    inventing variable names that will not be used.) 
+</div>
+<div class="code">
+
 <span class="id" title="keyword">Compute</span> (<span class="id" title="var">all_zero</span> (<span class="id" title="var">bits</span> <span class="id" title="var">B<sub>1</sub></span> <span class="id" title="var">B<sub>0</sub></span> <span class="id" title="var">B<sub>1</sub></span> <span class="id" title="var">B<sub>0</sub></span>)).<br/>
 <span class="comment">(*&nbsp;===&gt;&nbsp;false&nbsp;:&nbsp;bool&nbsp;*)</span><br/>
 <span class="id" title="keyword">Compute</span> (<span class="id" title="var">all_zero</span> (<span class="id" title="var">bits</span> <span class="id" title="var">B<sub>0</sub></span> <span class="id" title="var">B<sub>0</sub></span> <span class="id" title="var">B<sub>0</sub></span> <span class="id" title="var">B<sub>0</sub></span>)).<br/>
@@ -497,7 +505,7 @@ A nybble is half a byte -- four bits.
 </div>
 
 <div class="doc">
-<a id="lab38"></a><h2 class="section">Numbers</h2>
+<a id="lab40"></a><h2 class="section">Numbers</h2>
 
 </div>
 <div class="code">
@@ -511,7 +519,7 @@ There are many possible representations of natural numbers.
     For simplicity in proofs, we choose unary: <span class="inlinecode"><span class="id" title="var">O</span></span> represents zero,
     and <span class="inlinecode"><span class="id" title="var">S</span></span> represents adding an additional unary digit.  That is, <span class="inlinecode"><span class="id" title="var">S</span></span>
     is the "successor" operation, which, when applied to the
-    representation of n, gives the representation of n+1. 
+    representation of <span class="inlinecode"><span class="id" title="var">n</span></span>, gives the representation of <span class="inlinecode"><span class="id" title="var">n</span>+1</span>. 
 </div>
 <div class="code">
 
@@ -546,7 +554,7 @@ With this definition, 0 is represented by <span class="inlinecode"><span class="
 
 <div class="paragraph"> </div>
 
-<a id="lab39"></a><h3 class="section"> </h3>
+<a id="lab41"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
@@ -584,12 +592,12 @@ The <i>interpretation</i> of these marks arises from how we use them to
 </div>
 
 <div class="doc">
-<a id="lab40"></a><h3 class="section"> </h3>
+<a id="lab42"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
  As a convenience, standard decimal numerals can be used as
-    a shorthand for sequences of applications of <span class="inlinecode"><span class="id" title="var">S</span></span> to <span class="inlinecode"><span class="id" title="var">O</span></span>; Coq uses
+    a shorthand for sequences of applications of <span class="inlinecode"><span class="id" title="var">S</span></span> to <span class="inlinecode"><span class="id" title="var">O</span></span>; Rocq uses
     the same shorthand when printing: 
 </div>
 <div class="code">
@@ -607,7 +615,7 @@ The <i>interpretation</i> of these marks arises from how we use them to
 </div>
 
 <div class="doc">
-<a id="lab41"></a><h3 class="section"> </h3>
+<a id="lab43"></a><h3 class="section"> </h3>
  Recursive functions are introduced using the <span class="inlinecode"><span class="id" title="keyword">Fixpoint</span></span> keyword. 
 </div>
 <div class="code">
@@ -621,7 +629,7 @@ The <i>interpretation</i> of these marks arises from how we use them to
 </div>
 
 <div class="doc">
-<a id="lab42"></a><h3 class="section"> </h3>
+<a id="lab44"></a><h3 class="section"> </h3>
  We could define <span class="inlinecode"><span class="id" title="var">odd</span></span> by a similar <span class="inlinecode"><span class="id" title="keyword">Fixpoint</span></span> declaration, but
     here is a simpler way: 
 </div>
@@ -636,7 +644,7 @@ The <i>interpretation</i> of these marks arises from how we use them to
 </div>
 
 <div class="doc">
-<a id="lab43"></a><h3 class="section"> </h3>
+<a id="lab45"></a><h3 class="section"> </h3>
  A multi-argument recursive function. 
 </div>
 <div class="code">
@@ -663,7 +671,7 @@ The <i>interpretation</i> of these marks arises from how we use them to
 </div>
 
 <div class="doc">
-<a id="lab44"></a><h3 class="section"> </h3>
+<a id="lab46"></a><h3 class="section"> </h3>
  Another: 
 </div>
 <div class="code">
@@ -678,8 +686,8 @@ The <i>interpretation</i> of these marks arises from how we use them to
 </div>
 
 <div class="doc">
-<a id="lab45"></a><h3 class="section"> </h3>
- Pattern-matching two values at the same time: 
+<a id="lab47"></a><h3 class="section"> </h3>
+ We can pattern-match two values at the same time: 
 </div>
 <div class="code">
 
@@ -693,7 +701,7 @@ The <i>interpretation</i> of these marks arises from how we use them to
 </div>
 
 <div class="doc">
-<a id="lab46"></a><h3 class="section"> </h3>
+<a id="lab48"></a><h3 class="section"> </h3>
  Again, we can make numerical expressions easier to read and write
     by introducing notations for addition, subtraction, and
     multiplication. 
@@ -713,16 +721,16 @@ The <i>interpretation</i> of these marks arises from how we use them to
 </div>
 
 <div class="doc">
-<a id="lab47"></a><h3 class="section"> </h3>
- When we say that Coq comes with almost nothing built-in, we really
+<a id="lab49"></a><h3 class="section"> </h3>
+ When we say that Rocq comes with almost nothing built-in, we really
     mean it: even testing equality is a user-defined operation!
 
 <div class="paragraph"> </div>
 
-    Here is a function <span class="inlinecode"><span class="id" title="var">eqb</span></span>, which tests natural numbers for
+    Here is a function <span class="inlinecode"><span class="id" title="var">eqb</span></span> that tests natural numbers for
     <span class="inlinecode"><span class="id" title="var">eq</span></span>uality, yielding a <span class="inlinecode"><span class="id" title="var">b</span></span>oolean.  Note the use of nested
-    <span class="inlinecode"><span class="id" title="keyword">match</span></span>es (we could also have used a simultaneous match, as
-    in <span class="inlinecode"><span class="id" title="var">minus</span></span>.) 
+    <span class="inlinecode"><span class="id" title="keyword">match</span></span>es -- we could also have used a simultaneous match, as
+    in <span class="inlinecode"><span class="id" title="var">minus</span></span>. 
 </div>
 <div class="code">
 
@@ -740,7 +748,7 @@ The <i>interpretation</i> of these marks arises from how we use them to
 </div>
 
 <div class="doc">
-<a id="lab48"></a><h3 class="section"> </h3>
+<a id="lab50"></a><h3 class="section"> </h3>
  Similarly, the <span class="inlinecode"><span class="id" title="var">leb</span></span> function tests whether its first argument is
     less than or equal to its second argument, yielding a boolean. 
 </div>
@@ -764,7 +772,7 @@ The <i>interpretation</i> of these marks arises from how we use them to
 </div>
 
 <div class="doc">
-<a id="lab49"></a><h3 class="section"> </h3>
+<a id="lab51"></a><h3 class="section"> </h3>
  We'll be using these (especially <span class="inlinecode"><span class="id" title="var">eqb</span></span>) a lot, so let's give
     them infix notations. 
 </div>
@@ -788,18 +796,26 @@ We have two notions of equality:
 
 
 </li>
-<li> <span class="inlinecode">=?</span> is a boolean <i>expression</i> up and that Coq <i>computes</i>.  
+<li> <span class="inlinecode">=?</span> is a boolean <i>expression</i> that Rocq <i>computes</i>.  
 
 </li>
 </ul>
 </div>
 
 <div class="doc">
-<a id="lab50"></a><h1 class="section">Proof by Simplification</h1>
+<a id="lab52"></a><h1 class="section">Proof by Simplification</h1>
 
 <div class="paragraph"> </div>
 
- A general property of natural numbers: 
+ A specific fact about natural numbers: 
+</div>
+<div class="code">
+<span class="id" title="keyword">Example</span> <span class="id" title="var">plus_1_1</span> : 1 + 1 = 2.<br/>
+<span class="id" title="keyword">Proof</span>. <span class="id" title="tactic">simpl</span>. <span class="id" title="tactic">reflexivity</span>. <span class="id" title="keyword">Qed</span>.<br/>
+</div>
+
+<div class="doc">
+A general property of natural numbers: 
 </div>
 <div class="code">
 
@@ -809,8 +825,8 @@ We have two notions of equality:
 </div>
 
 <div class="doc">
-The <span class="inlinecode"><span class="id" title="tactic">simpl</span></span> tactic is actually redundant, as <span class="inlinecode"><span class="id" title="tactic">reflexivity</span></span>
-    already does some simplification for us: 
+The <span class="inlinecode"><span class="id" title="tactic">simpl</span></span> tactic is actually redundant here, as
+    <span class="inlinecode"><span class="id" title="tactic">reflexivity</span></span> already does some simplification for us: 
 </div>
 <div class="code">
 
@@ -830,7 +846,7 @@ Any other (fresh) identifier could be used instead of <span class="inlinecode"><
 </div>
 
 <div class="doc">
-<a id="lab51"></a><h3 class="section"> </h3>
+<a id="lab53"></a><h3 class="section"> </h3>
  Other similar theorems can be proved with the same pattern. 
 </div>
 <div class="code">
@@ -844,7 +860,7 @@ Any other (fresh) identifier could be used instead of <span class="inlinecode"><
 </div>
 
 <div class="doc">
-<a id="lab52"></a><h1 class="section">Proof by Rewriting</h1>
+<a id="lab54"></a><h1 class="section">Proof by Rewriting</h1>
 
 <div class="paragraph"> </div>
 
@@ -871,7 +887,7 @@ The uses of <span class="inlinecode"><span class="id" title="tactic">intros</spa
     used -- and in which direction -- to do the replacement. 
 <div class="paragraph"> </div>
 
-<a id="lab53"></a><h3 class="section"> </h3>
+<a id="lab55"></a><h3 class="section"> </h3>
 
 <div class="paragraph"> </div>
 
@@ -890,11 +906,11 @@ The uses of <span class="inlinecode"><span class="id" title="tactic">intros</spa
 </div>
 
 <div class="doc">
-<a id="lab54"></a><h3 class="section"> </h3>
+<a id="lab56"></a><h3 class="section"> </h3>
  We can use the <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span> tactic with a previously proved theorem
     instead of a hypothesis from the context. If the statement of the
     previously proved theorem involves quantified variables, as in the
-    example below, Coq will try to fill in appropriate values for them
+    example below, Rocq will try to fill in appropriate values for them
     by matching the body of the previous theorem statement against the
     current goal. 
 </div>
@@ -910,7 +926,7 @@ The uses of <span class="inlinecode"><span class="id" title="tactic">intros</spa
 </div>
 
 <div class="doc">
-<a id="lab55"></a><h1 class="section">Proof by Case Analysis</h1>
+<a id="lab57"></a><h1 class="section">Proof by Case Analysis</h1>
 
 <div class="paragraph"> </div>
 
@@ -944,8 +960,8 @@ We can use <span class="inlinecode"><span class="id" title="tactic">destruct</sp
 Note the "bullets" marking the proofs of the two subgoals. 
 <div class="paragraph"> </div>
 
-<a id="lab56"></a><h3 class="section"> </h3>
- Another example (using booleans): 
+<a id="lab58"></a><h3 class="section"> </h3>
+ Another example, using booleans: 
 </div>
 <div class="code">
 
@@ -958,7 +974,7 @@ Note the "bullets" marking the proofs of the two subgoals.
 </div>
 
 <div class="doc">
-<a id="lab57"></a><h3 class="section"> </h3>
+<a id="lab59"></a><h3 class="section"> </h3>
  We can have nested subgoals (and we use different "bullets"
     to mark the inner ones): 
 </div>
@@ -977,10 +993,10 @@ Note the "bullets" marking the proofs of the two subgoals.
 </div>
 
 <div class="doc">
-<a id="lab58"></a><h3 class="section"> </h3>
+<a id="lab60"></a><h3 class="section"> </h3>
  Besides <span class="inlinecode">-</span> and <span class="inlinecode">+</span>, we can use <span class="inlinecode">×</span> (asterisk) or any repetition
     of a bullet symbol (e.g. <span class="inlinecode">--</span> or <span class="inlinecode">***</span>) as a bullet.  We can also
-    enclose sub-proofs in curly braces: 
+    enclose sub-proofs in curly braces instead of using bullets: 
 </div>
 <div class="code">
 
@@ -997,7 +1013,7 @@ Note the "bullets" marking the proofs of the two subgoals.
 </div>
 
 <div class="doc">
-<a id="lab59"></a><h3 class="section"> </h3>
+<a id="lab61"></a><h3 class="section"> </h3>
  One final convenience: Instead of
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span>. <span class="id" title="tactic">destruct</span> <span class="id" title="var">y</span> <span class="id" title="keyword">as</span> [|<span class="id" title="var">y</span>] <span class="id" title="var">eqn</span>:<span class="id" title="var">E</span>.
@@ -1017,7 +1033,7 @@ Note the "bullets" marking the proofs of the two subgoals.
 </div>
 
 <div class="doc">
-<a id="lab60"></a><h3 class="section"> </h3>
+<a id="lab62"></a><h3 class="section"> </h3>
  If there are no constructor arguments that need names, we can just
     write <span class="inlinecode">[]</span> to get the case analysis. 
 </div>
@@ -1035,7 +1051,7 @@ Note the "bullets" marking the proofs of the two subgoals.
 </div>
 
 <div class="doc">
-<a id="lab61"></a><h1 class="section">Optional: Testing Your Solutions</h1>
+<a id="lab63"></a><h1 class="section">Optional: Testing Your Solutions</h1>
 
 <div class="paragraph"> </div>
 

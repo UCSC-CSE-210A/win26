@@ -201,7 +201,7 @@ Proof.
 (* ================================================================= *)
 (** ** Induction on Lists *)
 
-(** Coq generates an induction principle for every [Inductive]
+(** Rocq generates an induction principle for every [Inductive]
     definition, including lists.  We can use the [induction] tactic on
     lists to prove things like the associativity of list-append... *)
 
@@ -244,7 +244,7 @@ Proof.
 (* ----------------------------------------------------------------- *)
 (** *** Generalizing Statements *)
 
-(** Sometimes statements need to be generalized to proof them by
+(** Sometimes statements need to be generalized to prove them by
     induction:  *)
 
 Theorem repeat_double_firsttry : forall c n: nat,
@@ -345,7 +345,7 @@ Proof.
     reflexivity.
 Qed.
 
-(** We can also prove a more general form of app_length_S that
+(** We can also prove a more general form of [app_length_S] that
     gives the length of any two appended lists. *)
 Theorem app_length : forall l1 l2 : natlist,
   length (l1 ++ l2) = (length l1) + (length l2).
@@ -355,9 +355,9 @@ Proof.
 (* QUIZ
 
     To prove the following theorem, which tactics will we need besides
-    [intros], [simpl], [rewrite], and [reflexivity]?  (1) none,
-    (2) [destruct], (3) [induction on n], (4) [induction on l], or
-    (5) can't be done with the tactics we've seen.
+    [intros], [simpl], [rewrite], and [reflexivity]?  (A) none,
+    (B) [destruct], (C) [induction on n], (D) [induction on l], or
+    (E) can't be done with the tactics we've seen.
 
       Theorem foo1 : forall n:nat, forall l:natlist,
         repeat n 0 = l -> length l = 0.
@@ -371,8 +371,8 @@ Proof.
         length (repeat n m) = m.
 
     Which tactics do we need besides [intros], [simpl], [rewrite], and
-    [reflexivity]?  (1) none, (2) [destruct], (3) [induction on n],
-    (4) [induction on m], or (5) can't be done with the tactics we've
+    [reflexivity]?  (A) none, (B) [destruct], (C) [induction on n],
+    (D) [induction on m], or (E) can't be done with the tactics we've
     seen.
 *)
 
@@ -391,7 +391,7 @@ Fixpoint nth_bad (l:natlist) (n:nat) : nat :=
                end
   end.
 
-(** The solution: [natoption]. *)
+(** The solution: return a [natoption]. *)
 
 Inductive natoption : Type :=
   | Some (n : nat)
@@ -419,7 +419,7 @@ End NatList.
 (** * Partial Maps *)
 
 (** As a final illustration of how data structures can be defined in
-    Coq, here is a simple _partial map_ data type, analogous to the
+    Rocq, here is a simple _partial map_ data type, analogous to the
     map or dictionary data structures found in most programming
     languages. *)
 
@@ -486,11 +486,11 @@ Theorem quiz1 : forall (d : partial_map)
 Proof.
 (* FILL IN HERE *) Admitted.
 
-(** (1) True
+(** (A) True
 
-    (2) False
+    (B) False
 
-    (3) Not sure
+    (C) Not sure
 *)
 
 (* QUIZ
@@ -504,11 +504,11 @@ Theorem quiz2 : forall (d : partial_map)
 Proof.
 (* FILL IN HERE *) Admitted.
 
-(** (1) True
+(** (A) True
 
-    (2) False
+    (B) False
 
-    (3) Not sure
+    (C) Not sure
 *)
 
 End PartialMap.

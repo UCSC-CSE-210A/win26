@@ -1,21 +1,22 @@
-(** * ImpParser: Lexing and Parsing in Coq *)
+(** * ImpParser: Lexing and Parsing in Rocq *)
 
 (** The development of the Imp language in [Imp.v] completely ignores
     issues of concrete syntax -- how an ascii string that a programmer
     might write gets translated into abstract syntax trees defined by
     the datatypes [aexp], [bexp], and [com].  In this chapter, we
     illustrate how the rest of the story can be filled in by building
-    a simple lexical analyzer and parser using Coq's functional
+    a simple lexical analyzer and parser using Rocq's functional
     programming facilities. *)
 
-Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
-From Coq Require Import Strings.String.
-From Coq Require Import Strings.Ascii.
-From Coq Require Import Arith.
-From Coq Require Import Init.Nat.
-From Coq Require Import EqNat.
-From Coq Require Import List. Import ListNotations.
+Set Warnings "-notation-overridden,-notation-incompatible-prefix".
+From Stdlib Require Import Strings.String.
+From Stdlib Require Import Strings.Ascii.
+From Stdlib Require Import Arith.
+From Stdlib Require Import Init.Nat.
+From Stdlib Require Import EqNat.
+From Stdlib Require Import List. Import ListNotations.
 From LF Require Import Maps Imp.
+Local Open Scope com_scope.
 
 (* ################################################################# *)
 (** * Internals *)

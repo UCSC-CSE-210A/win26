@@ -13,8 +13,8 @@
 
     - Ltac *)
 
-Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality,-deprecated-syntactic-definition,-deprecated]".
-From Coq Require Import Arith List.
+Set Warnings "-notation-overridden,-notation-incompatible-prefix".
+From Stdlib Require Import Arith List.
 From LF Require Import IndProp.
 
 (** Here's a function that rewrites regular expressions into
@@ -72,7 +72,7 @@ Proof.
 Qed.
 
 (** That last proof was getting a little repetitive.  Time to
-    learn a few more Coq tricks... *)
+    learn a few more Rocq tricks... *)
 
 (* ################################################################# *)
 (** * Tacticals *)
@@ -272,7 +272,7 @@ Qed.
 (* ################################################################# *)
 (** * Automatic Solvers *)
 
-(** Coq has several special-purpose tactics that can solve
+(** Rocq has several special-purpose tactics that can solve
     certain kinds of goals in a completely automated way. These
     tactics are based on sophisticated algorithms developed for
     verification in specific mathematical or logical domains.
@@ -290,7 +290,7 @@ Qed.
 (** [lia] is a decision procedure for integer linear
     arithmetic. *)
 
-From Coq Require Import Lia.
+From Stdlib Require Import Lia.
 
 Theorem lia_succeed1 : forall (n : nat),
   n > 0 -> n * 2 > n.
@@ -406,7 +406,7 @@ Qed.
     lemmas we've proved, or that are provided by libraries that we
     load.
 
-    Another kind of automation that Coq provides does just that: the
+    Another kind of automation that Rocq provides does just that: the
     [auto] tactic and its variants search for proofs that can be
     assembled out of hypotheses and lemmas. *)
 
@@ -584,7 +584,7 @@ Qed.
 
     - OCaml: low-level implementation (for wizards)
 
-    - Ltac: in-Coq language (for everyone) *)
+    - Ltac: in-Rocq language (for everyone) *)
 
 (* ================================================================= *)
 (** ** Ltac Functions *)

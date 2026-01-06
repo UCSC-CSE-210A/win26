@@ -1,4 +1,4 @@
-(** * Basics: Functional Programming in Coq *)
+(** * Basics: Functional Programming in Rocq *)
 
 (* ################################################################# *)
 (** * Data and Functions *)
@@ -6,7 +6,7 @@
 (* ================================================================= *)
 (** ** Enumerated Types *)
 
-(** In Coq, we can build practically everything from first
+(** In Rocq, we can build practically everything from first
     principles... *)
 
 (* ================================================================= *)
@@ -45,7 +45,7 @@ Compute (next_working_day (next_working_day saturday)).
 (* ==> tuesday : day *)
 
 (** Second, we can record what we _expect_ the result to be in the
-    form of a Coq example: *)
+    form of a Rocq "example": *)
 
 Example test_next_working_day:
   (next_working_day (next_working_day saturday)) = tuesday.
@@ -55,7 +55,7 @@ Example test_next_working_day:
 
 Proof. simpl. reflexivity.  Qed.
 
-(** Third, we can ask Coq to _extract_, from our [Definition], a
+(** Third, we can ask Rocq to _extract_, from our [Definition], a
     program in a more conventional programming language (OCaml,
     Scheme, or Haskell) with a high-performance compiler.  This
     facility is very useful, since it gives us a path from
@@ -63,11 +63,11 @@ Proof. simpl. reflexivity.  Qed.
     code.
 
     (Of course, we are trusting the correctness of the
-    OCaml/Haskell/Scheme compiler, and of Coq's extraction facility
+    OCaml/Haskell/Scheme compiler, and of Rocq's extraction facility
     itself, but this is still a big step forward from the way most
     software is developed today!)
 
-    Indeed, this is one of the main uses for which Coq was developed.
+    Indeed, this is one of the main uses for which Rocq was developed.
     We'll come back to this topic in later chapters. *)
 
 (* ================================================================= *)
@@ -79,7 +79,7 @@ Inductive bool : Type :=
   | true
   | false.
 
-(** Booleans are also available in Coq's standard library, but
+(** Booleans are also available in Rocq's standard library, but
     in this course we'll define everything from scratch, just to see
     how it's done. *)
 Definition negb (b:bool) : bool :=
@@ -119,7 +119,7 @@ Notation "x || y" := (orb x y).
 Example test_orb5:  false || false || true = true.
 Proof. simpl. reflexivity. Qed.
 
-(** We can also write these function using "if" expressions.  *)
+(** We can also write these functions using "if" expressions.  *)
 
 Definition negb' (b:bool) : bool :=
   if b then false
@@ -173,16 +173,16 @@ Example test_nandb4:               (nandb true true) = false.
 (* ================================================================= *)
 (** ** Types *)
 
-(** Every expression in Coq has a type describing what sort of
-    thing it computes. The [Check] command asks Coq to print the type
+(** Every expression in Rocq has a type describing what sort of
+    thing it computes. The [Check] command asks Rocq to print the type
     of an expression. *)
 
 Check true.
 (* ===> true : bool *)
 
 (** If the thing after [Check] is followed by a colon and a type
-    declaration, Coq will verify that the type of the expression
-    matches the given type and halt with an error if not. *)
+    declaration, Rocq will verify that the type of the expression
+    matches the given type and signal an error if not. *)
 
 Check true
   : bool.
@@ -215,7 +215,7 @@ Inductive color : Type :=
 
     An [Inductive] definition does two things:
 
-    - It defines a set of new _constructors_. E.g., [red],
+    - It introduces a set of new _constructors_. E.g., [red],
       [primary], [true], [false], [monday], etc. are constructors.
 
     - It groups them into a new named type, like [bool], [rgb], or
@@ -293,13 +293,16 @@ Inductive nybble : Type :=
 Check (bits B1 B0 B1 B0)
   : nybble.
 
-(** We deconstruct a nybble by pattern-matching. *)
+(** We can deconstruct a nybble by pattern-matching. *)
 
 Definition all_zero (nb : nybble) : bool :=
   match nb with
   | (bits B0 B0 B0 B0) => true
   | (bits _ _ _ _) => false
   end.
+
+(** (The underscore (_) here is a _wildcard pattern_, which avoids
+    inventing variable names that will not be used.) *)
 
 Compute (all_zero (bits B1 B0 B1 B0)).
 (* ===> false : bool *)
@@ -318,7 +321,7 @@ Module NatPlayground.
     For simplicity in proofs, we choose unary: [O] represents zero,
     and [S] represents adding an additional unary digit.  That is, [S]
     is the "successor" operation, which, when applied to the
-    representation of n, gives the representation of n+1. *)
+    representation of [n], gives the representation of [n+1]. *)
 
 Inductive nat : Type :=
   | O
@@ -361,7 +364,7 @@ Definition pred (n : nat) : nat :=
 End NatPlayground.
 
 (** As a convenience, standard decimal numerals can be used as
-    a shorthand for sequences of applications of [S] to [O]; Coq uses
+    a shorthand for sequences of applications of [S] to [O]; Rocq uses
     the same shorthand when printing: *)
 
 Check (S (S (S (S O)))).
@@ -433,7 +436,7 @@ Fixpoint mult (n m : nat) : nat :=
 Example test_mult1: (mult 3 3) = 9.
 Proof. simpl. reflexivity.  Qed.
 
-(** Pattern-matching two values at the same time: *)
+(** We can pattern-match two values at the same time: *)
 
 Fixpoint minus (n m:nat) : nat :=
   match n, m with
@@ -460,13 +463,13 @@ Notation "x * y" := (mult x y)
 
 Check ((0 + 1) + 1) : nat.
 
-(** When we say that Coq comes with almost nothing built-in, we really
+(** When we say that Rocq comes with almost nothing built-in, we really
     mean it: even testing equality is a user-defined operation!
 
-    Here is a function [eqb], which tests natural numbers for
+    Here is a function [eqb] that tests natural numbers for
     [eq]uality, yielding a [b]oolean.  Note the use of nested
-    [match]es (we could also have used a simultaneous match, as
-    in [minus].) *)
+    [match]es -- we could also have used a simultaneous match, as
+    in [minus]. *)
 
 Fixpoint eqb (n m : nat) : bool :=
   match n with
@@ -513,10 +516,14 @@ Proof. simpl. reflexivity.  Qed.
 
     - [=] is a logical _claim_ that we can attempt to _prove_.
 
-    - [=?] is a boolean _expression_ up and that Coq _computes_.  *)
+    - [=?] is a boolean _expression_ that Rocq _computes_.  *)
 
 (* ################################################################# *)
 (** * Proof by Simplification *)
+
+(** A specific fact about natural numbers: *)
+Example plus_1_1 : 1 + 1 = 2.
+Proof. simpl. reflexivity. Qed.
 
 (** A general property of natural numbers: *)
 
@@ -524,8 +531,8 @@ Theorem plus_O_n : forall n : nat, 0 + n = n.
 Proof.
   intros n. simpl. reflexivity.  Qed.
 
-(** The [simpl] tactic is actually redundant, as [reflexivity]
-    already does some simplification for us: *)
+(** The [simpl] tactic is actually redundant here, as
+    [reflexivity] already does some simplification for us: *)
 
 Theorem plus_O_n' : forall n : nat, 0 + n = n.
 Proof.
@@ -584,7 +591,7 @@ Check mult_n_Sm.
 (** We can use the [rewrite] tactic with a previously proved theorem
     instead of a hypothesis from the context. If the statement of the
     previously proved theorem involves quantified variables, as in the
-    example below, Coq will try to fill in appropriate values for them
+    example below, Rocq will try to fill in appropriate values for them
     by matching the body of the previous theorem statement against the
     current goal. *)
 
@@ -620,7 +627,7 @@ Proof.
 
 (** Note the "bullets" marking the proofs of the two subgoals. *)
 
-(** Another example (using booleans): *)
+(** Another example, using booleans: *)
 
 Theorem negb_involutive : forall b : bool,
   negb (negb b) = b.
@@ -645,7 +652,7 @@ Qed.
 
 (** Besides [-] and [+], we can use [*] (asterisk) or any repetition
     of a bullet symbol (e.g. [--] or [***]) as a bullet.  We can also
-    enclose sub-proofs in curly braces: *)
+    enclose sub-proofs in curly braces instead of using bullets: *)
 
 Theorem andb_commutative' : forall b c, andb b c = andb c b.
 Proof.

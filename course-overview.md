@@ -65,9 +65,12 @@ require you to understand what is going on in more detail than you would have
 working independently.
 
 Any form of AI-generated code is not permitted.  Co-pilot should be disabled in
-VSCode, and you should not use AI chatbots to help write your solutions.
-The VSCode devcontainer 
-
+VSCode, and you should not use AI chatbots to help write your solutions.  The
+assignment codespaces / devcontainers are configured with the
+[GitDoc](https://marketplace.visualstudio.com/items?itemName=ascholer.chemeketa-gitdoc)
+extension, which periodically commits your progress to the GitHub repository.
+This helps save progress and avoids data loss, but is also a record of
+your work in case any questions should arise.
 
 ## A note on accessibility
 

@@ -1,6 +1,6 @@
 (** * IndProp: Inductively Defined Propositions *)
 
-Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
+Set Warnings "-notation-overridden".
 From LF Require Export Logic.
 
 (* ################################################################# *)
@@ -48,7 +48,7 @@ Definition csf (n : nat) : nat :=
     by Collatz was: Is the sequence starting from _any_ positive
     natural number guaranteed to reach [1] eventually? *)
 
-(** To formalize this question in Coq, we might try to define a
+(** To formalize this question in Rocq, we might try to define a
     recursive _function_ that calculates the total number of steps
     that it takes for such a sequence to reach [1]. *)
 
@@ -57,11 +57,11 @@ Fail Fixpoint reaches1_in (n : nat) : nat :=
   else 1 + reaches1_in (csf n).
 
 (** You can write this definition in a standard programming language.
-    This definition is, however, rejected by Coq's termination
+    This definition is, however, rejected by Rocq's termination
     checker, since the argument to the recursive call, [csf n], is not
     "obviously smaller" than [n].
 
-    Indeed, this isn't just a pointless limitation: functions in Coq
+    Indeed, this isn't just a pointless limitation: functions in Rocq
     are required to be total, to ensure logical consistency.
 
     Moreover, we can't fix it by devising a more clever termination
@@ -81,9 +81,9 @@ Fail Fixpoint Collatz_holds_for (n : nat) : Prop :=
   end.
 
 (** This recursive function is also rejected by the termination
-    checker, since while we can in principle convince Coq that
-    [div2 n] is smaller than [n], we can't convince it that
-    [(3 * n) + 1] is smaller than [n]. Since it's definitely not! *)
+    checker, since, while we could in principle convince Rocq that
+    [div2 n] is smaller than [n], we certainly can't convince it that
+    [(3 * n) + 1] is smaller than [n]! *)
 
 (** Fortunately, there is another way to do it: We can express the
     concept "reaches [1] eventually in the Collatz sequence" as an
@@ -104,8 +104,8 @@ Fail Fixpoint Collatz_holds_for (n : nat) : Prop :=
     So there are three ways to prove that a number [n] eventually
     reaches 1 in the Collatz sequence:
         - [n] is 1;
-        - [n] is even and [div2 n] reaches 1;
-        - [n] is odd and [(3 * n) + 1] reaches 1.
+        - [n] is even and [div2 n] eventually reaches 1;
+        - [n] is odd and [(3 * n) + 1] eventually reaches 1.
 *)
 (** We can prove that a number reaches 1 by constructing a (finite)
     derivation using these rules. For instance, here is the derivation
@@ -133,7 +133,7 @@ Fail Fixpoint Collatz_holds_for (n : nat) : Prop :=
                     ———————————————————— (Chf_even)
                     Collatz_holds_for 12
 *)
-(** Formally in Coq, the [Collatz_holds_for] property is
+(** Formally in Rocq, the [Collatz_holds_for] property is
     _inductively defined_: *)
 
 Inductive Collatz_holds_for : nat -> Prop :=
@@ -146,8 +146,8 @@ Inductive Collatz_holds_for : nat -> Prop :=
                          Collatz_holds_for n.
 
 (** For particular numbers, we can now prove that the Collatz sequence
-    reaches [1] (we'll go through the details of how it works a bit
-    later in the chapter): *)
+    reaches [1] (we'll look more closely at how it works a bit later
+    in the chapter): *)
 
 Example Collatz_holds_for_12 : Collatz_holds_for 12.
 Proof.
@@ -175,7 +175,7 @@ Conjecture collatz : forall n, n <> 0 -> Collatz_holds_for n.
 (* ================================================================= *)
 (** ** Example: Binary relation for comparing numbers *)
 
-(** A binary _relation_ on a set [X] has Coq type [X -> X -> Prop].
+(** A binary _relation_ on a set [X] has Rocq type [X -> X -> Prop].
     This is a family of propositions parameterized by two elements of
     [X] -- i.e., a proposition about pairs of elements of [X]. *)
 
@@ -193,7 +193,7 @@ Conjecture collatz : forall n, n <> 0 -> Collatz_holds_for n.
                          le n (S m)
 *)
 
-(** This corresponds to the following inductive definition in Coq: *)
+(** This corresponds to the following inductive definition in Rocq: *)
 
 Module LePlayground.
 
@@ -208,9 +208,10 @@ End LePlayground.
 (* ================================================================= *)
 (** ** Example: Transitive Closure *)
 
-(** As another example, the _transitive closure_ of a relation [R]
-    is the smallest relation that contains [R] and that is transitive.
-    This can be defined by the following two rules:
+(** Another example: The _reflexive and transitive closure_ of a
+    relation [R] is the smallest relation that contains [R] and that
+    is reflexive and transitive. This can be defined by the following
+    three rules (where we added a reflexivity rule to [clos_trans]):
 
                      R x y
                 ---------------- (t_step)
@@ -220,7 +221,7 @@ End LePlayground.
        ------------------------------------ (t_trans)
                 clos_trans R x z
 
-    In Coq this looks as follows:
+    In Rocq this looks as follows:
 *)
 
 Inductive clos_trans {X: Type} (R: X->X->Prop) : X->X->Prop :=
@@ -297,14 +298,14 @@ Inductive clos_refl_trans {X: Type} (R: X->X->Prop) : X->X->Prop :=
       clos_refl_trans R x z.
 
 (** For instance, this enables an equivalent definition of the Collatz
-    conjecture.  First we define the binary relation corresponding to
-    the Collatz step function [csf]: *)
+    conjecture.  First we define a binary relation corresponding to
+    the "Collatz step function" [csf]: *)
 
 Definition cs (n m : nat) : Prop := csf n = m.
 
 (** This Collatz step relation can be used in conjunction with the
-    reflexive and transitive closure operation to define a Collatz
-    multi-step ([cms]) relation, expressing that a number [n]
+    reflexive and transitive closure operation to define a _Collatz
+    multi-step_ ([cms]) relation, expressing that a number [n]
     reaches another number [m] in zero or more Collatz steps: *)
 
 Definition cms n m := clos_refl_trans cs n m.
@@ -316,7 +317,9 @@ Conjecture collatz' : forall n, n <> 0 -> cms n 1.
 (** The familiar mathematical concept of _permutation_ also has an
     elegant formulation as an inductive relation.  For simplicity,
     let's focus on permutations of lists with exactly three
-    elements. We can define them by the following rules:
+    elements.
+
+    We can define such permulations by the following rules:
 
                --------------------- (perm3_swap12)
                Perm3 [a;b;c] [b;a;c]
@@ -330,15 +333,15 @@ Conjecture collatz' : forall n, n <> 0 -> cms n 1.
 
     For instance we can derive [Perm3 [1;2;3] [3;2;1]] as follows:
 
-————————(perm_swap12)  —————————————————————(perm_swap23)
-Perm3 [1;2;3] [2;1;3]  Perm3 [2;1;3] [2;3;1]
-——————————————————————————————(perm_trans)  ————————————(perm_swap12)
-    Perm3 [1;2;3] [2;3;1]                   Perm [2;3;1] [3;2;1]
-    —————————————————————————————————————————————————————(perm_trans)
-                      Perm3 [1;2;3] [3;2;1]
+    ————————(perm_swap12)  —————————————————————(perm_swap23)
+    Perm3 [1;2;3] [2;1;3]  Perm3 [2;1;3] [2;3;1]
+    ——————————————————————————————(perm_trans)  ————————————(perm_swap12)
+        Perm3 [1;2;3] [2;3;1]                   Perm [2;3;1] [3;2;1]
+        —————————————————————————————————————————————————————(perm_trans)
+                          Perm3 [1;2;3] [3;2;1]
 *)
 
-(** In Coq [Perm3] is given the following inductive definition: *)
+(** In Rocq [Perm3] is given the following inductive definition: *)
 
 Inductive Perm3 {X : Type} : list X -> list X -> Prop :=
   | perm3_swap12 (a b c : X) :
@@ -359,7 +362,7 @@ Inductive Perm3 {X : Type} : list X -> list X -> Prop :=
       (2) [exists k, n = double k] (using an existential quantifier). *)
 
 (** A third possibility, which we'll use as a simple running example
-    here, is to say that a number is even if we can
+    in this chapter, is to say that a number is even if we can
     _establish_ its evenness from the following two rules:
 
                           ---- (ev_0)
@@ -389,35 +392,28 @@ Inductive ev : nat -> Prop :=
   | ev_0                       : ev 0
   | ev_SS (n : nat) (H : ev n) : ev (S (S n)).
 
-(** We put off discussing syntax so far, but there are both
-    similarities and a few differences between inductive properties
-    like [ev] and inductive types like [nat] or [list]:
+(** There are both similarities and a few differences between
+    inductive _properties_ like [ev] and the inductive _types_ like
+    [nat] or [list] that we have been using throughout the course:
 
     Inductive list (X:Type) : Type :=
       | nil                       : list X
       | cons (x : X) (l : list X) : list X.
-*)
 
-(** Beyond this syntactic distinction, we can think of the inductive
-    definition of [ev] as defining a Coq property [ev : nat -> Prop],
-    together with two "evidence constructors": *)
+    The most important difference is that the constructors of [ev],
+    [ev_0] and [ev_SS], yield different types ([ev 0] and [ev (S (S n))]),
+    whereas the [list] constructors both build [list X] values. *)
+
+(** We can think of the inductive definition of [ev] as defining a
+    Rocq property [ev : nat -> Prop], together with two "evidence
+    constructors": *)
 
 Check ev_0 : ev 0.
 Check ev_SS : forall (n : nat), ev n -> ev (S (S n)).
 
-(** In fact, Coq also accepts the following equivalent definition of [ev]: *)
-
-Module EvPlayground.
-
-Inductive ev : nat -> Prop :=
-  | ev_0  : ev 0
-  | ev_SS : forall (n : nat), ev n -> ev (S (S n)).
-
-End EvPlayground.
-
 (** These evidence constructors can be thought of as "primitive
-    evidence of evenness", and they can be used just like proven
-    theorems.  In particular, we can use Coq's [apply] tactic with the
+    evidence of evenness", and they can be used later on just like proven
+    theorems.  In particular, we can use Rocq's [apply] tactic with the
     constructor names to obtain evidence for [ev] of particular
     numbers... *)
 
@@ -454,8 +450,9 @@ Proof.
 Qed.
 
 (** And again we can equivalently use function application syntax to
-    combine several constructors. Note that the Coq type checker can
-    infer not only types, but also nats and lists. *)
+    combine several constructors. (Note that the Rocq type checker can
+    infer not only types, but also nats and lists, when they are clear
+    from the context.) *)
 
 Lemma Perm3_rev' : Perm3 [1;2;3] [3;2;1].
 Proof.
@@ -479,7 +476,7 @@ Qed.
     _destruct_ such evidence, reasoning about how it could have been
     built.
 
-    Defining [ev] with an [Inductive] declaration tells Coq not
+    Defining [ev] with an [Inductive] declaration tells Rocq not
     only that the constructors [ev_0] and [ev_SS] are valid ways to
     build evidence that some number is [ev], but also that these two
     constructors are the _only_ ways to build evidence that numbers
@@ -489,7 +486,7 @@ Qed.
     [ev n], then we know that [E] must be one of two things:
 
       - [E = ev_0] and [n = O], or
-      - [E = ev_SS n' E'], where [n = S (S n')] and [E'] is
+      - [E = ev_SS n' E'] and [n = S (S n')], where [E'] is
         evidence for [ev n']. *)
 
 (** This suggests that it should be possible to do _case
@@ -501,7 +498,7 @@ Qed.
 (** We can prove our characterization of evidence for [ev n],
     using [destruct]. *)
 
-Theorem ev_inversion : forall (n : nat),
+Lemma ev_inversion : forall (n : nat),
     ev n ->
     (n = 0) \/ (exists n', n = S (S n') /\ ev n').
 Proof.
@@ -527,7 +524,7 @@ Proof.
     rewrite Hnn'. apply E'.
 Qed.
 
-(** Coq provides a handy tactic called [inversion] that does
+(** Rocq provides a handy tactic called [inversion] that does
     the work of our inversion lemma and more besides. *)
 
 Theorem evSS_ev' : forall n,
@@ -553,7 +550,7 @@ Theorem inversion_ex2 : forall (n : nat),
 Proof.
   intros n contra. inversion contra. Qed.
 
-(** The tactic [inversion] actually works on any [H : P] where
+(** The [inversion] tactic works on any [H : P] where
     [P] is defined [Inductive]ly:
 
       - For each constructor of [P], make a subgoal where [H] is
@@ -593,9 +590,11 @@ Proof.
     exists (S k). simpl. reflexivity.
 Qed.
 
-
 (* ################################################################# *)
 (** * Case Study: Regular Expressions *)
+
+(* ================================================================= *)
+(** ** Definitions *)
 
 (** Regular expressions are a natural language for describing sets of
     strings.  Their syntax is defined as follows: *)
@@ -622,13 +621,14 @@ Arguments Star {T} _.
 
 (** We connect regular expressions and strings by defining when a
     regular expression _matches_ some string.
+
     Informally this looks as follows:
 
-      - The expression [EmptySet] does not match any string.
+      - The regular expression [EmptySet] does not match any string.
 
-      - The expression [EmptyStr] matches the empty string [[]].
+      - [EmptyStr] matches the empty string [[]].
 
-      - The expression [Char x] matches the one-character string [[x]].
+      - [Char x] matches the one-character string [[x]].
 
       - If [re1] matches [s1], and [re2] matches [s2],
         then [App re1 re2] matches [s1 ++ s2].
@@ -646,7 +646,7 @@ Arguments Star {T} _.
         [re] is. *)
 
 (** We can easily translate this intuition into a set of rules,
-    where we write [s =~ re] to say that [s] matches [re]:
+    where we write [s =~ re] to say that [re] matches [s]:
 
                         -------------- (MEmpty)
                         [] =~ EmptyStr
@@ -712,14 +712,16 @@ Inductive exp_match {T} : list T -> reg_exp T -> Prop :=
     ... is not explicitly reflected in the above definition.  Do we
     need to add something?
 
-   (1) Yes, we should add a rule for this.
+   (A) Yes, we should add a rule for this.
 
-   (2) No, one of the other rules already covers this case.
+   (B) No, one of the other rules already covers this case.
 
-   (3) No, the _lack_ of a rule actually gives us the behavior we
+   (C) No, the _lack_ of a rule actually gives us the behavior we
        want.
-
 *)
+
+(* ================================================================= *)
+(** ** Examples *)
 
 Example reg_exp_ex1 : [1] =~ Char 1.
 Proof.
@@ -750,9 +752,9 @@ Lemma MStar1 :
     induction (on evidence!). *)
 
 (** For example, suppose we want to prove the following intuitive
-    result: If a string [s] matches a regular expression [re], then
-    all elements of [s] must occur as character literals somewhere in
-    [re].
+    fact: If a string [s] is matched by a regular expression [re],
+    then all elements of [s] must occur as character literals
+    somewhere in [re].
 
     To state this as a theorem, we first define a function [re_chars]
     that lists all characters that occur in a regular expression: *)
@@ -767,8 +769,7 @@ Fixpoint re_chars {T} (re : reg_exp T) : list T :=
   | Star re => re_chars re
   end.
 
-(** This lemma from chapter [Logic] will be useful in the proof
-    of the theorem just below it. *)
+(** This lemma from chapter [Logic] will be useful in the proof. *)
 
 Lemma In_app_iff : forall A l l' (a:A),
   In a (l++l') <-> In a l \/ In a l'.
@@ -779,6 +780,8 @@ Proof.
     + intros [[]|H]. apply H.
   - intros l'' a. simpl. rewrite IH. rewrite or_assoc.
     reflexivity. Qed.
+
+(** Now, the main theorem: *)
 
 Theorem in_re_match : forall T (s : list T) (re : reg_exp T) (x : T),
   s =~ re ->
@@ -814,8 +817,7 @@ Proof.
   intros T s1 s2 re H1.
 
 (** Here is a naive first attempt at setting up the
-    induction.  (Note that we are performing induction on
-    evidence!) *)
+    induction. *)
 
   induction H1
     as [|x'|s1 re1 s2' re2 Hmatch1 IH1 Hmatch2 IH2
@@ -838,10 +840,10 @@ Proof.
   - (* MChar. *) intros H. simpl. (* Stuck... *)
 Abort.
 
-(** The problem here is that [induction] over a Prop hypothesis
-    only works properly with hypotheses that are "completely
-    general," i.e., ones in which all the arguments are variables,
-    as opposed to more complex expressions like [Star re].
+(** The problem here is that [induction] over a Prop hypothesis only
+    works properly with hypotheses that are "fully general," i.e.,
+    ones in which all the arguments are just variables, as opposed to more
+    specific expressions like [Star re].
 
     A possible, but awkward, way to solve this problem is "manually
     generalizing" over the problematic expressions by adding
@@ -857,7 +859,7 @@ Lemma star_app: forall T (s1 s2 : list T) (re re' : reg_exp T),
     Fortunately, there is a better way... *)
 Abort.
 
-(** The tactic [remember e as x eqn:Eq] causes Coq to (1) replace all
+(** The tactic [remember e as x eqn:Eq] causes Rocq to (1) replace all
     occurrences of the expression [e] by the variable [x], and (2) add
     an equation [Eq : x = e] to the context.  Here's how we can use it
     to show the above result: *)
@@ -953,8 +955,8 @@ Qed.
 
     Following the terminology introduced in [Logic], we call this
     the "reflection principle for equality on numbers," and we say
-    that the boolean [n =? m] is _reflected in_ the proposition [n =
-    m]. *)
+    that the boolean [n =? m] is _reflected in_ the proposition
+    [n = m]. *)
 
 Inductive reflect (P : Prop) : bool -> Prop :=
   | ReflectT (H :   P) : reflect P true
@@ -1019,7 +1021,7 @@ Qed.
     We'll see many more examples in later chapters and in _Programming
     Language Foundations_.
 
-    This way of using [reflect] was popularized by _SSReflect_, a Coq
+    This way of using [reflect] was popularized by _SSReflect_, a Rocq
     library that has been used to formalize important results in
     mathematics, including the 4-color theorem and the Feit-Thompson
     theorem.  The name SSReflect stands for _small-scale reflection_,

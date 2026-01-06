@@ -2,7 +2,7 @@
 
 (** Let's take a deeper look at induction. *)
 
-Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
+Set Warnings "-notation-overridden".
 From LF Require Export ProofObjects.
 
 (* ################################################################# *)
@@ -40,11 +40,11 @@ Proof.
      - [apply] requires us to manually specify the name of the induction
        principle. *)
 
-(** Coq generates induction principles for every datatype defined with
+(** Rocq generates induction principles for every datatype defined with
     [Inductive], including those that aren't recursive. *)
 
 (** If we define type [t] with constructors [c1] ... [cn],
-    Coq generates:
+    Rocq generates:
 
     t_ind : forall P : t -> Prop,
               ... case for c1 ... ->
@@ -120,7 +120,7 @@ Check natlist'_ind :
 (* ################################################################# *)
 (** * Induction Principles for Propositions *)
 
-(** Inductive definitions of propositions also cause Coq to generate
+(** Inductive definitions of propositions also cause Rocq to generate
     induction priniciples.  For example, recall our proposition [ev]
     from [IndProp]: *)
 
@@ -150,7 +150,7 @@ Check ev_ind :
         holds for [S (S n)]. *)
 
 (** The precise form of an [Inductive] definition can affect the
-    induction principle Coq generates. *)
+    induction principle Rocq generates. *)
 
 Inductive le1 : nat -> nat -> Prop :=
   | le1_n : forall n, le1 n n
@@ -178,13 +178,13 @@ Check le2_ind :
     (forall m : nat, n <=2 m -> P m -> P (S m)) ->
     forall n0 : nat, n <=2 n0 -> P n0.
 
-(** The latter is simpler, and corresponds to Coq's own
+(** The latter is simpler, and corresponds to Rocq's own
     definition. *)
 
 (* ################################################################# *)
 (** * Explicit Proof Objects for Induction (Optional) *)
 
-(** Recall again the induction principle on naturals that Coq generates for
+(** Recall again the induction principle on naturals that Rocq generates for
     us automatically from the Inductive declaration for [nat]. *)
 
 Check nat_ind :
@@ -194,7 +194,7 @@ Check nat_ind :
     forall n : nat, P n.
 
 (** There's nothing magic about this induction lemma: it's just
-   another Coq lemma that requires a proof.  Coq generates the proof
+   another Rocq lemma that requires a proof.  Rocq generates the proof
    automatically too...  *)
 
 Print nat_ind.

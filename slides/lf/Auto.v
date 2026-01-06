@@ -1,8 +1,8 @@
 (** * Auto: More Automation *)
 
-Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
-From Coq Require Import Lia.
-From Coq Require Import Strings.String.
+Set Warnings "-notation-overridden,-notation-incompatible-prefix".
+From Stdlib Require Import Lia.
+From Stdlib Require Import Strings.String.
 From LF Require Import Maps.
 From LF Require Import Imp.
 
@@ -62,9 +62,7 @@ Proof.
 Qed.
 
 (** The [auto] tactic solves goals that are solvable by any combination of
-     - [intros]
-    and
-     - [apply] (of hypotheses from the local context, by default). *)
+    [intros] and [apply]. *)
 
 (** Here is a larger example showing [auto]'s power: *)
 
@@ -80,7 +78,7 @@ Example auto_example_2 : forall P Q R S T U : Prop,
 Proof. auto. Qed.
 
 (** Proof search could, in principle, take an arbitrarily long time,
-    so there are limits to how deep [auto] will search by default. *)
+    so there is a limit to how deep [auto] will search by default. *)
 
 (** If [auto] is not solving our goal as expected we can use [debug auto]
     to see a trace. *)
@@ -108,8 +106,8 @@ Qed.
     context together with a _hint database_ of other lemmas and
     constructors.
 
-    Some common facts about equality and logical operators are installed in
-    the hint database by default. *)
+    Some common facts about equality and logical operators are
+    installed in the hint database by default. *)
 
 Example auto_example_4 : forall P Q R : Prop,
   Q ->
@@ -145,40 +143,40 @@ Qed.
 Lemma le_antisym : forall n m: nat, (n <= m /\ m <= n) -> n = m.
 Proof. lia. Qed.
 
-Example auto_example_6 : forall n m p : nat,
-  (n <= p -> (n <= m /\ m <= n)) ->
-  n <= p ->
+Example auto_example_6 : forall n m p q : nat,
+  (p = q -> (n <= m /\ m <= n)) ->
+  p = q ->
   n = m.
 Proof.
   auto using le_antisym.
 Qed.
 
-(** We can also permanently extend the hint database:
+(** We can also _permanently_ extend the hint database:
 
       - [Hint Resolve T : core.]
 
-          Add theorem or constructor [T] to the global DB
+        Add a theorem or constructor [T] to the global database
 
       - [Hint Constructors c : core.]
 
-          Add _all_ constructors of [c] to the global DB
+        Add _all_ constructors of [c] to the global database
 
       - [Hint Unfold d : core.]
 
-          Automatically expand defined symbol [d] during [auto] *)
+        Automatically expand defined symbol [d] during [auto] *)
 
 (** It is also possible to define specialized hint databases (besides
     [core]) that can be activated only when needed; indeed, it is good
     style to create your own hint databases instead of polluting
     [core].
 
-    See the Coq reference manual for details. *)
+    See the Rocq reference manual for details. *)
 
 Hint Resolve le_antisym : core.
 
-Example auto_example_6' : forall n m p : nat,
-  (n<= p -> (n <= m /\ m <= n)) ->
-  n <= p ->
+Example auto_example_6' : forall n m p q : nat,
+  (p = q -> (n <= m /\ m <= n)) ->
+  p = q ->
   n = m.
 Proof.
   auto. (* picks up hint from database *)
@@ -200,8 +198,8 @@ Proof.
   auto. (* try also: info_auto. *)
 Qed.
 
-(** Let's take a first pass over [ceval_deterministic] to simplify the
-    proof script. *)
+(** Let's take a first pass over [ceval_deterministic], using [auto]
+    to simplify the proof script. *)
 
 Theorem ceval_deterministic': forall c st st1 st2,
   st =[ c ]=> st1  ->
@@ -211,21 +209,21 @@ Proof.
   intros c st st1 st2 E1 E2.
   generalize dependent st2;
     induction E1; intros st2 E2; inversion E2; subst;
-    auto.   (* <---- here's one good place for auto *)
+    auto.             (* <---- here's one good place for auto *)
   - (* E_Seq *)
     rewrite (IHE1_1 st'0 H1) in *.
-    auto.   (* <---- here's another *)
-  - (* E_IfTrue -- contradiction! *)
+    auto.             (* <---- here's another *)
+  - (* E_IfTrue *)
     rewrite H in H5. discriminate.
-  - (* E_IfFalse -- contradiction! *)
+  - (* E_IfFalse *)
     rewrite H in H5. discriminate.
-  - (* E_WhileFalse -- contradiction! *)
+  - (* E_WhileFalse *)
     rewrite H in H2. discriminate.
-  - (* E_WhileTrue, with b false -- contradiction! *)
+  - (* E_WhileTrue, with b false *)
     rewrite H in H4. discriminate.
   - (* E_WhileTrue, with b true *)
     rewrite (IHE1_1 st'0 H3) in *.
-    auto.   (* <---- and another *)
+    auto.             (* <---- and another *)
 Qed.
 
 (* ################################################################# *)
@@ -261,26 +259,26 @@ Proof.
     rewrite (IHE1_1 st'0 H1) in *.
     auto.
   - (* E_IfTrue *)
-      rwd H H5.
+    rwd H H5.                 (* <----- *)
   - (* E_IfFalse *)
-      rwd H H5.
+    rwd H H5.                 (* <----- *)
   - (* E_WhileFalse *)
-      rwd H H2.
+    rwd H H2.                 (* <----- *)
   - (* E_WhileTrue - b false *)
-    rwd H H4.
+    rwd H H4.                 (* <----- *)
   - (* EWhileTrue - b true *)
     rewrite (IHE1_1 st'0 H3) in *.
     auto. Qed.
 
-(** That was a bit better, but we really want Coq to discover the
+(** That's a bit better, but we really want Rocq to discover the
     relevant hypotheses for us.  We can do this by using the [match
     goal] facility of Ltac. *)
 
 Ltac find_rwd :=
   match goal with
-    H1: ?E = true,
-    H2: ?E = false
-    |- _ => rwd H1 H2
+    H1: ?E = true, H2: ?E = false |- _
+       =>
+    rwd H1 H2
   end.
 
 (** The [match goal] tactic looks for hypotheses matching the
@@ -295,7 +293,9 @@ Theorem ceval_deterministic''': forall c st st1 st2,
 Proof.
   intros c st st1 st2 E1 E2.
   generalize dependent st2;
-  induction E1; intros st2 E2; inversion E2; subst; try find_rwd; auto.
+  induction E1; intros st2 E2; inversion E2; subst;
+       try find_rwd;                                  (* <------ *)
+       auto.
   - (* E_Seq *)
     rewrite (IHE1_1 st'0 H1) in *.
     auto.
@@ -312,7 +312,8 @@ Ltac find_eqn :=
   match goal with
     H1: forall x, ?P x -> ?L = ?R,
     H2: ?P ?X
-    |- _ => rewrite (H1 X H2) in *
+    |- _
+    => rewrite (H1 X H2) in *
   end.
 
 (** Now we can make use of [find_eqn] to repeatedly rewrite
@@ -325,13 +326,15 @@ Theorem ceval_deterministic'''': forall c st st1 st2,
 Proof.
   intros c st st1 st2 E1 E2.
   generalize dependent st2;
-  induction E1; intros st2 E2; inversion E2; subst; try find_rwd;
-    try find_eqn; auto.
+  induction E1; intros st2 E2; inversion E2; subst;
+    try find_rwd;
+    try find_eqn;    (* <------- *)
+    auto.
 Qed.
 
-(** The big payoff in this approach is that our proof script should be
-    more robust in the face of modest changes to our language.  To
-    test this, let's try adding a [REPEAT] command to the language. *)
+(** The big payoff in this approach is that the new proof script is
+    more robust in the face of changes to our language.  To test this,
+    let's try adding a [REPEAT] command to the language. *)
 
 Module Repeat.
 
@@ -479,9 +482,10 @@ Qed.
             st  =[ c1 ; c2 ]=> st''
 *)
 
-(** If we leave out the [with], this step fails, because Coq cannot
-    find an instance for the variable [st']. But this is silly! The appropriate
-    value for [st'] will become obvious in the very next step. *)
+(** If we leave out the [with], this step fails, because Rocq
+    cannot find an instance for the variable [st']. But this is silly,
+    since the appropriate value for [st'] will become obvious in the
+    very next step. *)
 
 (** With [eapply], we can eliminate this silliness: *)
 
@@ -494,9 +498,9 @@ Example ceval'_example1:
     end
   ]=> (Z !-> 4 ; X !-> 2).
 Proof.
-  eapply E_Seq. (* 1 *)
-  - apply E_Asgn. (* 2 *)
-    reflexivity. (* 3 *)
+  (* 1 *) eapply E_Seq.
+  - (* 2 *) apply E_Asgn.
+    (* 3 *) reflexivity.
   - (* 4 *) apply E_IfFalse. reflexivity. apply E_Asgn. reflexivity.
 Qed.
 

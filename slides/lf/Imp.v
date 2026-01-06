@@ -1,6 +1,6 @@
 (** * Imp: Simple Imperative Programs *)
 
-(** In this chapter, we take a more serious look at how to use Coq as
+(** In this chapter, we take a more serious look at how to use Rocq as
     a tool to study other things.  Our case study is a _simple
     imperative programming language_ called Imp, embodying a tiny core
     fragment of conventional mainstream languages such as C and Java.
@@ -21,16 +21,15 @@
     equivalence_ and introduce _Hoare Logic_, a popular logic for
     reasoning about imperative programs. *)
 
-Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
-From Coq Require Import Bool.
-From Coq Require Import Init.Nat.
-From Coq Require Import Arith.
-From Coq Require Import EqNat. Import Nat.
-From Coq Require Import Lia.
-From Coq Require Import List. Import ListNotations.
-From Coq Require Import Strings.String.
+Set Warnings "-notation-overridden".
+From Stdlib Require Import Bool.
+From Stdlib Require Import Init.Nat.
+From Stdlib Require Import Arith.
+From Stdlib Require Import EqNat. Import Nat.
+From Stdlib Require Import Lia.
+From Stdlib Require Import List. Import ListNotations.
+From Stdlib Require Import Strings.String.
 From LF Require Import Maps.
-Set Default Goal Selector "!".
 
 (* ################################################################# *)
 (** * Arithmetic and Boolean Expressions *)
@@ -100,15 +99,15 @@ Fixpoint beval (b : bexp) : bool :=
 
   aeval (APlus (ANum 3) (AMinus (ANum 4) (ANum 1)))
 
-  (1) true
+  (A) true
 
-  (2) false
+  (B) false
 
-  (3) 0
+  (C) 0
 
-  (4) 3
+  (D) 3
 
-  (5) 6
+  (E) 6
 
 *)
 
@@ -155,15 +154,15 @@ Proof.
     simpl. rewrite IHa1. rewrite IHa2. reflexivity.  Qed.
 
 (* ################################################################# *)
-(** * Coq Automation *)
+(** * Rocq Automation *)
 
 (** That last proof was getting a little repetitive.  Time to
-    learn a few more Coq tricks... *)
+    learn a few more Rocq tricks... *)
 
 (* ================================================================= *)
 (** ** Tacticals *)
 
-(** _Tacticals_ is Coq's term for tactics that take other tactics as
+(** _Tacticals_ is Rocq's term for tactics that take other tactics as
     arguments -- "higher-order tactics," if you will.  *)
 
 (* ----------------------------------------------------------------- *)
@@ -263,7 +262,7 @@ Theorem repeat_loop : forall (m n : nat),
 Proof.
   intros m n.
   (* Uncomment the next line to see the infinite loop occur.  You will
-     then need to interrupt Coq to make it listen to you again.  (In
+     then need to interrupt Rocq to make it listen to you again.  (In
      Proof General, [C-c C-c] does this.) *)
   (* repeat rewrite Nat.add_comm. *)
 Admitted.
@@ -271,7 +270,7 @@ Admitted.
 (* ================================================================= *)
 (** ** Defining New Tactics *)
 
-(** Coq also provides ways of "programming" tactic scripts:
+(** Rocq also provides ways of "programming" tactic scripts:
      - [Ltac]: scripting language for tactics (good for more
        sophisticated proof engineering)
      - [Tactic Notation] for defining tactics with custom concrete
@@ -686,17 +685,17 @@ Coercion ANum : nat >-> aexp.
 
 Declare Custom Entry com.
 Declare Scope com_scope.
-Declare Custom Entry com_aux.
 
-Notation "<{ e }>" := e (e custom com_aux) : com_scope.
-Notation "e" := e (in custom com_aux at level 0, e custom com) : com_scope.
+Notation "<{ e }>" := e
+  (e custom com, format "'[hv' <{ '/  ' '[v' e ']' '/' }> ']'") : com_scope.
 
-Notation "( x )" := x (in custom com, x at level 99) : com_scope.
-Notation "x" := x (in custom com at level 0, x constr at level 0) : com_scope.
+Notation "( x )" := x (in custom com, x at level 99).
+Notation "x" := x (in custom com at level 0, x constr at level 0).
+
 Notation "f x .. y" := (.. (f x) .. y)
                   (in custom com at level 0, only parsing,
-                  f constr at level 0, x constr at level 9,
-                  y constr at level 9) : com_scope.
+                  f constr at level 0, x constr at level 1,
+                      y constr at level 1).
 Notation "x + y"   := (APlus x y) (in custom com at level 50, left associativity).
 Notation "x - y"   := (AMinus x y) (in custom com at level 50, left associativity).
 Notation "x * y"   := (AMult x y) (in custom com at level 40, left associativity).
@@ -749,13 +748,13 @@ Fixpoint beval (st : state) (* <--- NEW *)
   end.
 
 (** We can use our notation for total maps in the specific case of
-    states -- i.e., we write the empty state as [(_ !-> 0)]. *)
+    states -- i.e., we write the empty state as [(__ !-> 0)]. *)
 
-Definition empty_st := (_ !-> 0).
+Definition empty_st := (__ !-> 0).
 
 (** Also, we can add a notation for a "singleton state" with just one
     variable bound to a value. *)
-Notation "x '!->' v" := (x !-> v ; empty_st) (at level 100).
+Notation "x '!->' v" := (x !-> v ; empty_st) (at level 100, right associativity).
 
 (* ################################################################# *)
 (** * Commands *)
@@ -789,27 +788,28 @@ Inductive com : Type :=
     declarations to make reading and writing Imp programs more
     convenient. *)
 
-Notation "'skip'"  :=
-         CSkip (in custom com at level 0) : com_scope.
-Notation "x := y"  :=
-         (CAsgn x y)
-            (in custom com at level 0, x constr at level 0,
-             y at level 85, no associativity) : com_scope.
-Notation "x ; y" :=
-         (CSeq x y)
-           (in custom com at level 90,
-            right associativity) : com_scope.
-Notation "'if' x 'then' y 'else' z 'end'" :=
-         (CIf x y z)
-           (in custom com at level 89, x at level 99,
-            y at level 99, z at level 99) : com_scope.
-Notation "'while' x 'do' y 'end'" :=
-         (CWhile x y)
-           (in custom com at level 89, x at level 99,
-            y at level 99) : com_scope.
+(* SOON: (NOTATION NDS'25)
+   I considered changing maps to also span multiple lines, but I
+   have not attempted this yet, as this would have required changes
+   in earlier chapters. *)
+Notation "'skip'"  := CSkip
+  (in custom com at level 0) : com_scope.
+Notation "x := y"  := (CAsgn x y)
+  (in custom com at level 0, x constr at level 0, y at level 85, no associativity,
+    format "x  :=  y") : com_scope.
+Notation "x ; y" := (CSeq x y)
+  (in custom com at level 90,
+    right associativity,
+    format "'[v' x ; '/' y ']'") : com_scope.
+Notation "'if' x 'then' y 'else' z 'end'" := (CIf x y z)
+  (in custom com at level 89, x at level 99, y at level 99, z at level 99,
+    format "'[v' 'if'  x  'then' '/  ' y '/' 'else' '/  ' z '/' 'end' ']'") : com_scope.
+Notation "'while' x 'do' y 'end'" := (CWhile x y)
+  (in custom com at level 89, x at level 99, y at level 99,
+    format "'[v' 'while'  x  'do' '/  ' y '/' 'end' ']'") : com_scope.
 
 (** For example, here is the factorial function again, written as a
-    formal Coq definition.  When this command terminates, the variable
+    formal Rocq definition.  When this command terminates, the variable
     [Y] will contain the factorial of the initial value of [X]. *)
 
 Definition fact_in_coq : com :=
@@ -877,7 +877,7 @@ Fixpoint ceval_fun_no_while (st : state) (c : com) : state :=
     | <{ skip }> =>
         st
     | <{ x := a }> =>
-        (x !-> (aeval st a) ; st)
+        (x !-> aeval st a ; st)
     | <{ c1 ; c2 }> =>
         let st' := ceval_fun_no_while st c1 in
         ceval_fun_no_while st' c2
@@ -896,7 +896,7 @@ Fixpoint ceval_fun_no_while (st : state) (c : com) : state :=
 
         Fixpoint loop_false (n : nat) : False := loop_false n.
 
-     Accepting such a definition would be catastrophic, so Coq
+     Accepting such a definition would be catastrophic, so Rocq
      conservatively rejects _all_ nonterminating (or potentially
      non-terminating, or not-obviously-terminating) programs.
 *)
@@ -953,9 +953,10 @@ Fixpoint ceval_fun_no_while (st : state) (c : com) : state :=
 *)
 
 Reserved Notation
-         "st '=[' c ']=>' st'"
+         "st0 '=[' c ']=>' st1"
          (at level 40, c custom com at level 99,
-          st constr, st' constr at next level).
+          st0 constr, st1 constr at next level,
+          format "'[hv' st0  =[ '/  ' '[' c ']' '/' ]=>  st1 ']'").
 
 Inductive ceval : com -> state -> state -> Prop :=
   | E_Skip : forall st,
@@ -984,11 +985,11 @@ Inductive ceval : com -> state -> state -> Prop :=
       st' =[ while b do c end ]=> st'' ->
       st  =[ while b do c end ]=> st''
 
-  where "st =[ c ]=> st'" := (ceval c st st').
+  where "st0 =[ c ]=> st1" := (ceval c st0 st1).
 (** The cost of defining evaluation as a relation instead of a
     function is that we now need to construct a _proof_ that some
     program evaluates to some result state, rather than just letting
-    Coq's computation mechanism do it for us. *)
+    Rocq's computation mechanism do it for us. *)
 
 Example ceval_example1:
   empty_st =[
@@ -1022,11 +1023,11 @@ Qed.
         st =[ skip ; c ]=> st' ->
         st =[ c ]=> st'
 
-    (1) Yes
+    (A) Yes
 
-    (2) No
+    (B) No
 
-    (3) Not sure
+    (C) Not sure
 
 *)
 (* QUIZ
@@ -1038,11 +1039,11 @@ Qed.
           st =[ c1 ]=> st ->
           st =[ c2 ]=> st'
 
-    (1) Yes
+    (A) Yes
 
-    (2) No
+    (B) No
 
-    (3) Not sure
+    (C) Not sure
 
 *)
 (* QUIZ
@@ -1053,11 +1054,11 @@ Qed.
           st =[ if b then c else c end ]=> st' ->
           st =[ c ]=> st'
 
-    (1) Yes
+    (A) Yes
 
-    (2) No
+    (B) No
 
-    (3) Not sure
+    (C) Not sure
 
 *)
 (* QUIZ
@@ -1069,11 +1070,11 @@ Qed.
          forall (c : com) (st : state),
            ~(exists st', st =[ while b do c end ]=> st')
 
-    (1) Yes
+    (A) Yes
 
-    (2) No
+    (B) No
 
-    (3) Not sure
+    (C) Not sure
 
 *)
 (* QUIZ
@@ -1084,11 +1085,11 @@ Qed.
          ~(exists st', st =[ while b do c end ]=> st') ->
          forall st'', beval st'' b = true
 
-    (1) Yes
+    (A) Yes
 
-    (2) No
+    (B) No
 
-    (3) Not sure
+    (C) Not sure
 
 *)
 

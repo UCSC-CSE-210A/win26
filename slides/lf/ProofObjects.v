@@ -1,13 +1,13 @@
 (** * ProofObjects: The Curry-Howard Correspondence *)
 
-Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
+Set Warnings "-notation-overridden,-notation-incompatible-prefix".
 From LF Require Export IndProp.
 
 (** "Algorithms are the computational content of proofs."
     (Robert Harper) *)
 
-(** Programming and proving in Coq are two sides of the same coin.
-    Proofs manipulate evidence, much as programs manipulate data. *)
+(** Programming and proving in Rocq are two sides of the same coin.
+    Proofs manipulate evidence much as programs manipulate data. *)
 
 (** Question: If evidence is data, what are propositions themselves?
 
@@ -19,11 +19,10 @@ Inductive ev : nat -> Prop :=
   | ev_0                       : ev 0
   | ev_SS (n : nat) (H : ev n) : ev (S (S n)).
 
-(** Suppose we introduce an alternative pronunciation of "[:]".
-    Instead of "has type," we can say "is a proof of."  For example,
-    the second line in the definition of [ev] declares that [ev_0 : ev
-    0].  Instead of "[ev_0] has type [ev 0]," we can say that "[ev_0]
-    is a proof of [ev 0]." *)
+(** We can pronounce the ":" here as either "has type" or "is a proof
+    of."  For example, the second line in the definition of [ev]
+    declares that [ev_0 : ev 0].  Instead of "[ev_0] has type [ev 0],"
+    we can say that "[ev_0] is a proof of [ev 0]." *)
 
 (** This pun between types and propositions -- between [:] as "has type"
     and [:] as "is a proof of" or "is evidence for" -- is called the
@@ -33,8 +32,7 @@ Inductive ev : nat -> Prop :=
                  propositions  ~  types
                  proofs        ~  programs
 
-    See [Wadler 2015] (in Bib.v) for a brief history and up-to-date
-    exposition. *)
+    See [Wadler 2015] (in Bib.v) for a brief history and modern exposition. *)
 
 (** Many useful insights follow from this connection.  To begin with,
     it gives us a natural interpretation of the type of the [ev_SS]
@@ -42,29 +40,29 @@ Inductive ev : nat -> Prop :=
 
 Check ev_SS
   : forall n,
-    ev n ->
-    ev (S (S n)).
+      ev n ->
+      ev (S (S n)).
 
 (** This can be read "[ev_SS] is a constructor that takes two
     arguments -- a number [n] and evidence for the proposition [ev
     n] -- and yields evidence for the proposition [ev (S (S n))]." *)
 
-(** Now let's look again at a previous proof involving [ev]. *)
+(** Now let's look again at an earlier proof involving [ev]. *)
 
 Theorem ev_4 : ev 4.
 Proof.
   apply ev_SS. apply ev_SS. apply ev_0. Qed.
 
-(** As with ordinary data values and functions, we can use the [Print]
-    command to see the _proof object_ that results from this proof
-    script. *)
+(** Just as with ordinary data values and functions, we can use the
+    [Print] command to see the _proof object_ that results from this
+    proof script. *)
 
 Print ev_4.
 (* ===> ev_4 = ev_SS 2 (ev_SS 0 ev_0)
       : ev 4  *)
 
 (** Indeed, we can also write down this proof object directly,
-    without the need for a separate proof script: *)
+    with no need for a proof script at all: *)
 
 Check (ev_SS 2 (ev_SS 0 ev_0))
   : ev 4.
@@ -81,7 +79,7 @@ Qed.
 (** * Proof Scripts *)
 
 (** When we write a proof using tactics, what we are doing is
-    instructing Coq to build a proof object under the hood.  We can
+    instructing Rocq to build a proof object under the hood.  We can
     see this using [Show Proof]: *)
 
 Theorem ev_4'' : ev 4.
@@ -95,7 +93,7 @@ Proof.
   Show Proof.
 Qed.
 
-(** Tactic proofs are convenient, but they are not essential in Coq:
+(** Tactic proofs are convenient, but they are not essential in Rocq:
     in principle, we can always just construct the required evidence
     by hand. Then we can use [Definition] (rather than [Theorem]) to
     introduce a global name for this evidence. *)
@@ -106,12 +104,12 @@ Definition ev_4''' : ev 4 :=
 (* ################################################################# *)
 (** * Quantifiers, Implications, Functions *)
 
-(** In Coq's computational universe (where data structures and
+(** In Rocq's computational universe (where data structures and
     programs live), there are two sorts of values that have arrows in
     their types: _constructors_ introduced by [Inductive]ly defined
     data types, and _functions_.
 
-    Similarly, in Coq's logical universe (where we carry out proofs),
+    Similarly, in Rocq's logical universe (where we carry out proofs),
     there are two ways of giving evidence for an implication:
     constructors introduced by [Inductive]ly defined propositions,
     and... functions! *)
@@ -181,18 +179,25 @@ Check ev_plus4'' : forall n : nat, ev n -> ev (4 + n).
          fun (H : ev n) =>
             ev_SS (2 + n) (ev_SS n H)
 
-  (1) [forall n, ev n]
+  (A) [forall n, ev n]
 
-  (2) [forall n, ev (2 + n)]
+  (B) [forall n, ev (2 + n)]
 
-  (3) [forall n, ev n -> ev n]
+  (C) [forall n, ev n -> ev n]
 
-  (4) [forall n, ev n -> ev (2 + n)]
+  (D) [forall n, ev n -> ev (2 + n)]
 
-  (5) [forall n, ev n -> ev (4 + n)]
+  (E) [forall n, ev n -> ev (4 + n)]
 
-  (6) Not typeable
+  (F) Not typeable
 *)
+
+
+
+
+
+
+
 Check (fun (n : nat) =>
          fun (H : ev n) =>
             ev_SS (2 + n) (ev_SS n H))
@@ -202,27 +207,29 @@ Check (fun (n : nat) =>
 (** * Programming with Tactics *)
 
 (** If we can build proofs by giving explicit terms rather than
-    executing tactic scripts, you may be wondering whether we can
-    build _programs_ using tactics rather than by writing down
-    explicit terms.
+    executing tactic scripts, you may wonder whether we can build
+    _programs_ using tactics rather than by writing down explicit
+    terms.
 
     Naturally, the answer is yes! *)
 
-Definition add1 : nat -> nat.
-intro n.
+Definition add2 : nat -> nat.
+intros n.
+Show Proof.
+apply S.
 Show Proof.
 apply S.
 Show Proof.
 apply n. Defined.
 
-Print add1.
+Print add2.
 (* ==>
-    add1 = fun n : nat => S n
-         : nat -> nat
+    add2 = fun n : nat => S (S n)
+          : nat -> nat
 *)
 
-Compute add1 2.
-(* ==> 3 : nat *)
+Compute add2 2.
+(* ==> 4 : nat *)
 
 (* ################################################################# *)
 (** * Logical Connectives as Inductive Types *)
@@ -230,7 +237,7 @@ Compute add1 2.
 (** Inductive definitions are powerful enough to express most of the
     logical connectives we have seen so far.  Indeed, only universal
     quantification (with implication as a special case) is built into
-    Coq; all the others are defined inductively.
+    Rocq; all the others are defined inductively.
 
     Let's see how. *)
 
@@ -317,15 +324,15 @@ Definition and_comm' P Q : P /\ Q <-> Q /\ P :=
           | (conj HP _, conj  _ HR) => conj HP HR
           end.
 
-  (1) [forall P Q R, P /\ Q -> Q /\ R -> P /\ R]
+  (A) [forall P Q R, P /\ Q -> Q /\ R -> P /\ R]
 
-  (2) [forall P Q R, Q /\ P -> R /\ Q -> P /\ R]
+  (B) [forall P Q R, Q /\ P -> R /\ Q -> P /\ R]
 
-  (3) [forall P Q R, P /\ R]
+  (C) [forall P Q R, P /\ R]
 
-  (4) [forall P Q R, P \/ Q -> Q \/ R -> P \/ R]
+  (D) [forall P Q R, P \/ Q -> Q \/ R -> P \/ R]
 
-  (5) Not typeable
+  (E) Not typeable
 
 *)
 Check
@@ -338,7 +345,7 @@ Check
 (** ** Disjunction *)
 
 (** The inductive definition of disjunction uses two constructors, one
-    for each side of the disjunct: *)
+    for each side of the disjunction: *)
 
 Module Or.
 
@@ -394,15 +401,15 @@ End Or.
          | or_intror HQ => @or_introl Q P HQ
          end.
 
-  (1) [forall P Q H, Q \/ P \/ H]
+  (A) [forall P Q H, Q \/ P \/ H]
 
-  (2) [forall P Q, P \/ Q -> P \/ Q]
+  (B) [forall P Q, P \/ Q -> P \/ Q]
 
-  (3) [forall P Q H, P \/ Q -> Q \/ P -> H]
+  (C) [forall P Q H, P \/ Q -> Q \/ P -> H]
 
-  (4) [forall P Q, P \/ Q -> Q \/ P]
+  (D) [forall P Q, P \/ Q -> Q \/ P]
 
-  (5) Not typeable
+  (E) Not typeable
 
 *)
 Check (fun P Q H =>
@@ -444,17 +451,20 @@ Definition some_nat_is_even : exists n, ev n :=
     Which of the following propositions is proved by
     providing an explicit witness [w] using [exist w]?
 
-    (1) [forall x: nat, (exists n, x = S n) -> (x<>0)]
+    (A) [forall x: nat, (exists n, x = S n) -> (x<>0)]
 
-    (2) [forall x: nat, (x<>0) -> (exists n, x = S n)]
+    (B) [forall x: nat, (x<>0) -> (exists n, x = S n)]
 
-    (3) [forall x: nat, (x=0) ->  ~(exists n, x = S n)]
+    (C) [forall x: nat, (x=0) ->  ~(exists n, x = S n)]
 
-    (4) [forall x: nat, x = 4 -> (x<>0)]
+    (D) [forall x: nat, x = 4 -> (x<>0)]
 
-    (5) none of the above
+    (E) none of the above
 
 *)
+
+
+
 Goal forall x: nat, (x<>0) -> (exists n, x = S n).
 Proof.
 intros. destruct x as [| x'].
@@ -517,7 +527,7 @@ End Props.
 (* ################################################################# *)
 (** * Equality *)
 
-(** Even Coq's equality relation is not built in.  We can define
+(** Even Rocq's equality relation is not built in.  We can define
     it ourselves: *)
 
 Module EqualityPlayground.
@@ -529,7 +539,7 @@ Notation "x == y" := (eq x y)
                        (at level 70, no associativity)
                      : type_scope.
 
-(** Coq terms are "the same" if they are _convertible_
+(** Rocq terms are "the same" if they are _convertible_
     according to a simple set of computation rules: evaluation of
     function applications, inlining of definitions, and simplification
     of [match]es. *)
@@ -556,8 +566,8 @@ Definition eq_add : forall (n1 n2 : nat), n1 == n2 -> (S n1) == (S n2) :=
 
 (** A tactic-based proof runs into some difficulties if we try to use
     our usual repertoire of tactics, such as [rewrite] and
-    [reflexivity]. Those work with *setoid* relations that Coq knows
-    about, such as [=], but not our [==]. We could prove to Coq that
+    [reflexivity]. Those work with *setoid* relations that Rocq knows
+    about, such as [=], but not our [==]. We could prove to Rocq that
     [==] is a setoid, but a simpler way is to use [destruct] and
     [apply] instead. *)
 
@@ -578,16 +588,20 @@ Qed.
 
 ?
 
-    (1) [eq_refl 4]
+    (A) [eq_refl 4]
 
-    (2) [ex_intro (z + 3 == 4) 1 (eq_refl 4)]
+    (B) [ex_intro (z + 3 == 4) 1 (eq_refl 4)]
 
-    (3) [ex_intro (fun z => (z + 3 == 4)) 1 (eq_refl 4)]
+    (C) [ex_intro (fun z => (z + 3 == 4)) 1 (eq_refl 4)]
 
-    (4) [ex_intro (fun z => (z + 3 == 4)) 1 (eq_refl 1)]
+    (D) [ex_intro (fun z => (z + 3 == 4)) 1 (eq_refl 1)]
 
-    (5) none of the above
+    (E) none of the above
 *)
+
+
+
+
 Fail Definition quiz1 : exists x, x + 3 == 4
   := eq_refl 4.
 Fail Definition quiz2 : exists x, x + 3 == 4
@@ -600,7 +614,7 @@ Fail Definition quiz4 : exists x, x + 3 == 4
 End EqualityPlayground.
 
 (* ################################################################# *)
-(** * Coq's Trusted Computing Base *)
+(** * Rocq's Trusted Computing Base *)
 
 (** The Coq typechecker is what actually checks our proofs.  We
     have to trust it, but it's relatively small and
@@ -621,7 +635,9 @@ Fail Fixpoint infinite_loop {X : Type} (n : nat) {struct n} : X :=
 
 Fail Definition falso : False := infinite_loop 0.
 
-(** Complex tactics can (in principle and occasionally in
-    practice) produce invalid proof objects.  [Qed] runs the type
-    checker to detect such situations. *)
+(** The tactic language and its implementation are _not_ part
+    of Rocq's TCB.  This is fortunate, because complex tactics can (and
+    occasionally do) produce invalid proof objects.  The [Qed] command
+    runs the type checker to make sure that the proof object
+    constructed by the tactic script is valid. *)
 

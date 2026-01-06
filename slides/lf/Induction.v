@@ -1,12 +1,21 @@
 (** * Induction: Proof by Induction *)
 
 (* ################################################################# *)
+(** * Separate Compilation *)
+
+(** Rocq will first need to compile [Basics.v] into [Basics.vo]
+    so it can be imported here -- detailed instructions are in the
+    full version of this chapter... *)
+
+From LF Require Export Basics.
+
+(* ################################################################# *)
 (** * Review *)
 (* QUIZ
 
     To prove the following theorem, which tactics will we need besides
-    [intros] and [reflexivity]?  (1) none, (2) [rewrite], (3)
-    [destruct], (4) both [rewrite] and [destruct], or (5) can't be
+    [intros] and [reflexivity]?  (A) none, (B) [rewrite], (C)
+    [destruct], (D) both [rewrite] and [destruct], or (E) can't be
     done with the tactics we've seen.
 
     Theorem review1: (orb true false) = true.
@@ -17,9 +26,9 @@
 
     Theorem review2: forall b, (orb true b) = true.
 
-    Which tactics do we need besides [intros] and [reflexivity]?  (1)
-    none (2) [rewrite], (3) [destruct], (4) both [rewrite] and
-    [destruct], or (5) can't be done with the tactics we've seen.
+    Which tactics do we need besides [intros] and [reflexivity]?  (A)
+    none (B) [rewrite], (C) [destruct], (D) both [rewrite] and
+    [destruct], or (E) can't be done with the tactics we've seen.
 *)
 (* QUIZ
 
@@ -27,9 +36,9 @@
 
     Theorem review3: forall b, (orb b true) = true.
 
-    Which tactics do we need besides [intros] and [reflexivity]?  (1)
-    none (2) [rewrite], (3) [destruct], (4) both [rewrite] and
-    [destruct], or (5) can't be done with the tactics we've seen.
+    Which tactics do we need besides [intros] and [reflexivity]?  (A)
+    none (B) [rewrite], (C) [destruct], (D) both [rewrite] and
+    [destruct], or (E) can't be done with the tactics we've seen.
 *)
 (* QUIZ
 
@@ -37,8 +46,8 @@
 
     Theorem review4 : forall n : nat, n = 0 + n.
 
-    (1) none, (2) [rewrite], (3) [destruct], (4) both [rewrite] and
-    [destruct], or (5) can't be done with the tactics we've seen.
+    (A) none, (B) [rewrite], (C) [destruct], (D) both [rewrite] and
+    [destruct], or (E) can't be done with the tactics we've seen.
 *)
 (* QUIZ
 
@@ -46,18 +55,9 @@
 
     Theorem review5 : forall n : nat, n = n + 0.
 
-    (1) none, (2) [rewrite], (3) [destruct], (4) both [rewrite] and
-    [destruct], or (5) can't be done with the tactics we've seen.
+    (A) none, (B) [rewrite], (C) [destruct], (D) both [rewrite] and
+    [destruct], or (E) can't be done with the tactics we've seen.
 *)
-
-(* ################################################################# *)
-(** * Separate Compilation *)
-
-(** Coq will first need to compile [Basics.v] into [Basics.vo]
-    so it can be imported here -- detailed instructions are in the
-    full version of this chapter... *)
-
-From LF Require Export Basics.
 
 (* ################################################################# *)
 (** * Proof by Induction *)
@@ -76,8 +76,8 @@ Abort.
 
 (** And reasoning by cases using [destruct n] doesn't get us much
     further: the branch of the case analysis where we assume [n = 0]
-    goes through fine, but in the branch where [n = S n'] for some [n'] we
-    get stuck in exactly the same way. *)
+    goes through just fine, but in the branch where [n = S n'] for
+    some [n'] we get stuck in exactly the same way. *)
 
 Theorem add_0_r_secondtry : forall n:nat,
   n + 0 = n.
@@ -127,6 +127,7 @@ Proof.
 
     The following theorem relates the computational equality [=?] on
     [nat] with the definitional equality [=] on [bool]. *)
+
 Theorem eqb_refl : forall n : nat,
   (n =? n) = true.
 Proof.
@@ -136,51 +137,49 @@ Proof.
 (* ################################################################# *)
 (** * Proofs Within Proofs *)
 
-(** Here's a way to use an in-line assertion instead of a separate
-    lemma.
-
-    New tactic: [assert]. *)
+(** New tactic: [replace]. *)
 
 Theorem mult_0_plus' : forall n m : nat,
   (n + 0 + 0) * m = n * m.
 Proof.
   intros n m.
-  assert (H: n + 0 + 0 = n).
-    { rewrite add_comm. simpl. rewrite add_comm. reflexivity. }
-  rewrite -> H.
-  reflexivity.  Qed.
+  replace (n + 0 + 0) with n.
+  - reflexivity.
+  - rewrite add_comm. simpl. rewrite add_comm. reflexivity.
+Qed.
 
 Theorem plus_rearrange_firsttry : forall n m p q : nat,
   (n + m) + (p + q) = (m + n) + (p + q).
 Proof.
   intros n m p q.
   (* We just need to swap (n + m) for (m + n)... seems
-     like add_comm should do the trick! *)
+    like add_comm should do the trick! *)
   rewrite add_comm.
-  (* Doesn't work... Coq rewrites the wrong plus! :-( *)
+  (* Doesn't work... Rocq rewrites the wrong plus! :-( *)
 Abort.
 
-(** To use [add_comm] at the point where we need it, we can introduce
-    a local lemma stating that [n + m = m + n] (for the _particular_ [m]
-    and [n] that we are talking about here), prove this lemma using
-    [add_comm], and then use it to do the desired rewrite. *)
+(** To use [add_comm] at the point where we need it, we can rewrite
+    [n + m] to [m + n] using [replace] and then prove [n + m = m + n]
+    using [add_comm]. *)
 
 Theorem plus_rearrange : forall n m p q : nat,
   (n + m) + (p + q) = (m + n) + (p + q).
 Proof.
   intros n m p q.
-  assert (H: n + m = m + n).
-  { rewrite add_comm. reflexivity. }
-  rewrite H. reflexivity.  Qed.
+  replace (n + m) with (m + n).
+  - reflexivity.
+  - rewrite add_comm. reflexivity.
+Qed.
 
 (* ################################################################# *)
 (** * More Exercises *)
-(* These additional exercises will be used in later chapters.  We
-   don't need to work them in class. *)
+
+(* These additional exercises state facts that will be used in
+   later chapters.  We don't need to work them in class. *)
 
 (** **** Exercise: 3 stars, standard, especially useful (mul_comm)
 
-    Use [assert] to help prove [add_shuffle3].  You don't need to
+    Use [replace] to help prove [add_shuffle3].  You don't need to
     use induction yet. *)
 
 Theorem add_shuffle3 : forall n m p : nat,
@@ -196,21 +195,6 @@ Theorem mul_comm : forall m n : nat,
   m * n = n * m.
 Proof.
   (* FILL IN HERE *) Admitted.
-(** [] *)
-
-(** **** Exercise: 2 stars, standard, optional (plus_leb_compat_l)
-
-    If a hypothesis has the form [H: P -> a = b], then [rewrite H] will
-    rewrite [a] to [b] in the goal, and add [P] as a new subgoal. Use
-    that in the inductive step of this exercise. *)
-
-Check leb.
-
-Theorem plus_leb_compat_l : forall n m p : nat,
-  n <=? m = true -> (p + n) <=? (p + m) = true.
-Proof.
-  (* FILL IN HERE *) Admitted.
-
 (** [] *)
 
 (** **** Exercise: 3 stars, standard, optional (more_exercises)
