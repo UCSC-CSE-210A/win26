@@ -5,7 +5,7 @@ classes: wide
 
 ---
 
-Welcome!  This is an overview of the Spring 2025 edition of CSE 210A ("Programming Languages"), a graduate course in the Computer Science and Engineering Department at the UC Santa Cruz Baskin School of Engineering.
+Welcome!  This is an overview of CSE 210A ("Programming Languages"), a graduate course in the Computer Science and Engineering Department at the UC Santa Cruz Baskin School of Engineering.
 
 ### Instructor
 
