@@ -22,7 +22,7 @@ Hi, I'm [Owen Arden](https://owenarden.github.io/home/)!
 Our course TA is [Yan Tong](https://ytong24.github.io/).
 - Contact: **for anything CSE 210A-related, post or send a DM on the [course discussion forum](https://edstem.org/us/courses/77254/discussion) instead.**  Otherwise: <ytong24@ucsc.edu>
 - Discussion section: Wednesdays 4-5:05pm in PhysSciences 110
-- Office hours: Wednesdays 2-3pm in BE-151 (and by appointment)
+- Office hours: Wednesdays 2-3pm in BE-151 (and [by appointment](https://calendar.app.google/n9vLEua4ENNjNC347))
 
 ## A few essential details about the course
   - Class meets in person {{ site.meeting-time }}, in {{ site.meeting-location }}
